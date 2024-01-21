@@ -5,7 +5,7 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.3/app
+        image: sail-8.2/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -46,7 +46,6 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
-
     phpmyadmin:
         image: 'phpmyadmin:latest'
         ports:
@@ -55,12 +54,11 @@ services:
             PMA_HOST: '${DB_HOST:-mysql}'
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
         volumes:
-            - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+            - './docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php'
         depends_on:
             - mysql
         networks:
             - sail
-
 networks:
     sail:
         driver: bridge
