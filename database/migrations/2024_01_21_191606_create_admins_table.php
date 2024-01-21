@@ -16,6 +16,7 @@ return new class extends Migration
             $table->char('name');
             $table->char('email');
             $table->char('password');
+            $table->char('account_type');
             $table->timestamps();
         });
     }

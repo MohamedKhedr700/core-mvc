@@ -13,6 +13,11 @@ class User extends Account implements AuthenticatableInterface
     /**
      * {@inheritdoc}
      */
+    public const ACCOUNT_TYPE = 'user';
+
+    /**
+     * {@inheritdoc}
+     */
     protected $fillable = [
         'name',
         'email',

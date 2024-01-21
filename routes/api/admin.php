@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('v1/admin/admins')
+    ->middleware([])
+    ->group(function () {
+        Route::post('/', [AdminController::class, 'store']);
+        Route::get('/', [AdminController::class, 'index']);
+        Route::get('{admin}', [AdminController::class, 'show']);
+        Route::put('{admin}', [AdminController::class, 'update']);
+        Route::delete('{admin}', [AdminController::class, 'delete']);
+    });
