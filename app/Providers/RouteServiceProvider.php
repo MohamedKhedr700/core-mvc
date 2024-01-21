@@ -24,17 +24,63 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->resolveRateLimiter();
+
+        $this->routes(function () {
+            $this->mapApiRoutes();
+            $this->mapWebRoutes();
+            $this->mapDomainApiRoutes();
+        });
+    }
+
+    /**
+     * Resolve rate limiter.
+     */
+    private function resolveRateLimiter(): void
+    {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
 
-        $this->routes(function () {
+    /**
+     * Map api routes.
+     */
+    private function mapApiRoutes(): void
+    {
+        $this->mapDefaultApiRoutes();
+    }
+
+    /**
+     * Map default api routes.
+     */
+    private function mapDefaultApiRoutes(): void
+    {
+        Route::middleware('api')
+            ->prefix('api')
+            ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Map domain api routes.
+     */
+    private function mapDomainApiRoutes(): void
+    {
+        $domains = glob(base_path('routes/api/*.php'));
+
+        foreach ($domains as $domain) {
             Route::middleware('api')
                 ->prefix('api')
-                ->group(base_path('routes/api.php'));
+                ->group($domain);
+        }
+    }
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
-        });
+    /**
+     * Map web routes.
+     */
+    private function mapWebRoutes(): void
+    {
+        Route::middleware('web')
+            ->group(base_path('routes/web.php'));
     }
 }
