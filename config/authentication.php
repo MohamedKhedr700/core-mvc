@@ -24,7 +24,20 @@ return [
     |
     */
 
-    'authenticators' => [],
+    'authenticators' => [
+        \App\Models\Admin::class => \App\Http\Authentication\Authenticators\AdminAuthenticator::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Authenticator
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default authenticator that will be used.
+    |
+    */
+
+    'default_authenticator' => \Raid\Core\Auth\Authentication\DefaultAuthenticator::class,
 
     /*
     |--------------------------------------------------------------------------

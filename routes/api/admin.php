@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,10 @@ Route::prefix('v1/admin/admins')
         Route::get('{admin}', [AdminController::class, 'show']);
         Route::put('{admin}', [AdminController::class, 'update']);
         Route::delete('{admin}', [AdminController::class, 'delete']);
+    });
+
+Route::prefix('v1/admin/admins')
+    ->middleware([])
+    ->group(function () {
+        Route::post('login', LoginController::class);
     });
