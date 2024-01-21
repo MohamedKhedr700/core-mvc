@@ -6,5 +6,4 @@ use Raid\Core\Model\Models\Filter\ModelFilter;
 
 class AdminFilter extends ModelFilter
 {
-
 }

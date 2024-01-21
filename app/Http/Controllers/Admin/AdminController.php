@@ -24,7 +24,7 @@ class AdminController extends Controller
         $createAdminAction->execute($request->passed());
 
         return response()->json([
-           'message' => __('created_successfully'),
+            'message' => __('created_successfully'),
         ]);
     }
 
@@ -36,7 +36,7 @@ class AdminController extends Controller
         $admins = $listAdminAction->execute($request->passed());
 
         return response()->json([
-            'resources' => $admins
+            'resources' => $admins,
         ]);
     }
 
