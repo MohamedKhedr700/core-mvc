@@ -2,20 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
+use Raid\Core\Auth\Models\Authentication\Account;
+use Raid\Core\Auth\Traits\Model\Authenticatable;
 
-class User extends Authenticatable
+class User extends Account implements AuthenticatableInterface
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Authenticatable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * {@inheritdoc}
      */
     protected $fillable = [
         'name',
@@ -24,22 +20,16 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * {@inheritdoc}
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * {@inheritdoc}
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 }

@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f69d20c0690dea163ce4e84ab14a8a8f",
+    "content-hash": "659ce7d61408901487dcb076f8d68ac5",
     "packages": [
+        {
+            "name": "archtechx/enums",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archtechx/enums.git",
+                "reference": "fc428d533d815178ff494eba85fa28797ca7995e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archtechx/enums/zipball/fc428d533d815178ff494eba85fa28797ca7995e",
+                "reference": "fc428d533d815178ff494eba85fa28797ca7995e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.4",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ArchTech\\Enums\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Štancl",
+                    "email": "samuel@archte.ch"
+                }
+            ],
+            "description": "Helpers for making PHP enums more lovable.",
+            "support": {
+                "issues": "https://github.com/archtechx/enums/issues",
+                "source": "https://github.com/archtechx/enums/tree/v1.0.0"
+            },
+            "time": "2024-01-12T22:24:43+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -3149,6 +3195,477 @@
             "time": "2023-12-20T15:28:09+00:00"
         },
         {
+            "name": "raid/core-action",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-action.git",
+                "reference": "ebdb43a57240f40ce4b18496e4a2ddfe909eb495"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-action/zipball/ebdb43a57240f40ce4b18496e4a2ddfe909eb495",
+                "reference": "ebdb43a57240f40ce4b18496e4a2ddfe909eb495",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "raid/core-command": "*",
+                "raid/core-enum": "*",
+                "raid/core-gate": "*"
+            },
+            "require-dev": {
+                "laravel/pint": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Action\\Providers\\ActionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Action\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Action Package",
+            "keywords": [
+                "action",
+                "core",
+                "laravel",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-action/issues",
+                "source": "https://github.com/MohamedKhedr700/core-action/tree/main"
+            },
+            "time": "2024-01-15T21:27:11+00:00"
+        },
+        {
+            "name": "raid/core-auth",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-auth.git",
+                "reference": "eaa596158a2cb9546d70cd87379ae00e87311ab6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-auth/zipball/eaa596158a2cb9546d70cd87379ae00e87311ab6",
+                "reference": "eaa596158a2cb9546d70cd87379ae00e87311ab6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "raid/core-command": "dev-main",
+                "raid/core-enum": "dev-main",
+                "raid/core-model": "dev-main"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Auth\\Providers\\AuthServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Auth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Auth Package",
+            "keywords": [
+                "Authentication",
+                "auth",
+                "core",
+                "laravel",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-auth/issues",
+                "source": "https://github.com/MohamedKhedr700/core-auth/tree/main"
+            },
+            "time": "2023-12-15T16:13:34+00:00"
+        },
+        {
+            "name": "raid/core-command",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-command.git",
+                "reference": "8a4ba6897f0e655f5ddec8b995fea8ec4c78ffd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-command/zipball/8a4ba6897f0e655f5ddec8b995fea8ec4c78ffd3",
+                "reference": "8a4ba6897f0e655f5ddec8b995fea8ec4c78ffd3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Command\\Providers\\CommandServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Command\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Command Package",
+            "keywords": [
+                "command",
+                "core",
+                "laravel",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-command/issues",
+                "source": "https://github.com/MohamedKhedr700/core-command/tree/main"
+            },
+            "time": "2023-10-05T19:54:54+00:00"
+        },
+        {
+            "name": "raid/core-enum",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-enum.git",
+                "reference": "0473ad048e5ffd3ad13a62bd8935d47d7c3db162"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-enum/zipball/0473ad048e5ffd3ad13a62bd8935d47d7c3db162",
+                "reference": "0473ad048e5ffd3ad13a62bd8935d47d7c3db162",
+                "shasum": ""
+            },
+            "require": {
+                "archtechx/enums": "*",
+                "php": "^8.2",
+                "raid/core-command": "dev-main"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Enum\\Providers\\EnumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Enum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Enum",
+            "keywords": [
+                "core",
+                "enum",
+                "laravel",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-enum/issues",
+                "source": "https://github.com/MohamedKhedr700/core-enum/tree/main"
+            },
+            "time": "2023-10-05T22:47:19+00:00"
+        },
+        {
+            "name": "raid/core-event",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-event.git",
+                "reference": "b509f205dd514cc343e410477b282fa01d2f9962"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-event/zipball/b509f205dd514cc343e410477b282fa01d2f9962",
+                "reference": "b509f205dd514cc343e410477b282fa01d2f9962",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "raid/core-command": "dev-main",
+                "raid/core-enum": "*"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Event\\Providers\\EventServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Event\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Event",
+            "keywords": [
+                "core",
+                "event",
+                "laravel",
+                "listener",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-event/issues",
+                "source": "https://github.com/MohamedKhedr700/core-event/tree/main"
+            },
+            "time": "2023-10-25T19:52:33+00:00"
+        },
+        {
+            "name": "raid/core-gate",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-gate.git",
+                "reference": "579bba5ec8de74882df557e6e8d585233efa610f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-gate/zipball/579bba5ec8de74882df557e6e8d585233efa610f",
+                "reference": "579bba5ec8de74882df557e6e8d585233efa610f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "raid/core-command": "*"
+            },
+            "require-dev": {
+                "laravel/pint": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Gate\\Providers\\GateServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Gate\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Gate Package",
+            "keywords": [
+                "core",
+                "gate",
+                "laravel",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-gate/issues",
+                "source": "https://github.com/MohamedKhedr700/core-gate/tree/main"
+            },
+            "time": "2023-10-10T20:32:22+00:00"
+        },
+        {
+            "name": "raid/core-model",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-model.git",
+                "reference": "8aa963bffcca3ba0c4e3c9016a895357375814dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-model/zipball/8aa963bffcca3ba0c4e3c9016a895357375814dd",
+                "reference": "8aa963bffcca3ba0c4e3c9016a895357375814dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "raid/core-command": "dev-main",
+                "tucker-eric/eloquentfilter": "^3.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Model\\Providers\\ModelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Model\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Model Package",
+            "keywords": [
+                "core",
+                "laravel",
+                "model",
+                "raid"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-model/issues",
+                "source": "https://github.com/MohamedKhedr700/core-model/tree/main"
+            },
+            "time": "2024-01-04T20:15:15+00:00"
+        },
+        {
+            "name": "raid/core-request",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-request.git",
+                "reference": "f40b82993bd902eef18a2efbf028166ae56747e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-request/zipball/f40b82993bd902eef18a2efbf028166ae56747e6",
+                "reference": "f40b82993bd902eef18a2efbf028166ae56747e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "raid/core-command": "dev-main"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Request\\Providers\\RequestServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Request\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamed_khedr",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Request Package",
+            "keywords": [
+                "core",
+                "form-request",
+                "laravel",
+                "raid",
+                "request",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-request/issues",
+                "source": "https://github.com/MohamedKhedr700/core-request/tree/main"
+            },
+            "time": "2023-11-16T21:45:15+00:00"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -5886,6 +6403,71 @@
             "time": "2023-12-08T13:03:43+00:00"
         },
         {
+            "name": "tucker-eric/eloquentfilter",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Tucker-Eric/EloquentFilter.git",
+                "reference": "faaad783b7f23af7ba7e23baaa56d71af51504a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tucker-Eric/EloquentFilter/zipball/faaad783b7f23af7ba7e23baaa56d71af51504a9",
+                "reference": "faaad783b7f23af7ba7e23baaa56d71af51504a9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/console": "~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/database": "~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/filesystem": "~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/pagination": "~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/support": "~6.0|~7.0|~8.0|~9.0|~10.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "phpunit/phpunit": "^8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "EloquentFilter\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EloquentFilter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Tucker",
+                    "email": "tucker.ericm@gmail.com"
+                }
+            ],
+            "description": "An Eloquent way to filter Eloquent Models",
+            "keywords": [
+                "eloquent",
+                "filter",
+                "laravel",
+                "model",
+                "query",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/Tucker-Eric/EloquentFilter/issues",
+                "source": "https://github.com/Tucker-Eric/EloquentFilter/tree/3.2.0"
+            },
+            "time": "2023-02-07T18:34:53+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.0",
             "source": {
@@ -8535,13 +9117,19 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "raid/core-action": 20,
+        "raid/core-auth": 20,
+        "raid/core-event": 20,
+        "raid/core-gate": 20,
+        "raid/core-model": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

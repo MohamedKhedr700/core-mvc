@@ -6,11 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "deoliveiralucas/array-keys-case-transform": "^1.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "deoliveiralucas/array-keys-case-transform": "^1.1",
+        "raid/core-action": "dev-main",
+        "raid/core-auth": "dev-main",
+        "raid/core-event": "dev-main",
+        "raid/core-gate": "dev-main",
+        "raid/core-model": "dev-main",
+        "raid/core-request": "dev-main",
         "spatie/laravel-fractal": "^6.0"
     },
     "require-dev": {
@@ -66,6 +72,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
