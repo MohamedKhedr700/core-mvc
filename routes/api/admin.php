@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// profile routes
+Route::prefix('v1/admin/admins/profile')
+    ->middleware(['auth:admin'])
+    ->group(function () {
+        Route::post('/', [ProfileController::class, 'update']);
+        Route::get('/', [ProfileController::class, 'get']);
+    });
+
+// auth routes
+Route::prefix('v1/admin/admins')
+    ->middleware([])
+    ->group(function () {
+        Route::post('login', [LoginController::class, 'login']);
+    });
+
+// crud routes
 Route::prefix('v1/admin/admins')
     ->middleware([])
     ->group(function () {
@@ -23,10 +40,4 @@ Route::prefix('v1/admin/admins')
         Route::get('{admin}', [AdminController::class, 'show']);
         Route::put('{admin}', [AdminController::class, 'update']);
         Route::delete('{admin}', [AdminController::class, 'delete']);
-    });
-
-Route::prefix('v1/admin/admins')
-    ->middleware([])
-    ->group(function () {
-        Route::post('login', LoginController::class);
     });

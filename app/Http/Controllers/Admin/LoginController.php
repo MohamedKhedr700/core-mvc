@@ -10,15 +10,14 @@ use Illuminate\Http\JsonResponse;
 class LoginController extends Controller
 {
     /**
-     * Invoke the controller method.
+     * Login admin.
      */
-    public function __invoke(LoginAdminRequest $request, LoginAdminAction $loginAdminAction): JsonResponse
+    public function login(LoginAdminRequest $request, LoginAdminAction $loginAdminAction): JsonResponse
     {
         $channel = $loginAdminAction->execute($request->passed());
 
-        return response()->json([
+        return $this->successResource($channel->account(), [
             'token' => $channel->stringToken(),
-            'resource' => $channel->account(),
         ]);
     }
 }
