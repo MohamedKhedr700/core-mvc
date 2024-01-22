@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\CreateAdminAction;
-use App\Actions\Admin\DeleteAdminAction;
-use App\Actions\Admin\FindAdminAction;
-use App\Actions\Admin\ListAdminAction;
-use App\Actions\Admin\UpdateAdminAction;
+use App\Actions\Admin as Actions;
+use App\Http\Requests\Admin as Requests;
+use App\Models\Admin as AdminModel;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ListAdminRequest;
-use App\Http\Requests\Admin\StoreAdminRequest;
-use App\Http\Requests\Admin\UpdateAdminRequest;
-use App\Models\Admin;
 use Illuminate\Http\JsonResponse;
 
 class AdminController extends Controller
@@ -19,9 +13,12 @@ class AdminController extends Controller
     /**
      * Create a new admin.
      */
-    public function store(StoreAdminRequest $request, CreateAdminAction $createAdminAction): JsonResponse
+    public function store(
+        Requests\StoreRequest $request,
+        Actions\CreateAction $action,
+    ): JsonResponse
     {
-        $createAdminAction->execute($request->passed());
+        $action->execute($request->passed());
 
         return $this->message(__('created_successfully'));
     }
@@ -29,17 +26,24 @@ class AdminController extends Controller
     /**
      * List admins.
      */
-    public function index(ListAdminRequest $request, ListAdminAction $listAdminAction): JsonResponse
+    public function index(
+        Requests\ListRequest $request,
+        Actions\ListAction $action,
+    ): JsonResponse
     {
-        return $this->resources($listAdminAction->execute($request->passed()));
+        return $this->resources($action->execute($request->passed()));
     }
 
     /**
      * Update an admin.
      */
-    public function update(UpdateAdminRequest $request, Admin $admin, UpdateAdminAction $updateAdminAction): JsonResponse
+    public function update(
+        Requests\UpdateRequest $request,
+        AdminModel $admin,
+        Actions\UpdateAction $action,
+    ): JsonResponse
     {
-        $updateAdminAction->execute($admin, $request->passed());
+        $action->execute($admin, $request->passed());
 
         return $this->message(__('updated_successfully'));
     }
@@ -47,17 +51,23 @@ class AdminController extends Controller
     /**
      * Show an admin.
      */
-    public function show(Admin $admin, FindAdminAction $findAdminAction): JsonResponse
+    public function show(
+        AdminModel $admin,
+        Actions\FindAction $action,
+    ): JsonResponse
     {
-        return $this->resource($findAdminAction->execute($admin));
+        return $this->resource($action->execute($admin));
     }
 
     /**
      * Delete an admin.
      */
-    public function delete(Admin $admin, DeleteAdminAction $deleteAdminAction): JsonResponse
+    public function delete(
+        AdminModel $admin,
+        Actions\DeleteAction $action,
+    ): JsonResponse
     {
-        $deleteAdminAction->execute($admin);
+        $action->execute($admin);
 
         return $this->message(__('deleted_successfully'));
     }

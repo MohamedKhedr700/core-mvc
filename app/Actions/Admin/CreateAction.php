@@ -4,9 +4,9 @@ namespace App\Actions\Admin;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Contracts\Crud\CreateActionInterface;
-use Raid\Core\Action\Actions\Crud\CreateAction;
+use Raid\Core\Action\Actions\Crud\CreateAction as RaidCreateAction;
 
-class CreateAdminAction extends CreateAction implements CreateActionInterface
+class CreateAction extends RaidCreateAction implements CreateActionInterface
 {
     /**
      * {@inheritdoc}

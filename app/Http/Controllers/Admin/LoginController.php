@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\LoginAdminAction;
-use App\Actions\Admin\LogoutAdminAction;
+use App\Actions\Admin as Actions;
+use App\Http\Requests\Admin as Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\LoginAdminRequest;
 use Illuminate\Http\JsonResponse;
 
 class LoginController extends Controller
@@ -13,9 +12,12 @@ class LoginController extends Controller
     /**
      * Login admin.
      */
-    public function login(LoginAdminRequest $request, LoginAdminAction $loginAdminAction): JsonResponse
+    public function login(
+        Requests\LoginRequest $request,
+        Actions\LoginAction $action,
+    ): JsonResponse
     {
-        $channel = $loginAdminAction->execute($request->passed());
+        $channel = $action->execute($request->passed());
 
         return $this->success([
             'token' => $channel->stringToken(),
@@ -26,9 +28,11 @@ class LoginController extends Controller
     /**
      * Logout admin.
      */
-    public function logout(LogoutAdminAction $logoutAdminAction): JsonResponse
+    public function logout(
+        Actions\LogoutAction $action,
+    ): JsonResponse
     {
-        $logoutAdminAction->execute();
+        $action->execute();
 
         return $this->message(__('logout_successfully'));
     }

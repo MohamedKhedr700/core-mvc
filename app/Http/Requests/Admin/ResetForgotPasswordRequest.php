@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Traits\Requests\WithAdminRules;
 use Raid\Core\Request\Requests\FormRequest;
 
-class LoginAdminRequest extends FormRequest
+class ResetForgotPasswordRequest extends FormRequest
 {
     use WithAdminRules;
 
@@ -14,9 +14,6 @@ class LoginAdminRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
-        ];
+        return [];
     }
 }

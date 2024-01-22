@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use ICanBoogie\Inflections\tr;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

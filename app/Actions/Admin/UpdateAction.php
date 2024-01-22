@@ -4,9 +4,9 @@ namespace App\Actions\Admin;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Contracts\Crud\UpdateActionInterface;
-use Raid\Core\Action\Actions\Crud\UpdateAction;
+use Raid\Core\Action\Actions\Crud\UpdateAction as RaidUpdateAction;
 
-class UpdateAdminAction extends UpdateAction implements UpdateActionInterface
+class UpdateAction extends RaidUpdateAction implements UpdateActionInterface
 {
     /**
      * {@inheritdoc}

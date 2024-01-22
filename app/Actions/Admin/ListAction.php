@@ -6,10 +6,10 @@ use App\Models\Admin;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Raid\Core\Action\Actions\Contracts\Crud\ListActionInterface;
-use Raid\Core\Action\Actions\Crud\ListAction;
+use Raid\Core\Action\Actions\Crud\ListAction as RaidListAction;
 use Raid\Core\Action\Exceptions\Actionable\InvalidActionableException;
 
-class ListAdminAction extends ListAction implements ListActionInterface
+class ListAction extends RaidListAction implements ListActionInterface
 {
     /**
      * {@inheritdoc}

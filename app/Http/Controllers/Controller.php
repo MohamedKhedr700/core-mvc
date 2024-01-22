@@ -9,5 +9,5 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ApiResponse, ValidatesRequests;
+    use ApiResponse, AuthorizesRequests, ValidatesRequests;
 }

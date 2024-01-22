@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Traits\Requests\WithAdminRules;
 use Raid\Core\Request\Requests\FormRequest;
 
-class ListAdminRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     use WithAdminRules;
 
@@ -14,6 +14,6 @@ class ListAdminRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return $this->withCommonRules();
     }
 }

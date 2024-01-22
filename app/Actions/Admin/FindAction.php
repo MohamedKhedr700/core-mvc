@@ -4,9 +4,9 @@ namespace App\Actions\Admin;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Contracts\Crud\FindActionInterface;
-use Raid\Core\Action\Actions\Crud\FindAction;
+use Raid\Core\Action\Actions\Crud\FindAction as RaidFindAction;
 
-class FindAdminAction extends FindAction implements FindActionInterface
+class FindAction extends RaidFindAction implements FindActionInterface
 {
     /**
      * {@inheritdoc}

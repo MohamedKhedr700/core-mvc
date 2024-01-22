@@ -5,14 +5,13 @@ namespace App\Actions\Admin;
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
-use Raid\Core\Action\Exceptions\Actionable\InvalidActionableException;
 
-class LoginAdminAction extends Action implements ActionInterface
+class FindProfileAction extends Action implements ActionInterface
 {
     /**
      * {@inheritdoc}
      */
-    public const ACTION = 'login';
+    public const ACTION = 'find_profile';
 
     /**
      * {@inheritdoc}
@@ -21,11 +20,9 @@ class LoginAdminAction extends Action implements ActionInterface
 
     /**
      * Handle an action.
-     *
-     * @throws InvalidActionableException
      */
-    public function handle(array $credentials)
+    public function handle(): Admin
     {
-        return $this->actionable()->attempt($credentials);
+        return account();
     }
 }

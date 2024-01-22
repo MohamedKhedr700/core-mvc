@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Traits\Requests\WithAdminRules;
 use Raid\Core\Request\Requests\FormRequest;
 
-class StoreAdminRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     use WithAdminRules;
 

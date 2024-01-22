@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,28 +14,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// auth routes
+Route::prefix('v1/admin/admins')
+    ->group(function () {
+        Route::post('login', [Admin\LoginController::class, 'login']);
+    });
+
 // profile routes
 Route::prefix('v1/admin/admins/profile')
     ->middleware(['auth:admin'])
     ->group(function () {
-        Route::post('/', [ProfileController::class, 'update']);
-        Route::get('/', [ProfileController::class, 'get']);
-        Route::get('logout', [LoginController::class, 'logout']);
+        Route::post('/', [Admin\ProfileController::class, 'update']);
+        Route::get('/', [Admin\ProfileController::class, 'get']);
+        Route::get('logout', [Admin\LoginController::class, 'logout']);
     });
 
-// auth routes
-Route::prefix('v1/admin/admins')
+// forgot password routes
+Route::prefix('v1/admin/admins/forgot-password')
     ->group(function () {
-        Route::post('login', [LoginController::class, 'login']);
+        Route::post('/send', [Admin\ForgotPasswordController::class, 'send']);
+        Route::post('/verify', [Admin\ForgotPasswordController::class, 'verify']);
+        Route::post('/reset', [Admin\ForgotPasswordController::class, 'reset']);
     });
 
 // crud routes
 Route::prefix('v1/admin/admins')
     ->middleware(['auth:admin'])
     ->group(function () {
-        Route::post('/', [AdminController::class, 'store']);
-        Route::get('/', [AdminController::class, 'index']);
-        Route::get('{admin}', [AdminController::class, 'show']);
-        Route::put('{admin}', [AdminController::class, 'update']);
-        Route::delete('{admin}', [AdminController::class, 'delete']);
+        Route::post('/', [Admin\AdminController::class, 'store']);
+        Route::get('/', [Admin\AdminController::class, 'index']);
+        Route::get('{admin}', [Admin\AdminController::class, 'show']);
+        Route::put('{admin}', [Admin\AdminController::class, 'update']);
+        Route::delete('{admin}', [Admin\AdminController::class, 'delete']);
     });

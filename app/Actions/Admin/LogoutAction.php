@@ -5,13 +5,14 @@ namespace App\Actions\Admin;
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
+use Raid\Core\Action\Exceptions\Actionable\InvalidActionableException;
 
-class UpdateAdminProfileAction extends Action implements ActionInterface
+class LogoutAction extends Action implements ActionInterface
 {
     /**
      * {@inheritdoc}
      */
-    public const ACTION = 'update_profile';
+    public const ACTION = 'logout';
 
     /**
      * {@inheritdoc}
@@ -20,9 +21,11 @@ class UpdateAdminProfileAction extends Action implements ActionInterface
 
     /**
      * Handle an action.
+     *
+     * @throws InvalidActionableException
      */
-    public function handle(array $data): bool
+    public function handle(): bool
     {
-        return account()->update($data);
+        return account()->currentAccessToken()->delete();
     }
 }

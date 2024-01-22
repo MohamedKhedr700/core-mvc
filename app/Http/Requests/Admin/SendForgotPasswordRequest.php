@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Traits\Requests\WithAdminRules;
 use Raid\Core\Request\Requests\FormRequest;
 
-class UpdateAdminProfileRequest extends FormRequest
+class SendForgotPasswordRequest extends FormRequest
 {
     use WithAdminRules;
 
@@ -14,6 +14,8 @@ class UpdateAdminProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        return $this->withCommonRules();
+        return [
+            'email' => ['required', 'email', 'exists:admins,email'],
+        ];
     }
 }

@@ -2,29 +2,32 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\FindAdminProfileAction;
-use App\Actions\Admin\UpdateAdminProfileAction;
+use App\Actions\Admin as Actions;
+use App\Http\Requests\Admin as Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\UpdateAdminProfileRequest;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ProfileController extends Controller
 {
     /**
      * Get admin profile.
      */
-    public function get(FindAdminProfileAction $findAdminProfileAction): JsonResponse
+    public function get(
+        Actions\FindProfileAction $action,
+    ): JsonResponse
     {
-        return $this->resource($findAdminProfileAction->execute());
+        return $this->resource($action->execute());
     }
 
     /**
      * Update admin profile.
      */
-    public function update(UpdateAdminProfileRequest $request, UpdateAdminProfileAction $updateAdminProfileAction): JsonResponse
+    public function update(
+        Requests\UpdateProfileRequest $request,
+        Actions\UpdateProfileAction $action,
+    ): JsonResponse
     {
-        $updateAdminProfileAction->execute($request->passed());
+        $action->execute($request->passed());
 
         return $this->message(__('profile_updated_successfully'));
     }
