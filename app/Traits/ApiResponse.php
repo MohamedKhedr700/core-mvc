@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use ICanBoogie\Inflections\tr;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,49 +26,44 @@ trait ApiResponse
         }
 
         $data = [
-            'success' => false,
+            'error' => true,
             'message' => $message,
             'errors' => $data,
         ];
 
         return new JsonResponse($data, $statusCode);
     }
+
     /**
      * Response with message and status code 200.
      */
-    public function successMessage(string $message = ''): JsonResponse
+    public function message(string $message = ''): JsonResponse
     {
-        $data = [
+        return $this->success([
             'message' => $message,
-        ];
-
-        return $this->success($data);
+        ]);
     }
 
     /**
      * Response with resource and status code 200.
      */
-    public function successResource(mixed $data, string $message = ''): JsonResponse
+    public function resource(mixed $data, string $message = ''): JsonResponse
     {
-        $data = [
+        return $this->success([
             'message' => $message,
             'resource' => $data,
-        ];
-
-        return $this->success($data);
+        ]);
     }
 
     /**
      * Response with resources and status code 200.
      */
-    public function successResources(mixed $data, string $message = ''): JsonResponse
+    public function resources(mixed $data, string $message = ''): JsonResponse
     {
-        $data = [
+        return $this->success([
             'message' => $message,
             'resources' => $data,
-        ];
-
-        return $this->success($data);
+        ]);
     }
 
     /**

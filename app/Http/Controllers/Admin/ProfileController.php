@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function get(FindAdminProfileAction $findAdminProfileAction): JsonResponse
     {
-        return $this->successResource($findAdminProfileAction->execute());
+        return $this->resource($findAdminProfileAction->execute());
     }
 
     /**
@@ -26,6 +26,6 @@ class ProfileController extends Controller
     {
         $updateAdminProfileAction->execute($request->passed());
 
-        return $this->successMessage(__('profile_updated_successfully'));
+        return $this->message(__('profile_updated_successfully'));
     }
 }

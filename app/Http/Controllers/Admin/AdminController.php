@@ -23,7 +23,7 @@ class AdminController extends Controller
     {
         $createAdminAction->execute($request->passed());
 
-        return $this->successMessage(__('created_successfully'));
+        return $this->message(__('created_successfully'));
     }
 
     /**
@@ -31,7 +31,7 @@ class AdminController extends Controller
      */
     public function index(ListAdminRequest $request, ListAdminAction $listAdminAction): JsonResponse
     {
-        return $this->successResource($listAdminAction->execute($request->passed()));
+        return $this->resources($listAdminAction->execute($request->passed()));
     }
 
     /**
@@ -41,7 +41,7 @@ class AdminController extends Controller
     {
         $updateAdminAction->execute($admin, $request->passed());
 
-        return $this->successMessage(__('updated_successfully'));
+        return $this->message(__('updated_successfully'));
     }
 
     /**
@@ -49,7 +49,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin, FindAdminAction $findAdminAction): JsonResponse
     {
-        return $this->successResource($findAdminAction->execute($admin));
+        return $this->resource($findAdminAction->execute($admin));
     }
 
     /**
@@ -59,6 +59,6 @@ class AdminController extends Controller
     {
         $deleteAdminAction->execute($admin);
 
-        return $this->successMessage(__('deleted_successfully'));
+        return $this->message(__('deleted_successfully'));
     }
 }

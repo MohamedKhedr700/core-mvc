@@ -30,6 +30,6 @@ class LoginController extends Controller
     {
         $logoutAdminAction->execute();
 
-        return $this->successMessage(__('logout_successfully'));
+        return $this->message(__('logout_successfully'));
     }
 }
