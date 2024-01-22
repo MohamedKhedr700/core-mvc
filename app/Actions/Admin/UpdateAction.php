@@ -16,7 +16,7 @@ class UpdateAction extends RaidUpdateAction implements UpdateActionInterface
     /**
      * {@inheritDoc}
      */
-    public function handle(string|object $id, array $data): object
+    public function handle(string|object $id, array $data): bool
     {
         return $id->update($data);
     }

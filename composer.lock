@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "659ce7d61408901487dcb076f8d68ac5",
+    "content-hash": "1505ba3383847be9c84e347f827e45d0",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -1414,6 +1414,72 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2024-01-16T15:23:58+00:00"
+        },
+        {
+            "name": "laravel/pint",
+            "version": "v1.13.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/pint.git",
+                "reference": "e3e269cc5d874c8efd2dc7962b1c7ff2585fe525"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/e3e269cc5d874c8efd2dc7962b1c7ff2585fe525",
+                "reference": "e3e269cc5d874c8efd2dc7962b1c7ff2585fe525",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-tokenizer": "*",
+                "ext-xml": "*",
+                "php": "^8.1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.47.0",
+                "illuminate/view": "^10.40.0",
+                "larastan/larastan": "^2.8.1",
+                "laravel-zero/framework": "^10.3.0",
+                "mockery/mockery": "^1.6.7",
+                "nunomaduro/termwind": "^1.15.1",
+                "pestphp/pest": "^2.31.0"
+            },
+            "bin": [
+                "builds/pint"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "App\\": "app/",
+                    "Database\\Seeders\\": "database/seeders/",
+                    "Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "An opinionated code formatter for PHP.",
+            "homepage": "https://laravel.com",
+            "keywords": [
+                "format",
+                "formatter",
+                "lint",
+                "linter",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/pint/issues",
+                "source": "https://github.com/laravel/pint"
+            },
+            "time": "2024-01-16T17:39:29+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -3200,12 +3266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedKhedr700/core-action.git",
-                "reference": "ebdb43a57240f40ce4b18496e4a2ddfe909eb495"
+                "reference": "fa20ad6128e100a8fba641ae7549cb0cc0754a14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MohamedKhedr700/core-action/zipball/ebdb43a57240f40ce4b18496e4a2ddfe909eb495",
-                "reference": "ebdb43a57240f40ce4b18496e4a2ddfe909eb495",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-action/zipball/fa20ad6128e100a8fba641ae7549cb0cc0754a14",
+                "reference": "fa20ad6128e100a8fba641ae7549cb0cc0754a14",
                 "shasum": ""
             },
             "require": {
@@ -3252,7 +3318,7 @@
                 "issues": "https://github.com/MohamedKhedr700/core-action/issues",
                 "source": "https://github.com/MohamedKhedr700/core-action/tree/main"
             },
-            "time": "2024-01-15T21:27:11+00:00"
+            "time": "2024-01-22T21:20:41+00:00"
         },
         {
             "name": "raid/core-auth",
@@ -3604,6 +3670,63 @@
                 "source": "https://github.com/MohamedKhedr700/core-model/tree/main"
             },
             "time": "2024-01-04T20:15:15+00:00"
+        },
+        {
+            "name": "raid/core-repository",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedKhedr700/core-repository.git",
+                "reference": "548e2c90eb63796bf935b1ba9d79750dc8f2e8f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-repository/zipball/548e2c90eb63796bf935b1ba9d79750dc8f2e8f3",
+                "reference": "548e2c90eb63796bf935b1ba9d79750dc8f2e8f3",
+                "shasum": ""
+            },
+            "require": {
+                "deoliveiralucas/array-keys-case-transform": "^1.1",
+                "laravel/pint": "^1.10",
+                "php": "^8.2",
+                "raid/core-action": "dev-main",
+                "raid/core-auth": "dev-main",
+                "raid/core-command": "dev-main",
+                "raid/core-event": "dev-main",
+                "raid/core-gate": "dev-main",
+                "raid/core-model": "dev-main",
+                "spatie/laravel-fractal": "^6.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Raid\\Core\\Repository\\Providers\\RepositoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Raid\\Core\\Repository\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohamedkhedr700",
+                    "email": "mohamedkhedr700@gmail.com"
+                }
+            ],
+            "description": "Raid Core Repository",
+            "support": {
+                "issues": "https://github.com/MohamedKhedr700/core-repository/issues",
+                "source": "https://github.com/MohamedKhedr700/core-repository/tree/main"
+            },
+            "time": "2024-01-22T21:21:48+00:00"
         },
         {
             "name": "raid/core-request",
@@ -6871,72 +6994,6 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
-            "name": "laravel/pint",
-            "version": "v1.13.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/pint.git",
-                "reference": "e3e269cc5d874c8efd2dc7962b1c7ff2585fe525"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/e3e269cc5d874c8efd2dc7962b1c7ff2585fe525",
-                "reference": "e3e269cc5d874c8efd2dc7962b1c7ff2585fe525",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-tokenizer": "*",
-                "ext-xml": "*",
-                "php": "^8.1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.47.0",
-                "illuminate/view": "^10.40.0",
-                "larastan/larastan": "^2.8.1",
-                "laravel-zero/framework": "^10.3.0",
-                "mockery/mockery": "^1.6.7",
-                "nunomaduro/termwind": "^1.15.1",
-                "pestphp/pest": "^2.31.0"
-            },
-            "bin": [
-                "builds/pint"
-            ],
-            "type": "project",
-            "autoload": {
-                "psr-4": {
-                    "App\\": "app/",
-                    "Database\\Seeders\\": "database/seeders/",
-                    "Database\\Factories\\": "database/factories/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nuno Maduro",
-                    "email": "enunomaduro@gmail.com"
-                }
-            ],
-            "description": "An opinionated code formatter for PHP.",
-            "homepage": "https://laravel.com",
-            "keywords": [
-                "format",
-                "formatter",
-                "lint",
-                "linter",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/pint/issues",
-                "source": "https://github.com/laravel/pint"
-            },
-            "time": "2024-01-16T17:39:29+00:00"
-        },
-        {
             "name": "laravel/sail",
             "version": "v1.27.1",
             "source": {
@@ -9120,6 +9177,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "raid/core-action": 20,
+        "raid/core-auth": 20,
         "raid/core-event": 20,
         "raid/core-gate": 20,
         "raid/core-model": 20,
