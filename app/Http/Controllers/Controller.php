@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\Controllers\HasResponse;
+use App\Traits\HasResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
