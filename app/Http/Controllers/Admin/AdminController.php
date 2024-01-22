@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin as Actions;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use App\Models\Admin as AdminModel;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
 class AdminController extends Controller
@@ -16,8 +16,7 @@ class AdminController extends Controller
     public function store(
         Requests\StoreRequest $request,
         Actions\CreateAction $action,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $action->execute($request->passed());
 
         return $this->message(__('created_successfully'));
@@ -29,8 +28,7 @@ class AdminController extends Controller
     public function index(
         Requests\ListRequest $request,
         Actions\ListAction $action,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         return $this->resources($action->execute($request->passed()));
     }
 
@@ -41,8 +39,7 @@ class AdminController extends Controller
         Requests\UpdateRequest $request,
         AdminModel $admin,
         Actions\UpdateAction $action,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $action->execute($admin, $request->passed());
 
         return $this->message(__('updated_successfully'));
@@ -54,8 +51,7 @@ class AdminController extends Controller
     public function show(
         AdminModel $admin,
         Actions\FindAction $action,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         return $this->resource($action->execute($admin));
     }
 
@@ -65,8 +61,7 @@ class AdminController extends Controller
     public function delete(
         AdminModel $admin,
         Actions\DeleteAction $action,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $action->execute($admin);
 
         return $this->message(__('deleted_successfully'));

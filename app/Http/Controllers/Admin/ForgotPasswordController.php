@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin as Actions;
-use App\Http\Requests\Admin as Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin as Requests;
 use Illuminate\Http\JsonResponse;
 
 class ForgotPasswordController extends Controller
@@ -15,8 +15,7 @@ class ForgotPasswordController extends Controller
     public function send(
         Requests\SendForgotPasswordRequest $request,
         Actions\SendForgotPasswordAction $action,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $action->execute($request->passed());
 
         return $this->message(__('forgot_password_successfully'));
@@ -27,8 +26,7 @@ class ForgotPasswordController extends Controller
      */
     public function verify(
         Requests\VerifyForgotPasswordRequest $request,
-    ): JsonResponse
-    {
+    ): JsonResponse {
 
         return $this->message(__('verify_forgot_password_successfully'));
     }
@@ -38,8 +36,7 @@ class ForgotPasswordController extends Controller
      */
     public function reset(
         Requests\ResetForgotPasswordRequest $request,
-    ): JsonResponse
-    {
+    ): JsonResponse {
 
         return $this->message(__('reset_forgot_password_successfully'));
     }
