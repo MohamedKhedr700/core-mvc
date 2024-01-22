@@ -23,7 +23,7 @@ class AdminController extends Controller
     {
         $createAdminAction->execute($request->passed());
 
-        return $this->success(__('created_successfully'));
+        return $this->successMessage(__('created_successfully'));
     }
 
     /**
@@ -41,7 +41,7 @@ class AdminController extends Controller
     {
         $updateAdminAction->execute($admin, $request->passed());
 
-        return $this->success(__('updated_successfully'));
+        return $this->successMessage(__('updated_successfully'));
     }
 
     /**
@@ -59,6 +59,6 @@ class AdminController extends Controller
     {
         $deleteAdminAction->execute($admin);
 
-        return $this->success(__('deleted_successfully'));
+        return $this->successMessage(__('deleted_successfully'));
     }
 }

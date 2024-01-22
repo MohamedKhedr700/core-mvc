@@ -22,18 +22,18 @@ Route::prefix('v1/admin/admins/profile')
     ->group(function () {
         Route::post('/', [ProfileController::class, 'update']);
         Route::get('/', [ProfileController::class, 'get']);
+        Route::get('logout', [LoginController::class, 'logout']);
     });
 
 // auth routes
 Route::prefix('v1/admin/admins')
-    ->middleware([])
     ->group(function () {
         Route::post('login', [LoginController::class, 'login']);
     });
 
 // crud routes
 Route::prefix('v1/admin/admins')
-    ->middleware([])
+    ->middleware(['auth:admin'])
     ->group(function () {
         Route::post('/', [AdminController::class, 'store']);
         Route::get('/', [AdminController::class, 'index']);

@@ -7,6 +7,7 @@ use App\Actions\Admin\UpdateAdminProfileAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateAdminProfileRequest;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ProfileController extends Controller
 {
@@ -25,6 +26,6 @@ class ProfileController extends Controller
     {
         $updateAdminProfileAction->execute($request->passed());
 
-        return $this->success(__('profile_updated_successfully'));
+        return $this->successMessage(__('profile_updated_successfully'));
     }
 }

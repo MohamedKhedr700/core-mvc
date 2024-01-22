@@ -2,14 +2,21 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponse;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponse;
+
     /**
      * The list of the inputs that are never flashed to the session on validation exceptions.
      *
@@ -36,24 +43,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e): JsonResponse
     {
-        $message = $this->renderMessage($e);
+        switch (true) {
+            case $e instanceof NotFoundHttpException:
+            case $e instanceof ModelNotFoundException:
+                return $this->notFound([], __('message.exception.404'));
 
-        return response()->json([
-            'error' => true,
-            'message' => $message ?: $e->getMessage(),
-            'trace' => $e->getTrace(),
-        ]);
-    }
+            case $e instanceof PostTooLargeException:
+                return $this->error([], __('message.exception.413'), 413);
 
-    /**
-     * Render error message.
-     */
-    private function renderMessage(Throwable $e): ?string
-    {
-        return match (true) {
-            $e instanceof NotFoundHttpException => trans('messages.not_found_route'),
-            $e instanceof ModelNotFoundException => trans('messages.not_found_model'),
-            default => null,
-        };
+            case $e instanceof ValidationException:
+                return $this->unprocessable($e->errors(), $e->getMessage());
+
+            case $e instanceof HttpException:
+                return $this->error([], __('message.exception.403'), 403);
+            default:
+                return parent::render($request, $e);
+        }
     }
 }

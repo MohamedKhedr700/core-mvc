@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin\LoginAdminAction;
+use App\Actions\Admin\LogoutAdminAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginAdminRequest;
 use Illuminate\Http\JsonResponse;
@@ -16,8 +17,19 @@ class LoginController extends Controller
     {
         $channel = $loginAdminAction->execute($request->passed());
 
-        return $this->successResource($channel->account(), [
+        return $this->success([
             'token' => $channel->stringToken(),
+            'resource' => $channel->account(),
         ]);
+    }
+
+    /**
+     * Logout admin.
+     */
+    public function logout(LogoutAdminAction $logoutAdminAction): JsonResponse
+    {
+        $logoutAdminAction->execute();
+
+        return $this->successMessage(__('logout_successfully'));
     }
 }
