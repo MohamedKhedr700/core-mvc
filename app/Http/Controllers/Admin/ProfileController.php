@@ -29,4 +29,15 @@ class ProfileController extends Controller
 
         return $this->message(__('profile_updated_successfully'));
     }
+
+    /**
+     * Logout admin.
+     */
+    public function logout(
+        Actions\LogoutAction $action,
+    ): JsonResponse {
+        $action->execute();
+
+        return $this->message(__('profile_logout_successfully'));
+    }
 }

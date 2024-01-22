@@ -23,15 +23,4 @@ class LoginController extends Controller
             'resource' => $channel->account(),
         ]);
     }
-
-    /**
-     * Logout admin.
-     */
-    public function logout(
-        Actions\LogoutAction $action,
-    ): JsonResponse {
-        $action->execute();
-
-        return $this->message(__('logout_successfully'));
-    }
 }

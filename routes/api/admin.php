@@ -26,7 +26,7 @@ Route::prefix('v1/admin/admins/profile')
     ->group(function () {
         Route::post('/', [Admin\ProfileController::class, 'update']);
         Route::get('/', [Admin\ProfileController::class, 'get']);
-        Route::get('logout', [Admin\LoginController::class, 'logout']);
+        Route::get('logout', [Admin\ProfileController::class, 'logout']);
     });
 
 // forgot password routes
