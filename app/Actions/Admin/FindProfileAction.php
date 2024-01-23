@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin\Profile;
+namespace App\Actions\Admin;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;

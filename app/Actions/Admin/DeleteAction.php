@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin\Crud;
+namespace App\Actions\Admin;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Contracts\Crud\DeleteActionInterface;

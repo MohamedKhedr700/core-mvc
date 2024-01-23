@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\ForgotPassword as Actions;
+use App\Actions\Admin as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use Illuminate\Http\JsonResponse;
@@ -13,7 +13,7 @@ class ForgotPasswordController extends Controller
      * Send admin forgot password.
      */
     public function send(
-        Requests\SendForgotPasswordRequest              $request,
+        Requests\SendForgotPasswordRequest          $request,
         Actions\SendForgotPasswordAction $action,
     ): JsonResponse {
         $action->execute($request->passed());

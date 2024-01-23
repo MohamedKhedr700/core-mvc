@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin\Crud;
+namespace App\Actions\Admin;
 
 use App\Models\Admin;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
