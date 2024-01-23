@@ -14,7 +14,7 @@ class AdminController extends Controller
      * Create a new admin.
      */
     public function store(
-        Requests\StoreRequest           $request,
+        Requests\StoreRequest $request,
         Actions\CreateAction $action,
     ): JsonResponse {
         $action->execute($request->passed());
@@ -26,7 +26,7 @@ class AdminController extends Controller
      * List admins.
      */
     public function index(
-        Requests\ListRequest          $request,
+        Requests\ListRequest $request,
         Actions\ListAction $action,
     ): JsonResponse {
         return $this->resources($action->execute($request->passed()));
@@ -36,8 +36,8 @@ class AdminController extends Controller
      * Update an admin.
      */
     public function update(
-        Requests\UpdateRequest          $request,
-        AdminModel                      $admin,
+        Requests\UpdateRequest $request,
+        AdminModel $admin,
         Actions\UpdateAction $action,
     ): JsonResponse {
         $action->execute($admin, $request->passed());
@@ -49,7 +49,7 @@ class AdminController extends Controller
      * Show an admin.
      */
     public function show(
-        AdminModel                    $admin,
+        AdminModel $admin,
         Actions\FindAction $action,
     ): JsonResponse {
         return $this->resource($action->execute($admin));
@@ -59,7 +59,7 @@ class AdminController extends Controller
      * Delete an admin.
      */
     public function delete(
-        AdminModel                      $admin,
+        AdminModel $admin,
         Actions\DeleteAction $action,
     ): JsonResponse {
         $action->execute($admin);

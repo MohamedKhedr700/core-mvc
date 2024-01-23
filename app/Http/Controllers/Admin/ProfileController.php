@@ -22,7 +22,7 @@ class ProfileController extends Controller
      * Update admin profile.
      */
     public function update(
-        Requests\UpdateProfileRequest          $request,
+        Requests\UpdateProfileRequest $request,
         Actions\UpdateProfileAction $action,
     ): JsonResponse {
         $action->execute($request->passed());

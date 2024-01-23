@@ -13,7 +13,7 @@ class LoginController extends Controller
      * Login admin.
      */
     public function login(
-        Requests\LoginRequest          $request,
+        Requests\LoginRequest $request,
         Actions\LoginAction $action,
     ): JsonResponse {
         $channel = $action->execute($request->passed());

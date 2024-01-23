@@ -13,7 +13,7 @@ class ForgotPasswordController extends Controller
      * Send admin forgot password.
      */
     public function send(
-        Requests\SendForgotPasswordRequest          $request,
+        Requests\SendForgotPasswordRequest $request,
         Actions\SendForgotPasswordAction $action,
     ): JsonResponse {
         $action->execute($request->passed());
@@ -26,7 +26,12 @@ class ForgotPasswordController extends Controller
      */
     public function verify(
         Requests\VerifyForgotPasswordRequest $request,
+        string $email,
+        string $token,
+        Actions\VerifyForgotPasswordAction $action,
     ): JsonResponse {
+
+        $action->execute($email);
 
         return $this->message(__('verify_forgot_password_successfully'));
     }

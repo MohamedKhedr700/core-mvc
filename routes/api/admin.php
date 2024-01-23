@@ -33,7 +33,8 @@ Route::prefix('v1/admin/admins/profile')
 Route::prefix('v1/admin/admins/forgot-password')
     ->group(function () {
         Route::post('/send', [Admin\ForgotPasswordController::class, 'send']);
-        Route::post('/verify', [Admin\ForgotPasswordController::class, 'verify']);
+        Route::get('/verify/{email}/{token}', [Admin\ForgotPasswordController::class, 'verify'])
+            ->name('verify.forgot.password');
         Route::post('/reset', [Admin\ForgotPasswordController::class, 'reset']);
     });
 

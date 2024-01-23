@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\Models\CanForgotPassword;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
 use Raid\Core\Auth\Models\Authentication\Account;
 use Raid\Core\Auth\Traits\Model\Authenticatable;
 
-class User extends Account implements AuthenticatableInterface
+class User extends Account implements AuthenticatableInterface, CanResetPassword
 {
     use Authenticatable;
+    use CanForgotPassword;
 
     /**
      * {@inheritdoc}
