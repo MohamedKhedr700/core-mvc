@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Actions\Admin;
+namespace App\Actions\Admin\Profile;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class SendForgotPasswordAction extends Action implements ActionInterface
+class UpdateProfileAction extends Action implements ActionInterface
 {
     /**
      * {@inheritdoc}
      */
-    public const ACTION = 'forgot_password';
+    public const ACTION = 'update_profile';
 
     /**
      * {@inheritdoc}
@@ -19,10 +19,10 @@ class SendForgotPasswordAction extends Action implements ActionInterface
     public const ACTIONABLE = Admin::class;
 
     /**
-     * Handle the action.
+     * Handle an action.
      */
-    public function handle()
+    public function handle(array $data): bool
     {
-
+        return account()->update($data);
     }
 }

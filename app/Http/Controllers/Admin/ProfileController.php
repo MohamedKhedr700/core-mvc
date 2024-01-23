@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin as Actions;
+use App\Actions\Admin\Profile as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use Illuminate\Http\JsonResponse;
@@ -22,7 +22,7 @@ class ProfileController extends Controller
      * Update admin profile.
      */
     public function update(
-        Requests\UpdateProfileRequest $request,
+        Requests\UpdateProfileRequest       $request,
         Actions\UpdateProfileAction $action,
     ): JsonResponse {
         $action->execute($request->passed());

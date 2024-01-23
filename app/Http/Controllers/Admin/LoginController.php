@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin as Actions;
+use App\Actions\Admin\Auth as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use Illuminate\Http\JsonResponse;
@@ -13,7 +13,7 @@ class LoginController extends Controller
      * Login admin.
      */
     public function login(
-        Requests\LoginRequest $request,
+        Requests\LoginRequest    $request,
         Actions\LoginAction $action,
     ): JsonResponse {
         $channel = $action->execute($request->passed());

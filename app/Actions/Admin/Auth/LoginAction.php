@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin;
+namespace App\Actions\Admin\Auth;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;

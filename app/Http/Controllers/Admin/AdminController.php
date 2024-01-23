@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin as Actions;
+use App\Actions\Admin\Crud as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use App\Models\Admin as AdminModel;
@@ -14,7 +14,7 @@ class AdminController extends Controller
      * Create a new admin.
      */
     public function store(
-        Requests\StoreRequest $request,
+        Requests\StoreRequest     $request,
         Actions\CreateAction $action,
     ): JsonResponse {
         $action->execute($request->passed());

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin;
+namespace App\Actions\Admin\Crud;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Contracts\Crud\CreateActionInterface;

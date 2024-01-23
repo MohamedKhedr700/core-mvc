@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Actions\Admin;
+namespace App\Actions\Admin\ForgotPassword;
 
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class ResetForgotPasswordAction extends Action implements ActionInterface
+class VerifyForgotPasswordAction extends Action implements ActionInterface
 {
     /**
      * {@inheritdoc}
