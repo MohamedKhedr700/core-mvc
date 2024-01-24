@@ -34,6 +34,6 @@ class ForgotPasswordController extends Controller
 
         return $valid ?
             $this->message(__('reset_forgot_password_successfully')) :
-            $this->unprocessable([], 'reset_forgot_password_failed');
+            $this->badRequest([], 'reset_forgot_password_failed');
     }
 }
