@@ -22,27 +22,17 @@ class ForgotPasswordController extends Controller
     }
 
     /**
-     * Verify admin forgot password.
-     */
-    public function verify(
-        Requests\VerifyForgotPasswordRequest $request,
-        string $email,
-        string $token,
-        Actions\VerifyForgotPasswordAction $action,
-    ): JsonResponse {
-
-        $action->execute($email);
-
-        return $this->message(__('verify_forgot_password_successfully'));
-    }
-
-    /**
      * Reset admin password.
      */
     public function reset(
         Requests\ResetForgotPasswordRequest $request,
+        Actions\ResetForgotPasswordAction $action
     ): JsonResponse {
 
-        return $this->message(__('reset_forgot_password_successfully'));
+        $valid = $action->execute($request->passed());
+
+        return $valid ?
+            $this->message(__('reset_forgot_password_successfully')) :
+            $this->unprocessable([], 'reset_forgot_password_failed');
     }
 }

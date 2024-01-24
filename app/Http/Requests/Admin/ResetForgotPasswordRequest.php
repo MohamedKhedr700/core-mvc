@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Rules\PasswordRule;
 use App\Traits\Requests\WithAdminRules;
 use Raid\Core\Request\Requests\FormRequest;
 
@@ -14,6 +15,11 @@ class ResetForgotPasswordRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'email' => ['required', 'email', 'exists:admins,email'],
+            'token' => ['required'],
+            'password' => ['required', 'string', PasswordRule::make()],
+            'password_confirmation' => ['required', 'same:password'],
+        ];
     }
 }

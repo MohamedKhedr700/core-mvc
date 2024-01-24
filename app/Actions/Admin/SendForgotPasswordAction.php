@@ -2,6 +2,7 @@
 
 namespace App\Actions\Admin;
 
+use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Password;
 use Raid\Core\Action\Actions\Action;
@@ -13,7 +14,7 @@ class SendForgotPasswordAction extends Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    public const ACTION = 'forgot_password';
+    public const ACTION = ActionEnum::SEND_FORGOT_PASSWORD;
 
     /**
      * {@inheritdoc}
@@ -36,12 +37,11 @@ class SendForgotPasswordAction extends Action implements ActionInterface
      */
     public function handle(array $data): array
     {
-        $admin = $this->findByAction->handle($data, ['id', 'email']);
+        $admin = $this->findByAction->handle($data, ['email']);
 
         $token = Password::createToken($admin);
 
         return [
-            'id' => $admin->attribute('id'),
             'email' => $admin->attribute('email'),
             'token' => $token,
         ];

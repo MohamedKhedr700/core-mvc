@@ -22,7 +22,7 @@ class ForgotPasswordMail extends Mailable
      */
     public function __construct(array $data)
     {
-        $this->link = route('verify.forgot.password', [
+        $this->link = route('admin.reset.forgot.password', [
             'email' => $data['email'],
             'token' => $data['token'],
         ]);
@@ -44,7 +44,7 @@ class ForgotPasswordMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mails.forgot-password.send-forgot-password',
+            view: 'mails.forgot-password.send-forgot-password-link',
             with: $this->getData(),
         );
     }

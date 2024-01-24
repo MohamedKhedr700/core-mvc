@@ -2,6 +2,8 @@
 
 namespace App\Traits\Requests;
 
+use App\Rules\PasswordRule;
+
 trait WithAdminRules
 {
     /**
@@ -12,7 +14,7 @@ trait WithAdminRules
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'string', 'min:8', 'max:16'],
+            'password' => ['required', 'string', PasswordRule::make()],
         ];
     }
 }
