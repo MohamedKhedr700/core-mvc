@@ -38,6 +38,6 @@ class ResetForgotPasswordAction extends Action implements ActionInterface
             $this->updateAction->handle($admin, ['password' => $password]);
         });
 
-        return $status === Password::PASSWORD_RESET;
+        return $status == Password::PASSWORD_RESET;
     }
 }
