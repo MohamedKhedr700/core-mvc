@@ -22,10 +22,7 @@ class ForgotPasswordMail extends Mailable
      */
     public function __construct(array $data)
     {
-        $this->link = route('admin.reset.forgot.password', [
-            'email' => $data['email'],
-            'token' => $data['token'],
-        ]);
+        $this->link = front_url('reset_password', $data['email'].'/'.$data['token']);
     }
 
     /**

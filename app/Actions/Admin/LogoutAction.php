@@ -2,6 +2,7 @@
 
 namespace App\Actions\Admin;
 
+use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
@@ -12,7 +13,7 @@ class LogoutAction extends Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    public const ACTION = 'logout';
+    public const ACTION = ActionEnum::LOGOUT;
 
     /**
      * {@inheritdoc}

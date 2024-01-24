@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.8",
         "raid/core-action": "dev-main",
         "raid/core-auth": "dev-main",
+        "raid/core-enum": "dev-main",
         "raid/core-event": "dev-main",
         "raid/core-gate": "dev-main",
         "raid/core-model": "dev-main",
