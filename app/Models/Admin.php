@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Account as AccountEnum;
 use App\Events\Admin\SendForgotPasswordEvent;
 use App\Models\ModelFilters\AdminFilter;
 use App\Traits\Models\CanForgotPassword;
@@ -20,7 +21,7 @@ class Admin extends Account implements AuthenticatableInterface, CanResetPasswor
     /**
      * {@inheritdoc}
      */
-    public const ACCOUNT_TYPE = 'admin';
+    public const ACCOUNT_TYPE = AccountEnum::ADMIN;
 
     /**
      * {@inheritdoc}

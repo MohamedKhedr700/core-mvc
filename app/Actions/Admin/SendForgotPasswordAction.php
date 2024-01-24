@@ -39,11 +39,9 @@ class SendForgotPasswordAction extends Action implements ActionInterface
     {
         $admin = $this->findByAction->handle($data, ['email']);
 
-        $token = Password::createToken($admin);
-
         return [
             'email' => $admin->attribute('email'),
-            'token' => $token,
+            'token' => Password::createToken($admin),
         ];
     }
 }
