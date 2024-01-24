@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,6 +45,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e): JsonResponse
     {
         switch (true) {
+            case $e instanceof RouteNotFoundException:
             case $e instanceof NotFoundHttpException:
             case $e instanceof ModelNotFoundException:
                 return $this->notFound([], __('message.exception.404'));

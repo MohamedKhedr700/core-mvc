@@ -3734,12 +3734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedKhedr700/core-request.git",
-                "reference": "1c36624e13d0b5e0883d293ee2f2881e5a987be1"
+                "reference": "b57e55f81377efb077129c4e96168e16cca9c614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MohamedKhedr700/core-request/zipball/1c36624e13d0b5e0883d293ee2f2881e5a987be1",
-                "reference": "1c36624e13d0b5e0883d293ee2f2881e5a987be1",
+                "url": "https://api.github.com/repos/MohamedKhedr700/core-request/zipball/b57e55f81377efb077129c4e96168e16cca9c614",
+                "reference": "b57e55f81377efb077129c4e96168e16cca9c614",
                 "shasum": ""
             },
             "require": {
@@ -3786,7 +3786,7 @@
                 "issues": "https://github.com/MohamedKhedr700/core-request/issues",
                 "source": "https://github.com/MohamedKhedr700/core-request/tree/main"
             },
-            "time": "2024-01-24T20:06:32+00:00"
+            "time": "2024-01-24T22:39:45+00:00"
         },
         {
             "name": "ralouphie/getallheaders",

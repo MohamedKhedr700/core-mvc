@@ -6,6 +6,7 @@ use App\Enums\Account as AccountEnum;
 use App\Events\Admin\SendForgotPasswordEvent;
 use App\Models\ModelFilters\AdminFilter;
 use App\Traits\Models\CanForgotPassword;
+use Database\Factories\AdminFactory;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
 use Raid\Core\Auth\Models\Authentication\Account;
@@ -22,6 +23,11 @@ class Admin extends Account implements AuthenticatableInterface, CanResetPasswor
      * {@inheritdoc}
      */
     public const ACCOUNT_TYPE = AccountEnum::ADMIN;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected static string $factory = AdminFactory::class;
 
     /**
      * {@inheritdoc}
