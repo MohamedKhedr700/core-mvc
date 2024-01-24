@@ -16,6 +16,7 @@ class ForgotPasswordController extends Controller
         Requests\SendForgotPasswordRequest $request,
         Actions\SendForgotPasswordAction $action,
     ): JsonResponse {
+
         $action->execute($request->passed());
 
         return $this->message(__('forgot_password_successfully'));

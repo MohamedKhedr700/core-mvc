@@ -16,6 +16,7 @@ class LoginController extends Controller
         Requests\LoginRequest $request,
         Actions\LoginAction $action,
     ): JsonResponse {
+
         $channel = $action->execute($request->passed());
 
         return $this->success([

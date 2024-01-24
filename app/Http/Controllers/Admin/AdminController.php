@@ -17,6 +17,7 @@ class AdminController extends Controller
         Requests\StoreRequest $request,
         Actions\CreateAction $action,
     ): JsonResponse {
+
         $action->execute($request->passed());
 
         return $this->message(__('created_successfully'));
@@ -29,6 +30,7 @@ class AdminController extends Controller
         Requests\ListRequest $request,
         Actions\ListAction $action,
     ): JsonResponse {
+
         return $this->resources($action->execute($request->passed()));
     }
 
@@ -40,6 +42,7 @@ class AdminController extends Controller
         AdminModel $admin,
         Actions\UpdateAction $action,
     ): JsonResponse {
+
         $action->execute($admin, $request->passed());
 
         return $this->message(__('updated_successfully'));
@@ -52,6 +55,7 @@ class AdminController extends Controller
         AdminModel $admin,
         Actions\FindAction $action,
     ): JsonResponse {
+
         return $this->resource($action->execute($admin));
     }
 
@@ -62,6 +66,7 @@ class AdminController extends Controller
         AdminModel $admin,
         Actions\DeleteAction $action,
     ): JsonResponse {
+
         $action->execute($admin);
 
         return $this->message(__('deleted_successfully'));

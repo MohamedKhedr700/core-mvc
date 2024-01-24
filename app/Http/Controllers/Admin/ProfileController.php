@@ -15,6 +15,7 @@ class ProfileController extends Controller
     public function get(
         Actions\FindProfileAction $action,
     ): JsonResponse {
+
         return $this->resource($action->execute());
     }
 
@@ -25,6 +26,7 @@ class ProfileController extends Controller
         Requests\UpdateProfileRequest $request,
         Actions\UpdateProfileAction $action,
     ): JsonResponse {
+
         $action->execute($request->passed());
 
         return $this->message(__('profile_updated_successfully'));
@@ -36,6 +38,7 @@ class ProfileController extends Controller
     public function logout(
         Actions\LogoutAction $action,
     ): JsonResponse {
+
         $action->execute();
 
         return $this->message(__('profile_logout_successfully'));
