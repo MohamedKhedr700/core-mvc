@@ -20,6 +20,9 @@ class ResetForgotPasswordAction extends Action implements ActionInterface
      */
     public const ACTIONABLE = Admin::class;
 
+    /**
+     * Create a new action instance.
+     */
     public function __construct(
         private readonly UpdateAction $updateAction,
     ) {

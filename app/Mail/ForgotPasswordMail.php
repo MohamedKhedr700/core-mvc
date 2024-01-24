@@ -13,7 +13,7 @@ class ForgotPasswordMail extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * Email link.
+     * Reset password link.
      */
     private string $link;
 
