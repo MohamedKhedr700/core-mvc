@@ -2,6 +2,9 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Actions\Admin\SendForgotPasswordAction;
+use App\Models\Admin;
+
 trait AdminTest
 {
     /**
@@ -34,5 +37,13 @@ trait AdminTest
             'created_at',
             'updated_at',
         ];
+    }
+
+    /**
+     * Get test rest token.
+     */
+    public function resetToken(Admin $admin): string
+    {
+        return SendForgotPasswordAction::exec($admin->attributes('email'))['token'] ?? '';
     }
 }

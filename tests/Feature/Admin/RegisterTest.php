@@ -7,7 +7,6 @@ it('can not register admin when unauthorized', function () {
         ->assertJsonStructure(['message']);
 });
 
-
 it('can register admin when authorized', function () {
 
     $headers = [

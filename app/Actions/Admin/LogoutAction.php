@@ -6,7 +6,6 @@ use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
-use Raid\Core\Action\Exceptions\Actionable\InvalidActionableException;
 use Raid\Core\Auth\Models\AccessToken\PersonalAccessToken;
 
 class LogoutAction extends Action implements ActionInterface

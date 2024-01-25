@@ -2,12 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Actions\Core\VerifyApiAction;
 use App\Traits\ApiResponse;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
-use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
 
 class VerifyApi
@@ -29,7 +27,7 @@ class VerifyApi
             case ! $apiKey || ! $requestApiKey:
             case $apiKey !== $requestApiKey:
 
-            throw new AuthenticationException();
+                throw new AuthenticationException();
         }
 
         return $next($request);

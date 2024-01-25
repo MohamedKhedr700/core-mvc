@@ -45,7 +45,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, string $guard = null)
+function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, ?string $guard = null)
 {
     test()->setOwner($authenticatable);
 

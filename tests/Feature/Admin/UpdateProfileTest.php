@@ -7,7 +7,6 @@ it('can not update admin profile when unauthorized', function () {
         ->assertJsonStructure(['message']);
 });
 
-
 it('can update admin profile when authorized', function () {
 
     admin()->postJson($this->uri('profile'), $this->body())
