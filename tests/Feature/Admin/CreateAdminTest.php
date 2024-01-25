@@ -3,8 +3,8 @@
 namespace Feature\Admin;
 
 use App\Models\Admin;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CreateAdminTest extends TestCase
 {

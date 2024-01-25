@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
-use Raid\Core\Auth\Models\Authentication\Contracts\AccountInterface;
 
 trait HasOwner
 {
