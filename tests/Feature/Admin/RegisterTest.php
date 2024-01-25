@@ -1,8 +1,20 @@
 <?php
 
-it('can register admin', function () {
+it('can not register admin when unauthorized', function () {
 
     $this->postJson($this->uri('register'), $this->body())
+        ->assertStatus(401)
+        ->assertJsonStructure(['message']);
+});
+
+
+it('can register admin when authorized', function () {
+
+    $headers = [
+        'x-api-key' => config('app.api_key'),
+    ];
+
+    $this->postJson($this->uri('register'), $this->body(), $headers)
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',
@@ -13,7 +25,11 @@ it('can register admin', function () {
 
 it('can receive validation exception on register admin', function () {
 
-    $this->postJson($this->uri('register'), [])
+    $headers = [
+        'x-api-key' => config('app.api_key'),
+    ];
+
+    $this->postJson($this->uri('register'), [], $headers)
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',
