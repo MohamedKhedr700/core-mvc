@@ -2,12 +2,13 @@
 
 namespace Tests;
 
+use App\Traits\Tests\WithOwner;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-    use HasOwner;
-    use WithFaker;
+    use LazilyRefreshDatabase;
+    use WithOwner;
 }

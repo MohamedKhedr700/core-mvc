@@ -1,63 +1,23 @@
 <?php
 
-namespace Feature\Admin;
+const URL = '/api/v1/admin/admins';
 
-use App\Models\Admin;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+it('cannot create admin when unauthorized', function () {
+    $this->postJson(URL, get_body())
+        ->assertStatus(401)
+        ->assertJsonStructure(['message']);
+});
 
-class CreateAdminTest extends TestCase
-{
-    use RefreshDatabase;
+it('can create admin when authorized', function () {
+    login_admin()->postJson(URL, get_body())
+        ->assertStatus(200)
+        ->assertJsonStructure(['message']);
+});
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->setOwner(Admin::factory()->create());
-    }
-
-    /**
-     * Test is unauthorized owner cannot create admins.
-     */
-    public function test_is_unauthenticated_owner_can_not_create_admin()
-    {
-        $response = $this->postJson('/api/v1/admin/admins');
-
-        $response->assertStatus(401);
-
-        $response->assertJsonStructure(['message']);
-    }
-
-    /**
-     * Test is authorized owner can create admins.
-     */
-    public function test_is_authorized_owner_can_create_admin(): void
-    {
-        $response = $this->actingAs($this->owner())->postJson('/api/v1/admin/admins', [
-            'name' => $this->faker->name,
-            'email' => $this->faker->email,
-            'password' => $this->faker->password(8),
-        ]);
-
-        $response->assertStatus(200);
-
-        $response->assertJsonStructure(['message']);
-    }
-
-    /**
-     * Test is authorized owner receive validation exception on create admin.
-     */
-    public function test_is_authorized_owner_receive_validation_exception_on_create_admin()
-    {
-        $response = $this->actingAs($this->owner())->postJson('/api/v1/admin/admins');
-
-        $response->assertStatus(422);
-
-        $response->assertJsonStructure([
+it('can receive validation exception on create admin', function () {
+    login_admin()->postJson(URL, [])
+        ->assertStatus(422)
+        ->assertJsonStructure([
             'error',
             'message',
             'errors' => [
@@ -66,5 +26,13 @@ class CreateAdminTest extends TestCase
                 'password',
             ],
         ]);
-    }
+});
+
+function get_body(): array
+{
+    return [
+        'name' => fake()->name,
+        'email' => fake()->email,
+        'password' => fake()->password(8),
+    ];
 }

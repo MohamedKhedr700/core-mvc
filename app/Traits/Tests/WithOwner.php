@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests;
+namespace App\Traits\Tests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 
-trait HasOwner
+trait WithOwner
 {
     /**
      * Authenticatable owner instance.
