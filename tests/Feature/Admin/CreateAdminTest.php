@@ -1,21 +1,21 @@
 <?php
 
-const URL = '/api/v1/admin/admins';
+const URI = '/api/v1/admin/admins';
 
 it('cannot create admin when unauthorized', function () {
-    $this->postJson(URL, get_body())
+    $this->postJson(URI, get_body())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can create admin when authorized', function () {
-    admin()->postJson(URL, get_body())
+    admin()->postJson(URI, get_body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
 it('can receive validation exception on create admin', function () {
-    admin()->postJson(URL, [])
+    admin()->postJson(URI, [])
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',
