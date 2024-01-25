@@ -40,7 +40,7 @@ class CreateAdminTest extends TestCase
         $response = $this->actingAs($this->owner())->postJson('/api/v1/admin/admins', [
             'name' => $this->faker->name,
             'email' => $this->faker->email,
-            'password' => $this->faker->password,
+            'password' => $this->faker->password(8),
         ]);
 
         $response->assertStatus(200);
