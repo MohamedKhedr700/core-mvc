@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 use Raid\Core\Action\Exceptions\Actionable\InvalidActionableException;
+use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 
 class LoginAction extends Action implements ActionInterface
 {
@@ -25,7 +26,7 @@ class LoginAction extends Action implements ActionInterface
      *
      * @throws InvalidActionableException
      */
-    public function handle(array $credentials)
+    public function handle(array $credentials): AuthChannelInterface
     {
         return $this->actionable()->attempt($credentials);
     }
