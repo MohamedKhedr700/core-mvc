@@ -9,13 +9,13 @@ it('cannot create admin when unauthorized', function () {
 });
 
 it('can create admin when authorized', function () {
-    login_admin()->postJson(URL, get_body())
+    admin()->postJson(URL, get_body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
 it('can receive validation exception on create admin', function () {
-    login_admin()->postJson(URL, [])
+    admin()->postJson(URL, [])
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',

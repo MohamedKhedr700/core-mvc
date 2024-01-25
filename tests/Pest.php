@@ -51,12 +51,12 @@ function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable)
     return test()->actingAs($authenticatable);
 }
 
-function login_admin()
+function admin()
 {
     return login(\App\Models\Admin::factory()->create());
 }
 
-function login_user()
+function user()
 {
     return login(\App\Models\User::factory()->create());
 }
