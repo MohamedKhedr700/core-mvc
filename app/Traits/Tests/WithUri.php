@@ -9,6 +9,6 @@ trait WithUri
      */
     public function uri(?string $concat = null): string
     {
-        return $concat ? $this->uri.'/'.trim($concat, '/') : $this->uri;
+        return $concat ? ($this->uri ?? '').'/'.trim($concat, '/') : ($this->uri ?? '');
     }
 }
