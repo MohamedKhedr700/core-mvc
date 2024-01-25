@@ -1,7 +1,5 @@
 <?php
 
-uses(\Tests\Feature\Admin\AdminTest::class);
-
 it('cannot create admin when unauthorized', function () {
 
     $this->postJson($this->uri(), $this->body())

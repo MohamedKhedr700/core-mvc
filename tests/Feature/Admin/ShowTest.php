@@ -1,7 +1,5 @@
 <?php
 
-uses(\Tests\Feature\Admin\AdminTest::class);
-
 it('can not show admin when unauthorized', function () {
 
     $this->getJson($this->uri(admin_account()->accountId()))
@@ -15,14 +13,7 @@ it('can show admin when authorized', function () {
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',
-            'resource' => [
-                'id',
-                'name',
-                'email',
-                'account_type',
-                'created_at',
-                'updated_at',
-            ],
+            'resource' => $this->resource(),
         ]);
 });
 

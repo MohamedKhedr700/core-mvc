@@ -20,6 +20,7 @@ class LoginController extends Controller
         $channel = $action->execute($request->passed());
 
         return $this->success([
+            'message' => __('logged_in_successfully'),
             'token' => $channel->stringToken(),
             'resource' => $channel->account(),
         ]);

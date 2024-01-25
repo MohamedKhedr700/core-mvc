@@ -20,4 +20,19 @@ trait AdminTest
             'password' => fake()->password(8),
         ];
     }
+
+    /**
+     * Get test resource
+     */
+    public function resource(): array
+    {
+        return [
+            'id',
+            'name',
+            'email',
+            'account_type',
+            'created_at',
+            'updated_at',
+        ];
+    }
 }

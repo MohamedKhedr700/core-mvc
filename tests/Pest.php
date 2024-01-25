@@ -15,6 +15,11 @@ uses(
     Tests\TestCase::class,
 )->in('Feature');
 
+uses(
+    Tests\Feature\Admin\AdminTest::class,
+)->in('Feature/Admin');
+
+
 /*
 |--------------------------------------------------------------------------
 | Expectations

@@ -20,6 +20,7 @@ class RegisterController extends Controller
         $channel = $action->execute($request->passed());
 
         return $this->success([
+            'message' => __('registered_successfully'),
             'token' => $channel->stringToken(),
             'resource' => $channel->account(),
         ]);

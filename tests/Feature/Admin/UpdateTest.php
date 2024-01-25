@@ -1,7 +1,5 @@
 <?php
 
-uses(\Tests\Feature\Admin\AdminTest::class);
-
 it('cannot update admin when unauthorized', function () {
 
     $this->putJson($this->uri(admin_account()->accountId()), $this->body())

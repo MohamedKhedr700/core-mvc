@@ -1,7 +1,5 @@
 <?php
 
-uses(\Tests\Feature\Admin\AdminTest::class);
-
 it('can not delete admin when unauthorized', function () {
 
     $this->deleteJson($this->uri(admin_account()->accountId()))
