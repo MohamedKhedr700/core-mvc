@@ -6,7 +6,6 @@ use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
