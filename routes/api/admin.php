@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1/admin/admins')
     ->group(function () {
         Route::post('login', [Admin\LoginController::class, 'login']);
-        Route::post('register', [Admin\RegisterController::class, 'register']);
+        Route::post('register', [Admin\RegisterController::class, 'register'])
+            ->middleware(['verify.api']);
     });
 
 // profile routes
