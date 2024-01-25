@@ -1,15 +1,17 @@
 <?php
 
-const URI = '/api/v1/admin/admins';
+uses(\Tests\Feature\Admin\AdminTest::class);
 
 it('can not list admin when unauthorized', function () {
-    $this->getJson(URI)
+
+    $this->getJson($this->uri())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can list admin when authorized', function () {
-    admin()->getJson(URI)
+
+    admin()->getJson($this->uri())
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',

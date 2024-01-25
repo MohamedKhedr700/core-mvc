@@ -1,21 +1,24 @@
 <?php
 
-const URI = '/api/v1/admin/admins';
+uses(\Tests\Feature\Admin\AdminTest::class);
 
 it('cannot create admin when unauthorized', function () {
-    $this->postJson(URI, get_body())
+
+    $this->postJson($this->uri(), $this->body())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can create admin when authorized', function () {
-    admin()->postJson(URI, get_body())
+
+    admin()->postJson($this->uri(), $this->body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
 it('can receive validation exception on create admin', function () {
-    admin()->postJson(URI, [])
+
+    admin()->postJson($this->uri(), [])
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',
@@ -27,12 +30,3 @@ it('can receive validation exception on create admin', function () {
             ],
         ]);
 });
-
-function get_body(): array
-{
-    return [
-        'name' => fake()->name,
-        'email' => fake()->email,
-        'password' => fake()->password(8),
-    ];
-}

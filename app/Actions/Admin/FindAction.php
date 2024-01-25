@@ -18,6 +18,6 @@ class FindAction extends RaidFindAction implements FindActionInterface
      */
     public function handle(string|object $id, array $columns = ['*']): ?object
     {
-        return $id->only($columns);
+        return $id;
     }
 }

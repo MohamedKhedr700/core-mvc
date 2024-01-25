@@ -41,11 +41,6 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
-}
-
 function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable)
 {
     return test()->actingAs($authenticatable);
@@ -53,10 +48,20 @@ function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable)
 
 function admin()
 {
-    return login(\App\Models\Admin::factory()->create());
+    return login(admin_account());
 }
 
 function user()
 {
-    return login(\App\Models\User::factory()->create());
+    return login(user_account());
+}
+
+function admin_account()
+{
+    return \App\Models\Admin::factory()->create();
+}
+
+function user_account()
+{
+    return \App\Models\User::factory()->create();
 }
