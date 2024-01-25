@@ -19,7 +19,6 @@ uses(
     Tests\Feature\Admin\AdminTest::class,
 )->in('Feature/Admin');
 
-
 /*
 |--------------------------------------------------------------------------
 | Expectations
@@ -46,27 +45,29 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable)
+function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, string $guard = null)
 {
-    return test()->actingAs($authenticatable);
+    test()->setOwner($authenticatable);
+
+    return test()->actingAs(test()->owner(), $guard);
 }
 
-function admin()
+function admin(array $data = [])
 {
-    return login(admin_account());
+    return login(admin_account($data), 'admin');
 }
 
-function user()
+function user(array $data = [])
 {
-    return login(user_account());
+    return login(user_account($data), 'user');
 }
 
-function admin_account()
+function admin_account(array $data = [])
 {
-    return \App\Models\Admin::factory()->create();
+    return \App\Models\Admin::factory()->create($data);
 }
 
-function user_account()
+function user_account(array $data = [])
 {
-    return \App\Models\User::factory()->create();
+    return \App\Models\User::factory()->create($data);
 }

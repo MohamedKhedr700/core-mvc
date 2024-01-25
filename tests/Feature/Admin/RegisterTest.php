@@ -13,7 +13,7 @@ it('can register admin', function () {
 
 it('can receive validation exception on register admin', function () {
 
-    admin()->postJson($this->uri('register'), [])
+    $this->postJson($this->uri('register'), [])
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',
