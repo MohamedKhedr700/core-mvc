@@ -1,8 +1,9 @@
 <?php
 
 it('can send admin forgot password', function () {
+
     $body = [
-        'email' => admin_account()->attribute('email'),
+        'email' => $this->record()->attribute('email'),
     ];
 
     $this->postJson($this->uri('/forgot-password/send'), $body)
@@ -24,6 +25,7 @@ it('can receive validation exception on send admin forgot password', function ()
 });
 
 it('can receive not found email validation exception on send admin forgot password', function () {
+
     $body = [
         'email' => 'not-found@email.com',
     ];

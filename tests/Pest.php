@@ -45,6 +45,11 @@ expect()->extend('toBeOne', function () {
 |
 */
 
+function factory(string $model, array $data = [])
+{
+    return $model::factory()->create($data);
+}
+
 function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, ?string $guard = null)
 {
     test()->setOwner($authenticatable);
@@ -52,27 +57,17 @@ function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, ?str
     return test()->actingAs(test()->owner(), $guard);
 }
 
-function token()
-{
-    return test()->owner()->createToken('test-token')->plainTextToken;
-}
-
 function admin(array $data = [])
 {
-    return login(admin_account($data), 'admin');
+    return login(test()->record($data), 'admin');
 }
 
 function user(array $data = [])
 {
-    return login(user_account($data), 'user');
+    return login(test()->record($data), 'admin');
 }
 
-function admin_account(array $data = [])
+function token()
 {
-    return \App\Models\Admin::factory()->create($data);
-}
-
-function user_account(array $data = [])
-{
-    return \App\Models\User::factory()->create($data);
+    return test()->owner()->createToken('test-token')->plainTextToken;
 }

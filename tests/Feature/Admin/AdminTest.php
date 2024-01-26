@@ -13,6 +13,14 @@ trait AdminTest
     public string $uri = '/api/v1/admin/admins';
 
     /**
+     * Get test record.
+     */
+    public function record(array $data = []): Admin
+    {
+        return factory(Admin::class, $data);
+    }
+
+    /**
      * Get test body.
      */
     public function body(): array

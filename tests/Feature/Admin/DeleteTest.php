@@ -2,14 +2,14 @@
 
 it('can not delete admin when unauthorized', function () {
 
-    $this->deleteJson($this->uri(admin_account()->accountId()))
+    $this->deleteJson($this->uri($this->record()->accountId()))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can delete admin when authorized', function () {
 
-    admin()->deleteJson($this->uri(admin_account()->accountId()))
+    admin()->deleteJson($this->uri($this->record()->accountId()))
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });

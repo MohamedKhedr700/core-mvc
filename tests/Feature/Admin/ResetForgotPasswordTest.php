@@ -2,7 +2,7 @@
 
 it('can reset admin forgot password', function () {
 
-    $admin = admin_account();
+    $admin = $this->record();
 
     $password = fake()->password(8);
 
@@ -36,7 +36,7 @@ it('can receive validation exception on reset admin forgot password', function (
 
 it('can receive not found email validation exception on reset admin forgot password', function () {
 
-    $admin = admin_account();
+    $admin = $this->record();
 
     $password = fake()->password(8);
 
@@ -60,7 +60,7 @@ it('can receive not found email validation exception on reset admin forgot passw
 
 it('can not reset admin forgot password with wrong token', function () {
 
-    $admin = admin_account();
+    $admin = $this->record();
 
     $this->resetToken($admin);
 

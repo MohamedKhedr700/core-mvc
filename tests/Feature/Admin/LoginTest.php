@@ -1,10 +1,10 @@
 <?php
 
-it('can login admin', function () {
+it('can login admin with existing credentials', function () {
 
     $password = 'password';
 
-    $admin = admin_account([
+    $admin = $this->record([
         'password' => $password,
     ]);
 
@@ -34,4 +34,22 @@ it('can receive validation exception on login admin', function () {
                 'password',
             ],
         ]);
+});
+
+it('can not login admin with not found email', function () {
+
+    $password = 'password';
+
+    $this->record([
+        'password' => $password,
+    ]);
+
+    $body = [
+        'email' => 'not-found@email.com',
+        'password' => $password,
+    ];
+
+    $this->postJson($this->uri('/login'), $body)
+        ->assertStatus(422)
+        ->assertJsonStructure(['errors']);
 });

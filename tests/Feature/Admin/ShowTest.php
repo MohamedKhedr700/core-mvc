@@ -2,14 +2,14 @@
 
 it('can not show admin when unauthorized', function () {
 
-    $this->getJson($this->uri(admin_account()->accountId()))
+    $this->getJson($this->uri($this->record()->accountId()))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can show admin when authorized', function () {
 
-    admin()->getJson($this->uri(admin_account()->accountId()))
+    admin()->getJson($this->uri($this->record()->accountId()))
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',
