@@ -20,7 +20,9 @@ class LoginController extends Controller
 
         $channel = $action->execute($request->passed());
 
-        return $channel->errors()->any() ? $this->failedLogin($channel) : $this->successLogin($channel);
+        return $channel->errors()->any() ?
+            $this->failedLogin($channel) :
+            $this->successLogin($channel);
     }
 
     /**
@@ -40,6 +42,6 @@ class LoginController extends Controller
      */
     private function failedLogin(AuthChannelInterface $channel): JsonResponse
     {
-        return  $this->unprocessable($channel->errors());
+        return $this->unprocessable($channel->errors()->toArray());
     }
 }

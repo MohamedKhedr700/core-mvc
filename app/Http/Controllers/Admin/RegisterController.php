@@ -6,6 +6,7 @@ use App\Actions\Admin as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use Illuminate\Http\JsonResponse;
+use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 
 class RegisterController extends Controller
 {
@@ -19,10 +20,28 @@ class RegisterController extends Controller
 
         $channel = $action->execute($request->passed());
 
+        return $channel->errors()->any() ?
+            $this->failedRegister($channel) :
+            $this->successRegister($channel);
+    }
+
+    /**
+     * Success register response.
+     */
+    private function successRegister(AuthChannelInterface $channel): JsonResponse
+    {
         return $this->success([
             'message' => __('registered_successfully'),
             'token' => $channel->stringToken(),
             'resource' => $channel->account(),
         ]);
+    }
+
+    /**
+     * Failed register response.
+     */
+    private function failedRegister(AuthChannelInterface $channel): JsonResponse
+    {
+        return $this->unprocessable($channel->errors()->toArray());
     }
 }
