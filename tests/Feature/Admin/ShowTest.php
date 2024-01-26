@@ -2,14 +2,14 @@
 
 it('can not show admin when unauthorized', function () {
 
-    $this->getJson($this->uri($this->record()->accountId()))
+    $this->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can show admin when authorized', function () {
 
-    admin()->getJson($this->uri($this->record()->accountId()))
+    admin()->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',
@@ -19,7 +19,7 @@ it('can show admin when authorized', function () {
 
 it('can receive not found exception when using wrong admin id', function () {
 
-    admin()->getJson($this->uri('wrong-id'))
+    admin()->getJson($this->uri('/wrong-id'))
         ->assertStatus(404)
         ->assertJsonStructure(['message']);
 });
