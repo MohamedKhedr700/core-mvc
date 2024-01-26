@@ -6,7 +6,7 @@ use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
-use Raid\Core\Auth\Models\AccessToken\PersonalAccessToken;
+use Raid\Core\Auth\Models\AccessToken\AccessToken;
 
 class LogoutAction extends Action implements ActionInterface
 {
@@ -25,6 +25,6 @@ class LogoutAction extends Action implements ActionInterface
      */
     public function handle(): bool
     {
-        return PersonalAccessToken::findToken(request()->bearerToken())->delete();
+        return AccessToken::current()->delete();
     }
 }

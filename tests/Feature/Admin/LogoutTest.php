@@ -12,4 +12,4 @@ it('can logout admin when authorized', function () {
     admin()->withToken(token())->getJson($this->uri('/profile/logout'))
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
-});
+})->group('logout');
