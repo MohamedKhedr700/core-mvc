@@ -1,6 +1,6 @@
 <?php
 
-it('can login admin with existing credentials', function () {
+it('can login an admin with existing credentials', function () {
 
     $password = 'password';
 
@@ -22,7 +22,7 @@ it('can login admin with existing credentials', function () {
         ]);
 });
 
-it('can receive validation exception on login admin', function () {
+it('can receive validation exception on login an admin', function () {
 
     $this->postJson($this->uri('/login'), [])
         ->assertStatus(422)
@@ -36,7 +36,7 @@ it('can receive validation exception on login admin', function () {
         ]);
 });
 
-it('can not login admin with not found email', function () {
+it('can not login an admin with not found email', function () {
 
     $password = 'password';
 

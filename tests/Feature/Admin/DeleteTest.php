@@ -1,13 +1,13 @@
 <?php
 
-it('can not delete admin when unauthorized', function () {
+it('can not delete an admin when unauthorized', function () {
 
     $this->deleteJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can delete admin when authorized', function () {
+it('can delete an admin when authorized', function () {
 
     admin()->deleteJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(200)

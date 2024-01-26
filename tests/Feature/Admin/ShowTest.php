@@ -1,13 +1,13 @@
 <?php
 
-it('can not show admin when unauthorized', function () {
+it('can not show an admin when unauthorized', function () {
 
     $this->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can show admin when authorized', function () {
+it('can show an admin when authorized', function () {
 
     admin()->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(200)

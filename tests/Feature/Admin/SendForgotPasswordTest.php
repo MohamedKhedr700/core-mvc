@@ -1,6 +1,6 @@
 <?php
 
-it('can send admin forgot password', function () {
+it('can send an admin forgot password', function () {
 
     $body = [
         'email' => $this->record()->attribute('email'),
@@ -11,7 +11,7 @@ it('can send admin forgot password', function () {
         ->assertJsonStructure(['message']);
 });
 
-it('can receive validation exception on send admin forgot password', function () {
+it('can receive validation exception on send an admin forgot password', function () {
 
     $this->postJson($this->uri('/forgot-password/send'), [])
         ->assertStatus(422)
@@ -24,7 +24,7 @@ it('can receive validation exception on send admin forgot password', function ()
         ]);
 });
 
-it('can receive not found email validation exception on send admin forgot password', function () {
+it('can receive not found email validation exception on send an admin forgot password', function () {
 
     $body = [
         'email' => 'not-found@email.com',

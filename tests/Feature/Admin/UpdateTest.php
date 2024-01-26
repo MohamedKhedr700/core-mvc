@@ -1,20 +1,20 @@
 <?php
 
-it('cannot update admin when unauthorized', function () {
+it('cannot update an admin when unauthorized', function () {
 
     $this->putJson($this->uri($this->record()->attribute('id')), $this->body())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can update admin when authorized', function () {
+it('can update an admin when authorized', function () {
 
     admin()->putJson($this->uri($this->record()->attribute('id')), $this->body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
-it('can receive validation exception on update admin', function () {
+it('can receive validation exception on update an admin', function () {
 
     admin()->putJson($this->uri($this->record()->attribute('id')), [])
         ->assertStatus(422)

@@ -18,16 +18,16 @@ uses(
 )->in('Feature');
 
 uses(
-    Tests\TestCase::class,
-)->in('Unit');
-
-uses(
     Tests\Feature\Admin\AdminTest::class,
 )->in('Feature/Admin');
 
-uses(
-    Tests\Unit\Admin\AdminTest::class,
-)->in('Unit/Admin');
+//uses(
+//    Tests\Feature\User\UserTest::class,
+//)->in('Feature/User');
+
+
+# current tests
+uses()->group('cur')->in('Feature/User');
 
 /*
 |--------------------------------------------------------------------------

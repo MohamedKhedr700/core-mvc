@@ -1,6 +1,6 @@
 <?php
 
-it('can reset admin forgot password', function () {
+it('can reset an admin forgot password', function () {
 
     $admin = $this->record();
 
@@ -18,7 +18,7 @@ it('can reset admin forgot password', function () {
         ->assertJsonStructure(['message']);
 });
 
-it('can receive validation exception on reset admin forgot password', function () {
+it('can receive validation exception on reset an admin forgot password', function () {
 
     $this->postJson($this->uri('forgot-password/reset'), [])
         ->assertStatus(422)
@@ -34,7 +34,7 @@ it('can receive validation exception on reset admin forgot password', function (
         ]);
 });
 
-it('can receive not found email validation exception on reset admin forgot password', function () {
+it('can receive not found email validation exception on reset an admin forgot password', function () {
 
     $admin = $this->record();
 
@@ -58,7 +58,7 @@ it('can receive not found email validation exception on reset admin forgot passw
         ]);
 });
 
-it('can not reset admin forgot password with wrong token', function () {
+it('can not reset an admin forgot password using wrong token', function () {
 
     $admin = $this->record();
 
