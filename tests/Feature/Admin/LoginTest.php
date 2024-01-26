@@ -51,5 +51,9 @@ it('can not login admin with not found email', function () {
 
     $this->postJson($this->uri('/login'), $body)
         ->assertStatus(422)
-        ->assertJsonStructure(['errors']);
+        ->assertJsonStructure([
+            'error',
+            'message',
+            'errors',
+        ]);
 });
