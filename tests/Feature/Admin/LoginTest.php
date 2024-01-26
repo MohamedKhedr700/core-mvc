@@ -13,7 +13,7 @@ it('can login admin', function () {
         'password' => $password,
     ];
 
-    $this->postJson($this->uri('login'), $body)
+    $this->postJson($this->uri('/login'), $body)
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',
@@ -24,7 +24,7 @@ it('can login admin', function () {
 
 it('can receive validation exception on login admin', function () {
 
-    $this->postJson($this->uri('login'), [])
+    $this->postJson($this->uri('/login'), [])
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',

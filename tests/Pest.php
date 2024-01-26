@@ -52,6 +52,11 @@ function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, ?str
     return test()->actingAs(test()->owner(), $guard);
 }
 
+function token()
+{
+    return test()->owner()->createToken('test-token')->plainTextToken;
+}
+
 function admin(array $data = [])
 {
     return login(admin_account($data), 'admin');
