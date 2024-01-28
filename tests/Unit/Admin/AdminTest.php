@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Admin;
 
-use App\Actions\Admin\SendForgotPasswordAction;
 use App\Models\Admin;
 
 trait AdminTest

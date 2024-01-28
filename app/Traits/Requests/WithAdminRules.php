@@ -13,8 +13,8 @@ trait WithAdminRules
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string', PasswordRule::make()],
+            'email' => ['required', 'email', 'unique:admins,email,'.$this->getRouteId()],
+            'password' => ['required', 'string', 'confirmed', PasswordRule::make()],
         ];
     }
 }

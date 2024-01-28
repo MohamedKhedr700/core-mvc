@@ -14,6 +14,10 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return $this->withCommonRules();
+        return $this->withCommonRules([
+            'name' => ['sometimes'],
+            'email' => ['sometimes'],
+            'password' => ['sometimes'],
+        ]);
     }
 }

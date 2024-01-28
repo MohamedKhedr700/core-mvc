@@ -13,8 +13,8 @@ trait WithUserRules
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string', PasswordRule::make()],
+            'email' => ['required', 'email', 'unique:users,email,'.$this->getRouteId()],
+            'password' => ['required', 'string', 'confirmed', PasswordRule::make()],
         ];
     }
 

@@ -16,7 +16,7 @@ it('can update an admin when authorized', function () {
 
 it('can receive validation exception on update an admin', function () {
 
-    admin()->putJson($this->uri($this->record()->attribute('id')), [])
+    admin()->putJson($this->uri($this->record()->attribute('id')), $this->emptyBody())
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',

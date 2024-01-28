@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\User;
 
-use App\Traits\Requests\WithAdminRules;
 use App\Traits\Requests\WithUserRules;
 use Raid\Core\Request\Requests\FormRequest;
 
@@ -16,7 +15,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return $this->withCommonRules([
-            ''
+            'name' => ['sometimes'],
+            'email' => ['sometimes'],
+            'password' => ['sometimes'],
         ]);
     }
 }

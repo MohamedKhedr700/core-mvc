@@ -25,7 +25,7 @@ uses(
     Tests\Feature\Admin\AdminTest::class,
 )->in('Feature/Admin');
 
-# current tests
+// current tests
 uses()->group('cur')->in('Feature/User');
 
 /*

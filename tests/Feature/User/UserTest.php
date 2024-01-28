@@ -27,7 +27,20 @@ trait UserTest
         return [
             'name' => fake()->name,
             'email' => fake()->email,
-            'password' => fake()->password(8),
+            'password' => $password = fake()->password(8),
+            'password_confirmation' => $password,
+        ];
+    }
+
+    /**
+     * Get test empty body.
+     */
+    public function emptyBody(): array
+    {
+        return [
+            'name' => null,
+            'email' => null,
+            'password' => null,
         ];
     }
 

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1/user/users')
     ->middleware(['auth:admin'])
-    ->group(function() {
+    ->group(function () {
         Route::post('/', [UserController::class, 'store']);
         Route::get('/', [UserController::class, 'index']);
         Route::get('/{user}', [UserController::class, 'show']);

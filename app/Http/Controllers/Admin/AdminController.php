@@ -35,6 +35,17 @@ class AdminController extends Controller
     }
 
     /**
+     * Show an admin.
+     */
+    public function show(
+        AdminModel $admin,
+        Actions\FindAction $action,
+    ): JsonResponse {
+
+        return $this->resource($action->execute($admin));
+    }
+
+    /**
      * Update an admin.
      */
     public function update(
@@ -46,17 +57,6 @@ class AdminController extends Controller
         $action->execute($admin, $request->passed());
 
         return $this->message(__('updated_successfully'));
-    }
-
-    /**
-     * Show an admin.
-     */
-    public function show(
-        AdminModel $admin,
-        Actions\FindAction $action,
-    ): JsonResponse {
-
-        return $this->resource($action->execute($admin));
     }
 
     /**

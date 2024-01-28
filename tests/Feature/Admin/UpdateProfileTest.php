@@ -16,7 +16,7 @@ it('can update an admin profile when authorized', function () {
 
 it('can receive validation exception on update an admin profile', function () {
 
-    admin()->postJson($this->uri('/profile'), [])
+    admin()->postJson($this->uri('/profile'), $this->emptyBody())
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',
