@@ -53,30 +53,3 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
-
-function factory(string $model, array $data = [])
-{
-    return $model::factory()->create($data);
-}
-
-function login(\Illuminate\Contracts\Auth\Authenticatable $authenticatable, ?string $guard = null)
-{
-    test()->setOwner($authenticatable);
-
-    return test()->actingAs(test()->owner(), $guard);
-}
-
-function admin(array $data = [])
-{
-    return login(test()->record($data), 'admin');
-}
-
-function user(array $data = [])
-{
-    return login(test()->record($data), 'admin');
-}
-
-function token()
-{
-    return test()->owner()->createToken('test-token')->plainTextToken;
-}
