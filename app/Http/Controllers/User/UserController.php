@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Actions\User as Actions;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\User as Requests;
 use App\Models\User as UserModel;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
