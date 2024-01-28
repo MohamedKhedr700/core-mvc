@@ -2,18 +2,15 @@
 
 namespace App\Actions\Admin;
 
+use App\Actions\Core\UpdateProfileAction as CoreUpdateProfileAction;
+use App\Actions\User\UpdateAction;
 use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class UpdateProfileAction extends Action implements ActionInterface
+class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public const ACTION = ActionEnum::UPDATE_PROFILE;
-
     /**
      * {@inheritdoc}
      */
@@ -29,10 +26,10 @@ class UpdateProfileAction extends Action implements ActionInterface
     }
 
     /**
-     * Handle an action.
+     * {@inheritDoc}
      */
-    public function handle(array $data): bool
+    public function updateAction(): UpdateAction
     {
-        return $this->updateAction->execute(account(), $data);
+        return $this->updateAction;
     }
 }

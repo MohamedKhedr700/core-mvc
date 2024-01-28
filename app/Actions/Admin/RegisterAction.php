@@ -2,6 +2,7 @@
 
 namespace App\Actions\Admin;
 
+use App\Actions\Core\RegisterAction as CoreRegisterAction;
 use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Exception;
@@ -10,13 +11,8 @@ use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 
-class RegisterAction extends Action implements ActionInterface
+class RegisterAction extends CoreRegisterAction implements ActionInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public const ACTION = ActionEnum::REGISTER;
-
     /**
      * {@inheritdoc}
      */
@@ -33,14 +29,18 @@ class RegisterAction extends Action implements ActionInterface
     }
 
     /**
-     * Handle an action.
-     *
-     * @throws Exception
+     * {@inheritDoc}
      */
-    public function handle(array $data): AuthChannelInterface
+    public function createAction(): ActionInterface
     {
-        $this->createAction->handle($data);
+        return $this->createAction;
+    }
 
-        return $this->loginAction->handle(Arr::only($data, ['email', 'password']));
+    /**
+     * {@inheritDoc}
+     */
+    public function loginAction(): ActionInterface
+    {
+        return $this->loginAction;
     }
 }

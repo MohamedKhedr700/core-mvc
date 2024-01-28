@@ -2,6 +2,7 @@
 
 namespace App\Actions\Admin;
 
+use App\Actions\Core\SendForgotPasswordAction as CoreSendForgotPasswordAction;
 use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Password;
@@ -9,13 +10,8 @@ use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 use Raid\Core\Action\Exceptions\Actionable\InvalidActionableException;
 
-class SendForgotPasswordAction extends Action implements ActionInterface
+class SendForgotPasswordAction extends CoreSendForgotPasswordAction implements ActionInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public const ACTION = ActionEnum::SEND_FORGOT_PASSWORD;
-
     /**
      * {@inheritdoc}
      */
@@ -31,17 +27,10 @@ class SendForgotPasswordAction extends Action implements ActionInterface
     }
 
     /**
-     * Handle the action.
-     *
-     * @throws InvalidActionableException
+     * {@inheritDoc}
      */
-    public function handle(array $data): array
+    public function findByAction(): ActionInterface
     {
-        $admin = $this->findByAction->handle($data, ['email']);
-
-        return [
-            'email' => $admin->attribute('email'),
-            'token' => Password::createToken($admin),
-        ];
+        return $this->findByAction;
     }
 }

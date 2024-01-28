@@ -27,6 +27,8 @@ uses(
 
 // current tests
 uses()->group('cur')->in('Feature/User');
+uses()->group('admin')->in('Feature/Admin');
+uses()->group('user')->in('Feature/User');
 
 /*
 |--------------------------------------------------------------------------

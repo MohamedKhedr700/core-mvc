@@ -2,19 +2,15 @@
 
 namespace App\Actions\Admin;
 
+use App\Actions\Core\ResetForgotPasswordAction as CoreResetForgotPasswordAction;
 use App\Enums\Action as ActionEnum;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Password;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class ResetForgotPasswordAction extends Action implements ActionInterface
+class ResetForgotPasswordAction extends CoreResetForgotPasswordAction implements ActionInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public const ACTION = ActionEnum::RESET_FORGOT_PASSWORD;
-
     /**
      * {@inheritdoc}
      */
@@ -30,14 +26,18 @@ class ResetForgotPasswordAction extends Action implements ActionInterface
     }
 
     /**
-     * Handle the action.
+     * {@inheritDoc}
      */
-    public function handle(array $data): bool
+    public function broker(): string
     {
-        $status = Password::broker('admins')->reset($data, function (Admin $admin, string $password) {
-            $this->updateAction->handle($admin, ['password' => $password]);
-        });
+        return 'admins';
+    }
 
-        return $status === Password::PASSWORD_RESET;
+    /**
+     * {@inheritDoc}
+     */
+    public function updateAction(): ActionInterface
+    {
+        return $this->updateAction;
     }
 }
