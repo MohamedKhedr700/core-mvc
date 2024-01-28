@@ -41,7 +41,7 @@ if (! function_exists('user')) {
      */
     function user(array $data = []): TestCase
     {
-        return login(test()->record($data), 'admin');
+        return login(test()->record($data), 'user');
     }
 }
 

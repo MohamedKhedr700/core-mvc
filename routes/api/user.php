@@ -21,6 +21,15 @@ Route::prefix('v1/user/users')
         Route::post('register', [User\RegisterController::class, 'register']);
     });
 
+// profile routes
+Route::prefix('v1/user/users/profile')
+    ->middleware(['auth:user'])
+    ->group(function () {
+        Route::post('/', [User\ProfileController::class, 'update']);
+        Route::get('/', [User\ProfileController::class, 'get']);
+        Route::get('logout', [User\ProfileController::class, 'logout']);
+    });
+
 // crud routes
 Route::prefix('v1/user/users')
     ->middleware(['auth:admin'])
