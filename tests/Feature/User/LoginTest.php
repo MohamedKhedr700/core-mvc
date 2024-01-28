@@ -1,6 +1,6 @@
 <?php
 
-it('can login an admin', function () {
+it('can login a user', function () {
 
     $password = 'password';
 
@@ -22,7 +22,7 @@ it('can login an admin', function () {
         ]);
 });
 
-it('can receive validation exception on login an admin', function () {
+it('can receive validation exception on login a user', function () {
 
     $this->postJson($this->uri('/login'), [])
         ->assertStatus(422)
@@ -36,7 +36,7 @@ it('can receive validation exception on login an admin', function () {
         ]);
 });
 
-it('can receive validation exception on login an admin with not found email', function () {
+it('can receive validation exception on login a user with not found email', function () {
 
     $password = 'password';
 
@@ -60,16 +60,16 @@ it('can receive validation exception on login an admin with not found email', fu
         ]);
 });
 
-it('can receive validation exception on login an admin with wrong password', function () {
+it('can receive validation exception on login a user with wrong password', function () {
 
     $password = 'password';
 
-    $admin = $this->record([
+    $user = $this->record([
         'password' => $password,
     ]);
 
     $body = [
-        'email' => $admin->attribute('email'),
+        'email' => $user->attribute('email'),
         'password' => 'wrong-password',
     ];
 
