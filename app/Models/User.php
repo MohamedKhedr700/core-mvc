@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Account as AccountEnum;
+use App\Events\User\SendForgotPasswordEvent;
 use App\Models\ModelFilters\UserFilter;
 use App\Traits\Models\CanForgotPassword;
 use Database\Factories\UserFactory;
@@ -55,4 +56,15 @@ class User extends Account implements AuthenticatableInterface, CanResetPassword
     protected $casts = [
         'password' => 'hashed',
     ];
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getEvents(): array
+    {
+        return [
+            SendForgotPasswordEvent::class,
+        ];
+    }
 }
