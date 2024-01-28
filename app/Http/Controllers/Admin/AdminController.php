@@ -24,7 +24,7 @@ class AdminController extends Controller
     }
 
     /**
-     * List admins.
+     * List admin resources.
      */
     public function index(
         Requests\ListRequest $request,
