@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ModelFilters\ProductFilter;
+use Database\Factories\ProductFactory;
 use Database\Factories\UserFactory;
 use Raid\Core\Model\Models\Model;
 
@@ -11,7 +12,7 @@ class Product extends Model
     /**
      * {@inheritdoc}
      */
-    protected static string $factory = UserFactory::class;
+    protected static string $factory = ProductFactory::class;
 
     /**
      * {@inheritdoc}

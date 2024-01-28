@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Raid\Core\Model\Models\Model;
 use Tests\TestCase;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 if (! function_exists('factory')) {
     /**

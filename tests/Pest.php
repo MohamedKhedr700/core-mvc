@@ -18,17 +18,20 @@ uses(
 )->in('Feature');
 
 uses(
+    Tests\Feature\Admin\AdminTest::class,
+)->in('Feature/Admin');
+
+uses(
     Tests\Feature\User\UserTest::class,
 )->in('Feature/User');
 
 uses(
-    Tests\Feature\Admin\AdminTest::class,
-)->in('Feature/Admin');
+    Tests\Feature\Product\ProductTest::class,
+)->in('Feature/Product');
+
 
 // current tests
-uses()->group('cur')->in('Feature/User');
-uses()->group('admin')->in('Feature/Admin');
-uses()->group('user')->in('Feature/User');
+uses()->group('cur')->in('Feature/Product');
 
 /*
 |--------------------------------------------------------------------------
