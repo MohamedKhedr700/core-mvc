@@ -3,7 +3,6 @@
 namespace App\Actions\User;
 
 use App\Enums\Action as ActionEnum;
-use App\Models\Admin;
 use App\Models\User;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
