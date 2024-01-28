@@ -30,6 +30,14 @@ Route::prefix('v1/user/users/profile')
         Route::get('logout', [User\ProfileController::class, 'logout']);
     });
 
+// forgot password routes
+Route::prefix('v1/user/users/forgot-password')
+    ->group(function () {
+        Route::post('/send', [User\ForgotPasswordController::class, 'send']);
+        Route::post('/reset', [User\ForgotPasswordController::class, 'reset'])
+            ->name('user.reset.forgot.password');
+    });
+
 // crud routes
 Route::prefix('v1/user/users')
     ->middleware(['auth:admin'])

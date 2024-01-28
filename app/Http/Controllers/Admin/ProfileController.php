@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class ProfileController extends Controller
 {
     /**
-     * Get admin profile.
+     * Get an admin profile.
      */
     public function get(
         Actions\FindProfileAction $action,
@@ -20,7 +20,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update admin profile.
+     * Update an admin profile.
      */
     public function update(
         Requests\UpdateProfileRequest $request,
@@ -33,7 +33,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Logout admin.
+     * Logout an admin.
      */
     public function logout(
         Actions\LogoutAction $action,

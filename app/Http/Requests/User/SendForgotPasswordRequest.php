@@ -5,7 +5,7 @@ namespace App\Http\Requests\User;
 use App\Traits\Requests\WithUserRules;
 use Raid\Core\Request\Requests\FormRequest;
 
-class UpdateProfileRequest extends FormRequest
+class SendForgotPasswordRequest extends FormRequest
 {
     use WithUserRules;
 
@@ -14,10 +14,8 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        return $this->withCommonRules([
-            'name' => ['sometimes'],
-            'email' => ['sometimes'],
-            'password' => ['sometimes'],
-        ]);
+        return [
+            'email' => ['required', 'email', 'exists:users,email'],
+        ];
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
-use App\Actions\Admin as Actions;
+use App\Actions\User as Actions;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin as Requests;
+use App\Http\Requests\User as Requests;
 use Illuminate\Http\JsonResponse;
 
 class ForgotPasswordController extends Controller
 {
     /**
-     * Send an admin forgot password.
+     * Send a user forgot password.
      */
     public function send(
         Requests\SendForgotPasswordRequest $request,
@@ -23,7 +23,7 @@ class ForgotPasswordController extends Controller
     }
 
     /**
-     * Reset an admin password.
+     * Reset a user password.
      */
     public function reset(
         Requests\ResetForgotPasswordRequest $request,

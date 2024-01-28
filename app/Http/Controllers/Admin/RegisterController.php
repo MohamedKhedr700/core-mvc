@@ -11,7 +11,7 @@ use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 class RegisterController extends Controller
 {
     /**
-     * Register admin.
+     * Register an admin.
      */
     public function register(
         Requests\RegisterRequest $request,

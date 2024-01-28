@@ -11,7 +11,7 @@ use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 class LoginController extends Controller
 {
     /**
-     * Login admin.
+     * Login an admin.
      */
     public function login(
         Requests\LoginRequest $request,

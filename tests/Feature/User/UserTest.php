@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\User;
 
+use App\Actions\User\SendForgotPasswordAction;
 use App\Models\User;
 
 trait UserTest
@@ -57,5 +58,13 @@ trait UserTest
             'created_at',
             'updated_at',
         ];
+    }
+
+    /**
+     * Get test rest token.
+     */
+    public function resetToken(User $user): string
+    {
+        return SendForgotPasswordAction::exec($user->attributes('email'))['token'] ?? '';
     }
 }

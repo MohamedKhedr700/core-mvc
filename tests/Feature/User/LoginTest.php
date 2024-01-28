@@ -4,12 +4,12 @@ it('can login a user', function () {
 
     $password = 'password';
 
-    $admin = $this->record([
+    $user = $this->record([
         'password' => $password,
     ]);
 
     $body = [
-        'email' => $admin->attribute('email'),
+        'email' => $user->attribute('email'),
         'password' => $password,
     ];
 

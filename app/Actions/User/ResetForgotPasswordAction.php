@@ -2,12 +2,12 @@
 
 namespace App\Actions\User;
 
-use App\Actions\Core\UpdateProfileAction as CoreUpdateProfileAction;
+use App\Actions\Core\ResetForgotPasswordAction as CoreResetForgotPasswordAction;
 use App\Models\User;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInterface
+class ResetForgotPasswordAction extends CoreResetForgotPasswordAction implements ActionInterface
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInter
      * Create a new action instance.
      */
     public function __construct(
-        public readonly UpdateAction $updateAction
+        private readonly UpdateAction $updateAction,
     ) {
 
     }
@@ -26,7 +26,15 @@ class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInter
     /**
      * {@inheritDoc}
      */
-    public function updateAction(): UpdateAction
+    public function broker(): string
+    {
+        return 'users';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function updateAction(): ActionInterface
     {
         return $this->updateAction;
     }

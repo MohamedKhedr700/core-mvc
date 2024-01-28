@@ -2,12 +2,12 @@
 
 namespace App\Actions\User;
 
-use App\Actions\Core\UpdateProfileAction as CoreUpdateProfileAction;
+use App\Actions\Core\SendForgotPasswordAction as CoreSendForgotPasswordAction;
 use App\Models\User;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInterface
+class SendForgotPasswordAction extends CoreSendForgotPasswordAction implements ActionInterface
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInter
      * Create a new action instance.
      */
     public function __construct(
-        public readonly UpdateAction $updateAction
+        private readonly FindByAction $findByAction
     ) {
 
     }
@@ -26,8 +26,8 @@ class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInter
     /**
      * {@inheritDoc}
      */
-    public function updateAction(): UpdateAction
+    public function findByAction(): ActionInterface
     {
-        return $this->updateAction;
+        return $this->findByAction;
     }
 }
