@@ -11,16 +11,23 @@
 |
 */
 
-// crud routes
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
 
+// auth routes
+Route::prefix('v1/user/users')
+    ->group(function () {
+        Route::post('login', [User\LoginController::class, 'login']);
+        Route::post('register', [User\RegisterController::class, 'register']);
+    });
+
+// crud routes
 Route::prefix('v1/user/users')
     ->middleware(['auth:admin'])
     ->group(function () {
-        Route::post('/', [UserController::class, 'store']);
-        Route::get('/', [UserController::class, 'index']);
-        Route::get('/{user}', [UserController::class, 'show']);
-        Route::put('/{user}', [UserController::class, 'update']);
-        Route::delete('/{user}', [UserController::class, 'delete']);
+        Route::post('/', [User\UserController::class, 'store']);
+        Route::get('/', [User\UserController::class, 'index']);
+        Route::get('/{user}', [User\UserController::class, 'show']);
+        Route::put('/{user}', [User\UserController::class, 'update']);
+        Route::delete('/{user}', [User\UserController::class, 'delete']);
     });

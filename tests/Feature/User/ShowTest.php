@@ -1,13 +1,13 @@
 <?php
 
-it('can not show an user when unauthorized', function () {
+it('can not show a user when unauthorized', function () {
 
     $this->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can show an user when authorized', function () {
+it('can show a user when authorized', function () {
 
     admin()->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(200)
@@ -17,7 +17,7 @@ it('can show an user when authorized', function () {
         ]);
 });
 
-it('can receive not found exception when using wrong user id', function () {
+it('can receive not found exception when using wrong a user id', function () {
 
     admin()->getJson($this->uri('/wrong-id'))
         ->assertStatus(404)

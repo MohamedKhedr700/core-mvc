@@ -26,6 +26,7 @@ return [
 
     'authenticators' => [
         \App\Models\Admin::class => \App\Http\Authentication\Authenticators\AdminAuthenticator::class,
+        \App\Models\User::class => \App\Http\Authentication\Authenticators\UserAuthenticator::class,
     ],
 
     /*

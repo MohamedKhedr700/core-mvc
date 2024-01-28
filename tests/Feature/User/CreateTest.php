@@ -12,7 +12,7 @@ it('can create a user when authorized', function () {
         ->assertJsonStructure(['message']);
 });
 
-it('can receive validation exception on create an user', function () {
+it('can receive validation exception on create a user', function () {
 
     admin()->postJson($this->uri(), [])
         ->assertStatus(422)

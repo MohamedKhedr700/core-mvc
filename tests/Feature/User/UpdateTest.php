@@ -1,20 +1,20 @@
 <?php
 
-it('cannot update an user when unauthorized', function () {
+it('cannot update a user when unauthorized', function () {
 
     $this->putJson($this->uri($this->record()->attribute('id')), $this->body())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can update an user when authorized', function () {
+it('can update a user when authorized', function () {
 
     admin()->putJson($this->uri($this->record()->attribute('id')), $this->body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
-it('can receive validation exception on update an user', function () {
+it('can receive validation exception on update a user', function () {
 
     admin()->putJson($this->uri($this->record()->attribute('id')), $this->emptyBody())
         ->assertStatus(422)
@@ -29,7 +29,7 @@ it('can receive validation exception on update an user', function () {
         ]);
 });
 
-it('can receive not found exception when using wrong user id', function () {
+it('can receive not found exception when using wrong a user id', function () {
 
     admin()->getJson($this->uri('/wrong-id'), $this->body())
         ->assertStatus(404)
