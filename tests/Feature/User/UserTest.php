@@ -4,7 +4,7 @@ namespace Tests\Feature\User;
 
 use App\Models\User;
 
-class UserTest
+trait UserTest
 {
     /**
      * The test uri.

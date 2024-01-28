@@ -18,13 +18,12 @@ uses(
 )->in('Feature');
 
 uses(
+    Tests\Feature\User\UserTest::class,
+)->in('Feature/User');
+
+uses(
     Tests\Feature\Admin\AdminTest::class,
 )->in('Feature/Admin');
-
-//uses(
-//    Tests\Feature\User\UserTest::class,
-//)->in('Feature/User');
-
 
 # current tests
 uses()->group('cur')->in('Feature/User');

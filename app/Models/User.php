@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Enums\Account as AccountEnum;
+use App\Models\ModelFilters\UserFilter;
 use App\Traits\Models\CanForgotPassword;
+use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
 use Raid\Core\Auth\Models\Authentication\Account;
@@ -20,6 +22,16 @@ class User extends Account implements AuthenticatableInterface, CanResetPassword
      * {@inheritdoc}
      */
     public const ACCOUNT_TYPE = AccountEnum::USER;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected static string $factory = UserFactory::class;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected string $filter = UserFilter::class;
 
     /**
      * {@inheritdoc}
