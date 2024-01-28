@@ -18,8 +18,8 @@ class RegisterAction extends CoreRegisterAction implements ActionInterface
      * Create a new action instance.
      */
     public function __construct(
-        protected readonly CreateAction $createAction,
-        protected readonly LoginAction $loginAction,
+        private readonly CreateAction $createAction,
+        private readonly LoginAction $loginAction,
     ) {
 
     }

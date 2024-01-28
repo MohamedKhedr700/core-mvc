@@ -18,7 +18,7 @@ class UpdateProfileAction extends CoreUpdateProfileAction implements ActionInter
      * Create a new action instance.
      */
     public function __construct(
-        public readonly UpdateAction $updateAction
+        private readonly UpdateAction $updateAction
     ) {
 
     }
