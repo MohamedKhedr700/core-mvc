@@ -9,6 +9,8 @@ it('can not list an admin when unauthorized', function () {
 
 it('can list an admin when authorized', function () {
 
+    $this->record();
+
     admin()->getJson($this->uri())
         ->assertStatus(200)
         ->assertJsonStructure([

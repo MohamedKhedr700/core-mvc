@@ -17,4 +17,16 @@ trait WithAdminRules
             'password' => ['required', 'string', 'confirmed', PasswordRule::make()],
         ];
     }
+
+    /**
+     * Define common attributes.
+     */
+    public function attributes(): array
+    {
+        return [
+            'name' => __('name'),
+            'email' => __('email'),
+            'password' => __('password'),
+        ];
+    }
 }

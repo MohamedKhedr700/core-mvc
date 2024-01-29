@@ -9,7 +9,7 @@ it('can not logout a user when unauthorized', function () {
 
 it('can logout a user when authorized', function () {
 
-    admin()->withToken(token())->getJson($this->uri('/profile/logout'))
+    user()->withToken(token())->getJson($this->uri('/profile/logout'))
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });

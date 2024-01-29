@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Product;
 
-use App\Actions\Admin\SendForgotPasswordAction;
-use App\Models\Admin;
 use App\Models\Product;
 
 trait ProductTest
@@ -12,6 +10,10 @@ trait ProductTest
      * The test uri.
      */
     public string $uri = '/api/v1/admin/products';
+
+    public array $body = [
+
+    ];
 
     /**
      * Get test record.
@@ -39,7 +41,12 @@ trait ProductTest
      */
     public function emptyBody(): array
     {
-        return [];
+        return [
+            'name' => null,
+            'price' => null,
+            'description' => null,
+            'image' => null,
+        ];
     }
 
     /**
@@ -49,6 +56,10 @@ trait ProductTest
     {
         return [
             'id',
+            'name',
+            'price',
+            'description',
+            'image',
             'created_at',
             'updated_at',
         ];

@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Raid\Core\Model\Models\Model;
 use Tests\TestCase;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 if (! function_exists('factory')) {
     /**
@@ -33,7 +35,7 @@ if (! function_exists('admin')) {
      */
     function admin(array $data = []): TestCase
     {
-        return login(test()->record($data), 'admin');
+        return login(factory(Admin::class, $data), 'admin');
     }
 }
 
@@ -43,7 +45,7 @@ if (! function_exists('user')) {
      */
     function user(array $data = []): TestCase
     {
-        return login(test()->record($data), 'user');
+        return login(factory(User::class, $data), 'user');
     }
 }
 

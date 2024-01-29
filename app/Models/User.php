@@ -57,7 +57,6 @@ class User extends Account implements AuthenticatableInterface, CanResetPassword
         'password' => 'hashed',
     ];
 
-
     /**
      * {@inheritdoc}
      */

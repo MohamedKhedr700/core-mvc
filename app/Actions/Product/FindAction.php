@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Actions\Admin;
+namespace App\Actions\Product;
 
 use App\Actions\Core\FindAction as CoreFindAction;
-use App\Models\Admin;
+use App\Models\Product;
 use Raid\Core\Action\Actions\Contracts\Crud\FindActionInterface;
 
 class FindAction extends CoreFindAction implements FindActionInterface
@@ -11,5 +11,5 @@ class FindAction extends CoreFindAction implements FindActionInterface
     /**
      * {@inheritdoc}
      */
-    public const ACTIONABLE = Admin::class;
+    public const ACTIONABLE = Product::class;
 }

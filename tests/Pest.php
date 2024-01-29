@@ -29,7 +29,6 @@ uses(
     Tests\Feature\Product\ProductTest::class,
 )->in('Feature/Product');
 
-
 // current tests
 uses()->group('cur')->in('Feature/Product');
 

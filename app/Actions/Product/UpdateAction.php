@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Actions\Admin;
+namespace App\Actions\Product;
 
 use App\Actions\Core\UpdateAction as CoreUpdateAction;
-use App\Models\Admin;
+use App\Models\Product;
 use Raid\Core\Action\Actions\Contracts\Crud\UpdateActionInterface;
 
 class UpdateAction extends CoreUpdateAction implements UpdateActionInterface
@@ -11,5 +11,5 @@ class UpdateAction extends CoreUpdateAction implements UpdateActionInterface
     /**
      * {@inheritdoc}
      */
-    public const ACTIONABLE = Admin::class;
+    public const ACTIONABLE = Product::class;
 }

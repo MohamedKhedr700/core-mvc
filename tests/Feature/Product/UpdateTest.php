@@ -23,8 +23,9 @@ it('can receive validation exception on update a product', function () {
             'message',
             'errors' => [
                 'name',
-                'email',
-                'password',
+                'price',
+                'description',
+                'image',
             ],
         ]);
 });

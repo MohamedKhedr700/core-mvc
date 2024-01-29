@@ -2,7 +2,6 @@
 
 namespace App\Actions\Core;
 
-use App\Models\User;
 use Raid\Core\Action\Actions\Contracts\Crud\UpdateActionInterface;
 use Raid\Core\Action\Actions\Crud\UpdateAction as RaidUpdateAction;
 
