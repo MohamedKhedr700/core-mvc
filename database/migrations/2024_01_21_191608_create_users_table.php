@@ -18,6 +18,8 @@ return new class extends Migration
             $table->char('password');
             $table->char('account_type');
             $table->timestamps();
+
+            $table->index(['name', 'email']);
         });
     }
 

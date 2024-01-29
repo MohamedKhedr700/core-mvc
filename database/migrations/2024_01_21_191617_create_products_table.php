@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('description');
             $table->char('image');
             $table->timestamps();
+
+            $table->index(['name', 'price']);
         });
     }
 

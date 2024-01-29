@@ -12,10 +12,13 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
+            'id' => fake()->uuid,
             'name' => fake()->name(),
             'price' => fake()->numberBetween(10, 100),
             'description' => fake()->text,
             'image' => fake()->imageUrl,
+            'created_at' => fake()->date,
+            'updated_at' => fake()->date,
         ];
     }
 }

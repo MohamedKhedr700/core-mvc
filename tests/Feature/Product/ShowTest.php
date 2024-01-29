@@ -2,14 +2,14 @@
 
 it('can not show a product when unauthorized', function () {
 
-    $this->getJson($this->uri($this->record()->attribute('id')))
+    $this->getJson($this->uri($this->record()->getId()))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can show a product when authorized', function () {
 
-    admin()->getJson($this->uri($this->record()->attribute('id')))
+    admin()->getJson($this->uri($this->record()->getId()))
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',

@@ -33,8 +33,12 @@ uses(
     Tests\Feature\UserProduct\UserProductTest::class,
 )->in('Feature/UserProduct');
 
+uses(
+    Tests\Feature\Wishlist\WishlistTest::class,
+)->in('Feature/Wishlist');
+
 // current tests
-uses()->group('cur')->in('Feature/UserProduct');
+uses()->group('cur')->in('Feature/Wishlist');
 
 /*
 |--------------------------------------------------------------------------

@@ -17,6 +17,16 @@ if (! function_exists('factory')) {
     }
 }
 
+if (! function_exists('factory_make')) {
+    /**
+     * Get factory instance for a given model.
+     */
+    function factory_make(string $model, array $data = [])
+    {
+        return $model::factory()->make($data);
+    }
+}
+
 if (! function_exists('login')) {
     /**
      * Login authenticatable as a test owner.
@@ -25,7 +35,7 @@ if (! function_exists('login')) {
     {
         test()->setOwner($authenticatable);
 
-        return test()->actingAs(test()->owner(), $guard);
+        return test()->actingAs($authenticatable, $guard);
     }
 }
 

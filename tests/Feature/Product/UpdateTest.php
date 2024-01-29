@@ -2,21 +2,21 @@
 
 it('cannot update a product when unauthorized', function () {
 
-    $this->putJson($this->uri($this->record()->attribute('id')), $this->body())
+    $this->putJson($this->uri($this->record()->getId()), $this->body())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
 it('can update a product when authorized', function () {
 
-    admin()->putJson($this->uri($this->record()->attribute('id')), $this->body())
+    admin()->putJson($this->uri($this->record()->getId()), $this->body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
 it('can receive validation exception on update a product', function () {
 
-    admin()->putJson($this->uri($this->record()->attribute('id')), $this->emptyBody())
+    admin()->putJson($this->uri($this->record()->getId()), $this->emptyBody())
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',

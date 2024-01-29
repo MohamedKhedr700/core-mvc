@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Wishlist;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -10,3 +13,11 @@
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+// user wishlist routes
+Route::prefix('v1/user/wishlist')
+    ->middleware(['auth:user'])
+    ->group(function () {
+        Route::post('/', [Wishlist\WishlistController::class, 'store']);
+        Route::get('/', [Wishlist\WishlistController::class, 'index']);
+    });

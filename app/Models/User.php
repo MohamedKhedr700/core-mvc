@@ -8,6 +8,7 @@ use App\Models\ModelFilters\UserFilter;
 use App\Traits\Models\CanForgotPassword;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
 use Raid\Core\Auth\Models\Authentication\Account;
 use Raid\Core\Auth\Traits\Model\Authenticatable;
@@ -65,5 +66,13 @@ class User extends Account implements AuthenticatableInterface, CanResetPassword
         return [
             SendForgotPasswordEvent::class,
         ];
+    }
+
+    /**
+     * Get products that belong to user wishlist.
+     */
+    public function wishlist(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, Wishlist::class);
     }
 }
