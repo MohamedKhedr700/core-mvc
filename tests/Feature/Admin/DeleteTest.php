@@ -14,7 +14,7 @@ it('can delete an admin when authorized', function () {
         ->assertJsonStructure(['message']);
 });
 
-it('can receive not found exception when using wrong an admin id', function () {
+it('can receive not found exception when using a wrong admin id', function () {
 
     admin()->deleteJson($this->uri('/wrong-id'))
         ->assertStatus(404)

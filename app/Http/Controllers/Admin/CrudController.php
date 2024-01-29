@@ -8,7 +8,7 @@ use App\Http\Requests\Admin as Requests;
 use App\Models\Admin as AdminModel;
 use Illuminate\Http\JsonResponse;
 
-class AdminController extends Controller
+class CrudController extends Controller
 {
     /**
      * Create a new admin.

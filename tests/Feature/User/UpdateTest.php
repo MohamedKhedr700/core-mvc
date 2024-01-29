@@ -29,7 +29,7 @@ it('can receive validation exception on update a user', function () {
         ]);
 });
 
-it('can receive not found exception when using wrong a user id', function () {
+it('can receive not found exception when using a wrong user id', function () {
 
     admin()->getJson($this->uri('/wrong-id'), $this->body())
         ->assertStatus(404)

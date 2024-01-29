@@ -42,9 +42,9 @@ Route::prefix('v1/user/users/forgot-password')
 Route::prefix('v1/user/users')
     ->middleware(['auth:admin'])
     ->group(function () {
-        Route::post('/', [User\UserController::class, 'store']);
-        Route::get('/', [User\UserController::class, 'index']);
-        Route::get('/{user}', [User\UserController::class, 'show']);
-        Route::put('/{user}', [User\UserController::class, 'update']);
-        Route::delete('/{user}', [User\UserController::class, 'delete']);
+        Route::post('/', [User\CrudController::class, 'store']);
+        Route::get('/', [User\CrudController::class, 'index']);
+        Route::get('/{user}', [User\CrudController::class, 'show']);
+        Route::put('/{user}', [User\CrudController::class, 'update']);
+        Route::delete('/{user}', [User\CrudController::class, 'delete']);
     });

@@ -1,15 +1,15 @@
 <?php
 
-it('can not show a product when unauthorized', function () {
+it('can not show a user product when unauthorized', function () {
 
     $this->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can show a product when authorized', function () {
+it('can show a user product when authorized', function () {
 
-    admin()->getJson($this->uri($this->record()->attribute('id')))
+    user()->getJson($this->uri($this->record()->attribute('id')))
         ->assertStatus(200)
         ->assertJsonStructure([
             'message',
@@ -17,9 +17,9 @@ it('can show a product when authorized', function () {
         ]);
 });
 
-it('can receive not found exception when using a wrong product id', function () {
+it('can receive not found exception when using a wrong user product id', function () {
 
-    admin()->getJson($this->uri('/wrong-id'))
+    user()->getJson($this->uri('/wrong-id'))
         ->assertStatus(404)
         ->assertJsonStructure(['message']);
 });

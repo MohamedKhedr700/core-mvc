@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Product;
 
-use App\Actions\User as Actions;
+use App\Actions\Product as Actions;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User as Requests;
-use App\Models\User as UserModel;
+use App\Http\Requests\Product as Requests;
+use App\Models\Product as ProductModel;
 use Illuminate\Http\JsonResponse;
 
-class UserController extends Controller
+class CrudController extends Controller
 {
     /**
-     * Create a user resource.
+     * Create a new product.
      */
     public function store(
         Requests\StoreRequest $request,
@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     /**
-     * List user resources.
+     * List product resources.
      */
     public function index(
         Requests\ListRequest $request,
@@ -35,39 +35,39 @@ class UserController extends Controller
     }
 
     /**
-     * Show a user resource.
+     * Show a product.
      */
     public function show(
-        UserModel $user,
+        ProductModel $product,
         Actions\FindAction $action,
     ): JsonResponse {
 
-        return $this->resource($action->execute($user));
+        return $this->resource($action->execute($product));
     }
 
     /**
-     * Update a user resource.
+     * Update a product.
      */
     public function update(
         Requests\UpdateRequest $request,
-        UserModel $user,
+        ProductModel $product,
         Actions\UpdateAction $action,
     ): JsonResponse {
 
-        $action->execute($user, $request->passed());
+        $action->execute($product, $request->passed());
 
         return $this->message(__('updated_successfully'));
     }
 
     /**
-     * Delete a user resource.
+     * Delete a product.
      */
     public function delete(
-        UserModel $user,
+        ProductModel $product,
         Actions\DeleteAction $action,
     ): JsonResponse {
 
-        $action->execute($user);
+        $action->execute($product);
 
         return $this->message(__('deleted_successfully'));
     }

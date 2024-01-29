@@ -11,10 +11,6 @@ trait ProductTest
      */
     public string $uri = '/api/v1/admin/products';
 
-    public array $body = [
-
-    ];
-
     /**
      * Get test record.
      */

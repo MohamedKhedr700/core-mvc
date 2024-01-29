@@ -17,7 +17,7 @@ it('can show an admin when authorized', function () {
         ]);
 });
 
-it('can receive not found exception when using wrong an admin id', function () {
+it('can receive not found exception when using a wrong admin id', function () {
 
     admin()->getJson($this->uri('/wrong-id'))
         ->assertStatus(404)

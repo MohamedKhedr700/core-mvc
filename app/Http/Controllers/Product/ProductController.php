@@ -11,19 +11,6 @@ use Illuminate\Http\JsonResponse;
 class ProductController extends Controller
 {
     /**
-     * Create a new product.
-     */
-    public function store(
-        Requests\StoreRequest $request,
-        Actions\CreateAction $action,
-    ): JsonResponse {
-
-        $action->execute($request->passed());
-
-        return $this->message(__('created_successfully'));
-    }
-
-    /**
      * List product resources.
      */
     public function index(
@@ -43,32 +30,5 @@ class ProductController extends Controller
     ): JsonResponse {
 
         return $this->resource($action->execute($product));
-    }
-
-    /**
-     * Update a product.
-     */
-    public function update(
-        Requests\UpdateRequest $request,
-        ProductModel $product,
-        Actions\UpdateAction $action,
-    ): JsonResponse {
-
-        $action->execute($product, $request->passed());
-
-        return $this->message(__('updated_successfully'));
-    }
-
-    /**
-     * Delete a product.
-     */
-    public function delete(
-        ProductModel $product,
-        Actions\DeleteAction $action,
-    ): JsonResponse {
-
-        $action->execute($product);
-
-        return $this->message(__('deleted_successfully'));
     }
 }

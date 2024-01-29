@@ -18,9 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1/admin/products')
     ->middleware(['auth:admin'])
     ->group(function () {
-        Route::post('/', [Product\ProductController::class, 'store']);
+        Route::post('/', [Product\CrudController::class, 'store']);
+        Route::get('/', [Product\CrudController::class, 'index']);
+        Route::get('{product}', [Product\CrudController::class, 'show']);
+        Route::put('{product}', [Product\CrudController::class, 'update']);
+        Route::delete('{product}', [Product\CrudController::class, 'delete']);
+    });
+
+// user product routes
+Route::prefix('v1/user/products')
+    ->middleware(['auth:user'])
+    ->group(function () {
         Route::get('/', [Product\ProductController::class, 'index']);
         Route::get('{product}', [Product\ProductController::class, 'show']);
-        Route::put('{product}', [Product\ProductController::class, 'update']);
-        Route::delete('{product}', [Product\ProductController::class, 'delete']);
     });

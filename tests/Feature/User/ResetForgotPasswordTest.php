@@ -58,7 +58,7 @@ it('can receive not found email validation exception on reset a user forgot pass
         ]);
 });
 
-it('can not reset a user forgot password using wrong token', function () {
+it('can receive validation exception on reset a user forgot password using wrong token', function () {
 
     $user = $this->record();
 

@@ -58,7 +58,7 @@ it('can receive not found email validation exception on reset an admin forgot pa
         ]);
 });
 
-it('can not reset an admin forgot password using wrong token', function () {
+it('can receive validation exception on reset an admin forgot password using wrong token', function () {
 
     $admin = $this->record();
 

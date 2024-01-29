@@ -29,8 +29,12 @@ uses(
     Tests\Feature\Product\ProductTest::class,
 )->in('Feature/Product');
 
+uses(
+    Tests\Feature\UserProduct\UserProductTest::class,
+)->in('Feature/UserProduct');
+
 // current tests
-uses()->group('cur')->in('Feature/Product');
+uses()->group('cur')->in('Feature/UserProduct');
 
 /*
 |--------------------------------------------------------------------------
