@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class WishlistController extends Controller
 {
     /**
-     * Attach a user product.
+     * Attach a user wishlist product.
      */
     public function attach(
         Requests\AttachRequest $request,
@@ -23,17 +23,7 @@ class WishlistController extends Controller
     }
 
     /**
-     * List a user products.
-     */
-    public function index(
-        Actions\ListAction $action
-    ): JsonResponse {
-
-        return $this->resources($action->execute());
-    }
-
-    /**
-     * Detach a user product.
+     * Detach a user wishlist product.
      */
     public function detach(
         Requests\DetachRequest $request,
@@ -43,5 +33,15 @@ class WishlistController extends Controller
         $action->execute($request->passed());
 
         return $this->message(__('detached_successfully'));
+    }
+
+    /**
+     * List a user wishlist products.
+     */
+    public function index(
+        Actions\ListAction $action
+    ): JsonResponse {
+
+        return $this->resources($action->execute());
     }
 }

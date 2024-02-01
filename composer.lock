@@ -9963,6 +9963,7 @@
     "stability-flags": {
         "raid/core-action": 20,
         "raid/core-auth": 20,
+        "raid/core-enum": 20,
         "raid/core-event": 20,
         "raid/core-gate": 20,
         "raid/core-model": 20,
@@ -9975,5 +9976,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

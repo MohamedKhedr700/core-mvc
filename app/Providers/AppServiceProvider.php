@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Spatie\Fractal\Facades\Fractal;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //        Fractal::macro('getData', function ($stats) {
         //
+        //            return $this->addMeta(['getData' => $stats]);
+        //        });
     }
 }

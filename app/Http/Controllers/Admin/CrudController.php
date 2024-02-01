@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\Admin as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
+use App\Http\Transformers\Admin\AdminTransformer;
 use App\Models\Admin as AdminModel;
 use Illuminate\Http\JsonResponse;
 
@@ -31,7 +32,9 @@ class CrudController extends Controller
         Actions\ListAction $action,
     ): JsonResponse {
 
-        return $this->resources($action->execute($request->passed()));
+        $resources = $action->execute($request->passed());
+
+        return $this->resources(transformer_data($resources, new AdminTransformer));
     }
 
     /**
@@ -42,7 +45,9 @@ class CrudController extends Controller
         Actions\FindAction $action,
     ): JsonResponse {
 
-        return $this->resource($action->execute($admin));
+        $resource = $action->execute($admin);
+
+        return $this->resource(transformer_data($resource, new AdminTransformer));
     }
 
     /**
