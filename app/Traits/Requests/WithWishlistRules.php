@@ -2,8 +2,6 @@
 
 namespace App\Traits\Requests;
 
-use App\Rules\PasswordRule;
-
 trait WithWishlistRules
 {
     /**

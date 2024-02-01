@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Wishlist;
 
-use App\Actions\Wishlist\CreateAction;
+use App\Actions\Wishlist\AttachAction;
 use App\Models\Product;
 use App\Models\Wishlist;
 
@@ -48,10 +48,10 @@ trait WishlistTest
     }
 
     /**
-     * Create test wishlist.
+     * Attach test wishlist.
      */
-    public function createWishlist()
+    public function attach(array $data)
     {
-        return CreateAction::exec($this->body());
+        return AttachAction::exec($data);
     }
 }

@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory
@@ -22,12 +21,9 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => fake()->uuid,
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => static::$password ?? Hash::make('password'),
-            'created_at' => fake()->date,
-            'updated_at' => fake()->date,
         ];
     }
 }
