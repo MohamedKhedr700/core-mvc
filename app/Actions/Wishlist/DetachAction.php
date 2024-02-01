@@ -12,7 +12,7 @@ class DetachAction extends Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    public const ACTION = ActionEnum::CREATE;
+    public const ACTION = ActionEnum::DETACH;
 
     /**
      * {@inheritdoc}

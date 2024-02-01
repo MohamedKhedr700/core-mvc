@@ -12,7 +12,7 @@ class AttachAction extends Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    public const ACTION = ActionEnum::CREATE;
+    public const ACTION = ActionEnum::ATTACH;
 
     /**
      * {@inheritdoc}
