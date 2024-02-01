@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Actions\User as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User as Requests;
+use App\Http\Transformers\User\UserTransformer;
 use App\Models\User as UserModel;
 use Illuminate\Http\JsonResponse;
 
@@ -31,7 +32,9 @@ class CrudController extends Controller
         Actions\ListAction $action,
     ): JsonResponse {
 
-        return $this->resources($action->execute($request->passed()));
+        $resources = $action->execute($request->passed());
+
+        return $this->resources(fractal_data($resources, new UserTransformer));
     }
 
     /**
@@ -42,7 +45,9 @@ class CrudController extends Controller
         Actions\FindAction $action,
     ): JsonResponse {
 
-        return $this->resource($action->execute($user));
+        $resource = $action->execute($user);
+
+        return $this->resource(fractal_data($resource, new UserTransformer));
     }
 
     /**

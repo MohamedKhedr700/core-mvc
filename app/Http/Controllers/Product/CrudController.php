@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Actions\Product as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product as Requests;
+use App\Http\Transformers\Product\ProductTransformer;
 use App\Models\Product as ProductModel;
 use Illuminate\Http\JsonResponse;
 
@@ -31,7 +32,9 @@ class CrudController extends Controller
         Actions\ListAction $action,
     ): JsonResponse {
 
-        return $this->resources($action->execute($request->passed()));
+        $resources = $action->execute($request->passed());
+
+        return $this->resources(fractal_data($resources, new ProductTransformer));
     }
 
     /**
@@ -42,7 +45,9 @@ class CrudController extends Controller
         Actions\FindAction $action,
     ): JsonResponse {
 
-        return $this->resource($action->execute($product));
+        $resource = $action->execute($product);
+
+        return $this->resource(fractal_data($resource, new ProductTransformer));
     }
 
     /**

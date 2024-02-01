@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Database\Factories\WishlistFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Raid\Core\Model\Models\Model;
 
 class Wishlist extends Model
@@ -24,4 +25,12 @@ class Wishlist extends Model
         'user_id',
         'product_id',
     ];
+
+    /**
+     * Get a product that belongs to wishlist.
+     */
+    public function product(): HasOne
+    {
+        return $this->hasOne(Product::class);
+    }
 }

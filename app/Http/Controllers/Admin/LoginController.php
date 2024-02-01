@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\Admin as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
+use App\Http\Transformers\Admin\AdminTransformer;
 use Illuminate\Http\JsonResponse;
 use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 
@@ -33,7 +34,7 @@ class LoginController extends Controller
         return $this->success([
             'message' => __('logged_in_successfully'),
             'token' => $channel->stringToken(),
-            'resource' => $channel->account(),
+            'resource' => fractal_data($channel->account(), new AdminTransformer),
         ]);
     }
 

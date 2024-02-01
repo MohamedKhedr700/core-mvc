@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wishlist;
 use App\Actions\Wishlist as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Wishlist as Requests;
+use App\Http\Transformers\Product\ProductTransformer;
 use Illuminate\Http\JsonResponse;
 
 class WishlistController extends Controller
@@ -42,6 +43,8 @@ class WishlistController extends Controller
         Actions\ListAction $action
     ): JsonResponse {
 
-        return $this->resources($action->execute());
+        $resources = $action->execute();
+
+        return $this->resources(fractal_data($resources, new ProductTransformer));
     }
 }
