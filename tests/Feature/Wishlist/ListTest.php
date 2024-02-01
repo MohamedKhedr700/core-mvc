@@ -11,7 +11,7 @@ it('can list a user wishlist when authorized', function () {
 
     $user = user();
 
-    $this->createWishlist();
+    $this->attach($this->body());
 
     $user->getJson($this->uri())
         ->assertStatus(200)

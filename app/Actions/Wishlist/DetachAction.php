@@ -4,16 +4,15 @@ namespace App\Actions\Wishlist;
 
 use App\Enums\Action as ActionEnum;
 use App\Models\Wishlist;
-use Illuminate\Support\Collection;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
 
-class ListAction extends Action implements ActionInterface
+class DetachAction extends Action implements ActionInterface
 {
     /**
      * {@inheritdoc}
      */
-    public const ACTION = ActionEnum::LIST;
+    public const ACTION = ActionEnum::DETACH;
 
     /**
      * {@inheritdoc}
@@ -23,8 +22,8 @@ class ListAction extends Action implements ActionInterface
     /**
      * Handle the action.
      */
-    public function handle(): Collection
+    public function handle(array $data): void
     {
-        return account()->wishlist;
+        account()->wishlist()->detach($data['productId']);
     }
 }

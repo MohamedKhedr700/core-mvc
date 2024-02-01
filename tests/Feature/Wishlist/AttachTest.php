@@ -1,22 +1,22 @@
 <?php
 
-it('can not create a user wishlist when unauthorized', function () {
+it('can not attach a user wishlist product when unauthorized', function () {
 
-    $this->postJson($this->uri(), $this->body())
+    $this->postJson($this->uri('/attach'), $this->body())
         ->assertStatus(401)
         ->assertJsonStructure(['message']);
 });
 
-it('can create a user wishlist when authorized', function () {
+it('can attach a user wishlist product when authorized', function () {
 
-    user()->postJson($this->uri(), $this->body())
+    user()->postJson($this->uri('/attach'), $this->body())
         ->assertStatus(200)
         ->assertJsonStructure(['message']);
 });
 
-it('can receive validation exception on create a user wishlist', function () {
+it('can receive validation exception on attach a user wishlist product', function () {
 
-        user()->postJson($this->uri(), [])
+    user()->postJson($this->uri('/attach'), [])
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',
@@ -27,13 +27,13 @@ it('can receive validation exception on create a user wishlist', function () {
         ]);
 });
 
-it('can receive validation exception on create a user wishlist using wrong product id', function () {
+it('can receive validation exception on attach a user wishlist using wrong product id', function () {
 
     $body = [
         'productId' => 'wrong-id',
     ];
 
-    user()->postJson($this->uri(), $body)
+    user()->postJson($this->uri('/attach'), $body)
         ->assertStatus(422)
         ->assertJsonStructure([
             'error',

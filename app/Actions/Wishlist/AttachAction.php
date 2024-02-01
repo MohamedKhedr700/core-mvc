@@ -2,20 +2,17 @@
 
 namespace App\Actions\Wishlist;
 
-use App\Models\User;
+use App\Enums\Action as ActionEnum;
 use App\Models\Wishlist;
 use Raid\Core\Action\Actions\Action;
 use Raid\Core\Action\Actions\Contracts\ActionInterface;
-use Raid\Core\Action\Actions\Contracts\Crud\CreateActionInterface;
-use Raid\Core\Action\Actions\Crud\CreateAction as RaidCreateAction;
-use App\Enums\Action as ActionEnum;
 
-class CreateAction extends Action implements ActionInterface
+class AttachAction extends Action implements ActionInterface
 {
     /**
      * {@inheritdoc}
      */
-    public const ACTION = ActionEnum::CREATE;
+    public const ACTION = ActionEnum::ATTACH;
 
     /**
      * {@inheritdoc}

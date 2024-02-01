@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests\Wishlist;
 
-use App\Traits\Requests\WithUserRules;
 use App\Traits\Requests\WithWishlistRules;
+use Illuminate\Validation\Rule;
 use Raid\Core\Request\Requests\FormRequest;
 
-class StoreRequest extends FormRequest
+class DetachRequest extends FormRequest
 {
     use WithWishlistRules;
 
@@ -15,6 +15,8 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return $this->withCommonRules();
+        return $this->withCommonRules([
+            'productId' => [Rule::exists('wishlist', 'product_id')->where('user_id', account()->accountId())],
+        ]);
     }
 }

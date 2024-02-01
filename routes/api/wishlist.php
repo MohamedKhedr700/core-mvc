@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1/user/wishlist')
     ->middleware(['auth:user'])
     ->group(function () {
-        Route::post('/', [Wishlist\WishlistController::class, 'store']);
+        Route::post('/attach', [Wishlist\WishlistController::class, 'attach']);
+        Route::post('/detach', [Wishlist\WishlistController::class, 'detach']);
         Route::get('/', [Wishlist\WishlistController::class, 'index']);
     });
