@@ -2,11 +2,11 @@
 
 use Raid\Core\Repository\Transformers\Transformer;
 
-if (! function_exists('transform_result')) {
+if (! function_exists('fractal_data')) {
     /**
-     * Get a transform result from data set with a transformer.
+     * Get a transformed data result from a data set with given transformer.
      */
-    function transformer_data(mixed $data, Transformer $transformer): ?array
+    function fractal_data(mixed $data, Transformer $transformer): ?array
     {
         return fractal($data, $transformer)->toArray()['data'] ?? null;
     }

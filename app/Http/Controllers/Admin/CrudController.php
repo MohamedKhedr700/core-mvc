@@ -34,7 +34,7 @@ class CrudController extends Controller
 
         $resources = $action->execute($request->passed());
 
-        return $this->resources(transformer_data($resources, new AdminTransformer));
+        return $this->resources(fractal_data($resources, new AdminTransformer));
     }
 
     /**
@@ -47,7 +47,7 @@ class CrudController extends Controller
 
         $resource = $action->execute($admin);
 
-        return $this->resource(transformer_data($resource, new AdminTransformer));
+        return $this->resource(fractal_data($resource, new AdminTransformer));
     }
 
     /**
