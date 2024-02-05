@@ -13,4 +13,9 @@ class AdminFilter extends ModelFilter
     {
         return $this->where('email', $email);
     }
+
+    protected function name(string $name)
+    {
+        dd($name);
+    }
 }
