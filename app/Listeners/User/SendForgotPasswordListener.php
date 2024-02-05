@@ -13,6 +13,8 @@ class SendForgotPasswordListener implements EventListenerInterface
      */
     public function handle(array $data): void
     {
-        Mail::to($data['email'])->send(new ForgotPasswordMail($data));
+        $link = front_url('reset_password', $data['email'].'/'.$data['token']);
+
+        Mail::to($data['email'])->send(new ForgotPasswordMail($link));
     }
 }

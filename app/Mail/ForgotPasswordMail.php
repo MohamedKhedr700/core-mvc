@@ -20,9 +20,9 @@ class ForgotPasswordMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(array $data)
+    public function __construct(string $link)
     {
-        $this->link = front_url('reset_password', $data['email'].'/'.$data['token']);
+        $this->link = $link;
     }
 
     /**
