@@ -55,8 +55,8 @@ trait UserTest
             'name',
             'email',
             'account_type',
-            'created_at',
-            'updated_at',
+            'createdAt',
+            'updatedAt',
         ];
     }
 

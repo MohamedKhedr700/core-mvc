@@ -20,5 +20,6 @@ Route::prefix('v1/user/wishlist')
     ->group(function () {
         Route::post('/attach', [Wishlist\WishlistController::class, 'attach']);
         Route::post('/detach', [Wishlist\WishlistController::class, 'detach']);
+        Route::delete('/clear', [Wishlist\WishlistController::class, 'clear']);
         Route::get('/', [Wishlist\WishlistController::class, 'index']);
     });

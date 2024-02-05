@@ -6,4 +6,5 @@ use Raid\Core\Enum\Enums\Action as RaidAction;
 
 class Action extends RaidAction
 {
+    const CLEAR = 'clear';
 }

@@ -24,6 +24,18 @@ class WishlistController extends Controller
     }
 
     /**
+     * List a user wishlist products.
+     */
+    public function index(
+        Actions\ListAction $action
+    ): JsonResponse {
+
+        $resources = $action->execute();
+
+        return $this->resources(fractal_data($resources, new ProductTransformer));
+    }
+
+    /**
      * Detach a user wishlist product.
      */
     public function detach(
@@ -37,14 +49,13 @@ class WishlistController extends Controller
     }
 
     /**
-     * List a user wishlist products.
+     * Clear a user wishlist products.
      */
-    public function index(
-        Actions\ListAction $action
+    public function clear(
+        Actions\ClearAction $action,
     ): JsonResponse {
+        $action->execute();
 
-        $resources = $action->execute();
-
-        return $this->resources(fractal_data($resources, new ProductTransformer));
+        return $this->message(__('cleared_successfully'));
     }
 }

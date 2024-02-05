@@ -30,8 +30,8 @@ trait UserProductTest
             'price',
             'description',
             'image',
-            'created_at',
-            'updated_at',
+            'createdAt',
+            'updatedAt',
         ];
     }
 }
