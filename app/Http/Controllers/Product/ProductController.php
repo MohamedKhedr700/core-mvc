@@ -8,8 +8,6 @@ use App\Http\Requests\Product as Requests;
 use App\Http\Transformers\Product\ProductTransformer;
 use App\Models\Product as ProductModel;
 use Illuminate\Http\JsonResponse;
-use League\Fractal\Manager;
-use League\Fractal\Scope;
 
 class ProductController extends Controller
 {

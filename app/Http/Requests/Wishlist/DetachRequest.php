@@ -18,7 +18,7 @@ class DetachRequest extends FormRequest
         return $this->withCommonRules([
             'productId' => [
                 Rule::exists('wishlist', 'product_id')
-                    ->where('user_id', account()->accountId())
+                    ->where('user_id', account()->accountId()),
             ],
         ]);
     }
