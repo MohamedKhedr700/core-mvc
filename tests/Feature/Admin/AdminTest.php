@@ -54,7 +54,7 @@ trait AdminTest
             'id',
             'name',
             'email',
-            'account_type',
+            'accountType',
             'createdAt',
             'updatedAt',
         ];
