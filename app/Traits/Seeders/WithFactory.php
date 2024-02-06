@@ -44,7 +44,7 @@ trait WithFactory
         $model = $this->model();
 
         if (! $model) {
-            throw new Exception('Seeder must define a model property class at ' . static::class);
+            throw new Exception('Seeder must define a model property class at '.static::class);
         }
 
         return $model::factory();

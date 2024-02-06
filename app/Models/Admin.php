@@ -21,8 +21,8 @@ class Admin extends Account implements AuthenticatableInterface, CanResetPasswor
     use Authenticatable;
     use CanForgotPassword;
     use Eventable;
-    use HasRoles;
     use Gateable;
+    use HasRoles;
 
     /**
      * {@inheritdoc}
