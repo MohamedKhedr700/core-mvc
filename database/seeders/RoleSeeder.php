@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Utilities\RoleUtility;
+use Exception;
 
 class RoleSeeder extends Seeder
 {
@@ -24,6 +25,8 @@ class RoleSeeder extends Seeder
 
     /**
      * Seed administrator.
+     *
+     * @throws Exception
      */
     private function seedAdministrator(): void
     {
@@ -34,6 +37,8 @@ class RoleSeeder extends Seeder
 
     /**
      * Seed assistant.
+     *
+     * @throws Exception
      */
     private function seedAssistant(): void
     {

@@ -20,8 +20,8 @@ trait WithModel
     /**
      * Get a model class.
      */
-    public function model(): string
+    public function model(): ?string
     {
-        return $this->model;
+        return $this->model ?? null;
     }
 }

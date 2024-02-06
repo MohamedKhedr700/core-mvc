@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Permission;
+use Exception;
 
 class PermissionSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class PermissionSeeder extends Seeder
 
     /**
      * Seed the application's database.
+     *
+     * @throws Exception
      */
     public function run(): void
     {
@@ -22,6 +25,8 @@ class PermissionSeeder extends Seeder
 
     /**
      * Seed all permissions.
+     *
+     * @throws Exception
      */
     private function seedPermissions(): void
     {
