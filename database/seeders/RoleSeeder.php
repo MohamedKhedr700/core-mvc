@@ -2,32 +2,32 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Utilities\RoleUtility;
-use Database\Factories\RoleFactory;
-use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * {@inheritdoc}
+     */
+    protected string $model = Role::class;
+
+    /**
+     * {@inheritDoc}
      */
     public function run(): void
     {
-        $factory = RoleFactory::new();
-
-        $this->seedAdministrator($factory);
-        $this->seedAssistant($factory);
+        $this->seedAdministrator();
+        $this->seedAssistant();
     }
 
     /**
      * Seed administrator.
      */
-    private function seedAdministrator(RoleFactory $factory): void
+    private function seedAdministrator(): void
     {
-        $role = $factory->create(['name' => 'administrator']);
+        $role = $this->factory()->create(['name' => 'administrator']);
 
         $this->sync($role, RoleUtility::administrator());
     }
@@ -35,9 +35,9 @@ class RoleSeeder extends Seeder
     /**
      * Seed assistant.
      */
-    private function seedAssistant(RoleFactory $factory): void
+    private function seedAssistant(): void
     {
-        $role = $factory->create(['name' => 'assistant']);
+        $role = $this->factory()->create(['name' => 'assistant']);
 
         $this->sync($role, RoleUtility::assistant());
     }

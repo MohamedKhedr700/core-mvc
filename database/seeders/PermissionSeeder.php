@@ -3,28 +3,30 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\PermissionFactory;
-use Illuminate\Database\Seeder;
+use App\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected string $model = Permission::class;
+
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        $factory = PermissionFactory::new();
-
-        $this->seedPermissions($factory);
+        $this->seedPermissions();
     }
 
     /**
      * Seed all permissions.
      */
-    private function seedPermissions(PermissionFactory $factory): void
+    private function seedPermissions(): void
     {
-        foreach ($factory->getPermissions() as $permission) {
-            $factory->create(['name' => $permission]);
+        foreach ($this->factory()->getPermissions() as $permission) {
+            $this->factory()->create(['name' => $permission]);
         }
     }
 }

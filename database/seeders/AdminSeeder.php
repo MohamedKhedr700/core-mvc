@@ -4,15 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
-use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * {@inheritdoc}
      */
-    public function run(): void
-    {
-        Admin::factory()->create();
-    }
+    protected string $model = Admin::class;
 }
