@@ -16,13 +16,13 @@ class PermissionSeeder extends Seeder
     {
         $factory = PermissionFactory::new();
 
-        $this->seed($factory);
+        $this->seedPermissions($factory);
     }
 
     /**
-     * Seed.
+     * Seed all permissions.
      */
-    private function seed(PermissionFactory $factory): void
+    private function seedPermissions(PermissionFactory $factory): void
     {
         foreach ($factory->getPermissions() as $permission) {
             $factory->create([

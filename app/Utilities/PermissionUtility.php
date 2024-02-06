@@ -2,8 +2,12 @@
 
 namespace App\Utilities;
 
+use App\Traits\Utilities\WithPermission;
+
 class PermissionUtility
 {
+    use WithPermission;
+
     /**
      * Get permissions for given models and actions.
      */

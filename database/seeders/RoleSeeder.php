@@ -33,7 +33,9 @@ class RoleSeeder extends Seeder
             'guard_name' => 'admin',
         ]);
 
-        $role->syncPermissions(Permission::all());
+        $permissions = PermissionUtility::getPermissions(...PermissionUtility::administrator());
+
+        $role->syncPermissions(PermissionUtility::filter($permissions));
     }
 
     /**
@@ -46,26 +48,8 @@ class RoleSeeder extends Seeder
             'guard_name' => 'admin',
         ]);
 
-        $permissions = PermissionUtility::getPermissions($this->getAssistantModels(), $this->getAssistantActions());
+        $permissions = PermissionUtility::getPermissions(...PermissionUtility::assistant());
 
-        $role->syncPermissions(Permission::filter([
-            'names' => $permissions,
-        ])->get());
-    }
-
-    /**
-     * Get assistant models.
-     */
-    private function getAssistantModels(): array
-    {
-        return ['user'];
-    }
-
-    /**
-     * Get assistant actions.
-     */
-    private function getAssistantActions(): array
-    {
-        return ['list', 'show'];
+        $role->syncPermissions(PermissionUtility::filter($permissions));
     }
 }
