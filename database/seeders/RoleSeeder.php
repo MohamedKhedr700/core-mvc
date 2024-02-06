@@ -3,10 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Admin;
-use App\Models\Permission;
 use App\Utilities\PermissionUtility;
-use Database\Factories\PermissionFactory;
 use Database\Factories\RoleFactory;
 use Illuminate\Database\Seeder;
 

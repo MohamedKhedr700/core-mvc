@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Permission;
 use App\Utilities\PermissionUtility;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Spatie\Permission\Models\Permission;
 
 /**
  * @extends Factory
