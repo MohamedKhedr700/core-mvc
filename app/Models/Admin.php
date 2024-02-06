@@ -12,12 +12,14 @@ use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
 use Raid\Core\Auth\Models\Authentication\Account;
 use Raid\Core\Auth\Traits\Model\Authenticatable;
 use Raid\Core\Event\Traits\Event\Eventable;
+use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Account implements AuthenticatableInterface, CanResetPassword
 {
     use Authenticatable;
     use CanForgotPassword;
     use Eventable;
+    use HasRoles;
 
     /**
      * {@inheritdoc}
