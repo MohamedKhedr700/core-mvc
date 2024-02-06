@@ -17,6 +17,7 @@ class PermissionFactory extends Factory
     {
         return [
             'name' => fake()->randomElement($this->getPermissions()),
+            'guard_name' => 'admin',
         ];
     }
 

@@ -16,6 +16,7 @@ class RoleFactory extends Factory
     {
         return [
             'name' => fake()->randomElement($this->getRoles()),
+            'guard_name' => 'admin',
         ];
     }
 
