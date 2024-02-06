@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Utilities\PermissionUtility;
+use App\Models\Permission;
+use App\Models\Role;
+use App\Utilities\RoleUtility;
 use Database\Factories\RoleFactory;
 use Illuminate\Database\Seeder;
 
@@ -30,9 +32,7 @@ class RoleSeeder extends Seeder
             'guard_name' => 'admin',
         ]);
 
-        $permissions = PermissionUtility::getPermissions(...PermissionUtility::administrator());
-
-        $role->syncPermissions(PermissionUtility::filter($permissions));
+        $this->sync($role, RoleUtility::administrator());
     }
 
     /**
@@ -45,8 +45,16 @@ class RoleSeeder extends Seeder
             'guard_name' => 'admin',
         ]);
 
-        $permissions = PermissionUtility::getPermissions(...PermissionUtility::assistant());
+        $this->sync($role, RoleUtility::assistant());
+    }
 
-        $role->syncPermissions(PermissionUtility::filter($permissions));
+    /**
+     * Sync role permissions.
+     */
+    private function sync(Role $role, array $arguments): void
+    {
+        $permissions = RoleUtility::getPermissions(...$arguments);
+
+        $role->syncPermissions(Permission::findByNames($permissions));
     }
 }

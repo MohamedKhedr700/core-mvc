@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Permission;
-use App\Utilities\PermissionUtility;
+use App\Utilities\RoleUtility;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -56,6 +56,6 @@ class PermissionFactory extends Factory
      */
     public function getPermissions(): array
     {
-        return PermissionUtility::getPermissions($this->getModels(), $this->getCrudActions());
+        return RoleUtility::getPermissions($this->getModels(), $this->getCrudActions());
     }
 }

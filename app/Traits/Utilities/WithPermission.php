@@ -8,34 +8,28 @@ use Illuminate\Support\Collection;
 trait WithPermission
 {
     /**
-     * Filter permissions.
+     * Get permissions for given models and actions.
      */
-    public static function filter(array $permissions): Collection
+    public static function getPermissions(array $models, array $actions, array $permissions = []): array
     {
-        return Permission::filter([
-            'names' => $permissions,
-        ])->get();
+        foreach ($models as $model) {
+            array_push($permissions, ...static::getModelPermissions($model, $actions));
+        }
+
+        return $permissions;
     }
 
     /**
-     * Get administrator permissions.
+     * Get model permissions.
      */
-    public static function administrator(): array
+    private static function getModelPermissions(string $model, array $actions): array
     {
-        return [
-            'models' => ['admin', 'user'],
-            'actions' => ['create', 'list', 'show', 'update', 'delete'],
-        ];
-    }
+        $permissions = [];
 
-    /**
-     * Get assistant permissions.
-     */
-    public static function assistant(): array
-    {
-        return [
-            'models' => ['user'],
-            'actions' => ['list', 'show'],
-        ];
+        foreach ($actions as $action) {
+            $permissions[] = $model.'.'.$action;
+        }
+
+        return $permissions;
     }
 }
