@@ -25,7 +25,7 @@ trait WithFactory
     public function factory(): Factory
     {
         if (! isset($this->factory)) {
-            $this->factory = $this->model()->factory();
+            $this->factory = $this->model()::factory();
         }
 
         return $this->factory;
