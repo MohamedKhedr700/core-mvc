@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use App\Traits\ApiResponse;
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\PostTooLargeException;
@@ -52,6 +54,10 @@ class Handler extends ExceptionHandler
 
             case $e instanceof PostTooLargeException:
                 return $this->error([], __('message.exception.413'), 413);
+
+            case $e instanceof AuthenticationException:
+            case $e instanceof AuthorizationException:
+                return $this->unauthorized([], $e->getMessage());
 
             case $e instanceof ValidationException:
                 return $this->unprocessable($e->errors(), $e->getMessage());

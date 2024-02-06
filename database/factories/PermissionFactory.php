@@ -34,7 +34,7 @@ class PermissionFactory extends Factory
      */
     private function getCrudActions(): array
     {
-        return ['create', 'list', 'show', 'update', 'delete'];
+        return ['create', 'list', 'find', 'update', 'delete'];
     }
 
     /**

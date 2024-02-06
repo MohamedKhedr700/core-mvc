@@ -14,14 +14,14 @@ return [
 
         'administrator' => [
             'models' => ['admin', 'user'],
-            'actions' => ['create', 'list', 'show', 'update', 'delete'],
+            'actions' => ['create', 'list', 'find', 'update', 'delete'],
             'permissions' => [],
         ],
 
         'assistant' => [
             'models' => ['user'],
-            'actions' => ['list', 'show'],
-            'permissions' => ['admin.show'],
+            'actions' => ['list', 'find'],
+            'permissions' => [],
         ],
     ],
 

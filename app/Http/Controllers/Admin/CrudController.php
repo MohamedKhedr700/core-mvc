@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
 use App\Http\Transformers\Admin\AdminTransformer;
 use App\Models\Admin as AdminModel;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 
 class CrudController extends Controller
@@ -26,11 +27,15 @@ class CrudController extends Controller
 
     /**
      * List admin resources.
+     *
+     * @throws AuthorizationException
      */
     public function index(
         Requests\ListRequest $request,
         Actions\ListAction $action,
     ): JsonResponse {
+
+        $action->authorize();
 
         $resources = $action->execute($request->passed());
 

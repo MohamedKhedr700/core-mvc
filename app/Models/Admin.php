@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\Account as AccountEnum;
 use App\Events\Admin\SendForgotPasswordEvent;
+use App\Http\Gates\AdminGate;
 use App\Models\ModelFilters\AdminFilter;
 use App\Traits\Models\CanForgotPassword;
 use Database\Factories\AdminFactory;
@@ -12,6 +13,7 @@ use Raid\Core\Auth\Authentication\Contracts\AuthenticatableInterface;
 use Raid\Core\Auth\Models\Authentication\Account;
 use Raid\Core\Auth\Traits\Model\Authenticatable;
 use Raid\Core\Event\Traits\Event\Eventable;
+use Raid\Core\Gate\Traits\Gate\Gateable;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Account implements AuthenticatableInterface, CanResetPassword
@@ -20,6 +22,7 @@ class Admin extends Account implements AuthenticatableInterface, CanResetPasswor
     use CanForgotPassword;
     use Eventable;
     use HasRoles;
+    use Gateable;
 
     /**
      * {@inheritdoc}
@@ -59,6 +62,16 @@ class Admin extends Account implements AuthenticatableInterface, CanResetPasswor
     {
         return [
             SendForgotPasswordEvent::class,
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getGates(): array
+    {
+        return [
+            AdminGate::class,
         ];
     }
 }
