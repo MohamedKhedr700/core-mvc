@@ -23,7 +23,6 @@ class PermissionFactory extends Factory
     {
         return [
             'name' => fake()->randomElement($this->getPermissions()),
-            'guard_name' => fake()->randomElement($this->getGuards()),
         ];
     }
 
@@ -41,14 +40,6 @@ class PermissionFactory extends Factory
     private function getCrudActions(): array
     {
         return ['create', 'list', 'show', 'update', 'delete'];
-    }
-
-    /**
-     * Get guards.
-     */
-    private function getGuards(): array
-    {
-        return ['admin', 'user'];
     }
 
     /**

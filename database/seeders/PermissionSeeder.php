@@ -24,10 +24,7 @@ class PermissionSeeder extends Seeder
     private function seedPermissions(PermissionFactory $factory): void
     {
         foreach ($factory->getPermissions() as $permission) {
-            $factory->create([
-                'name' => $permission,
-                'guard_name' => 'admin',
-            ]);
+            $factory->create(['name' => $permission]);
         }
     }
 }

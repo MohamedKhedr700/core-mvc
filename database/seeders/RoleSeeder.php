@@ -27,10 +27,7 @@ class RoleSeeder extends Seeder
      */
     private function seedAdministrator(RoleFactory $factory): void
     {
-        $role = $factory->create([
-            'name' => 'administrator',
-            'guard_name' => 'admin',
-        ]);
+        $role = $factory->create(['name' => 'administrator']);
 
         $this->sync($role, RoleUtility::administrator());
     }
@@ -40,10 +37,7 @@ class RoleSeeder extends Seeder
      */
     private function seedAssistant(RoleFactory $factory): void
     {
-        $role = $factory->create([
-            'name' => 'assistant',
-            'guard_name' => 'admin',
-        ]);
+        $role = $factory->create(['name' => 'assistant']);
 
         $this->sync($role, RoleUtility::assistant());
     }
@@ -51,9 +45,13 @@ class RoleSeeder extends Seeder
     /**
      * Sync role permissions.
      */
-    private function sync(Role $role, array $arguments): void
+    private function sync(Role $role, array $data): void
     {
-        $permissions = RoleUtility::getPermissions(...$arguments);
+        $permissions = RoleUtility::getPermissions(
+            $data['models'],
+            $data['actions'],
+            $data['permissions'],
+        );
 
         $role->syncPermissions(Permission::findByNames($permissions));
     }

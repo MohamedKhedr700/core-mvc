@@ -2,9 +2,6 @@
 
 namespace App\Traits\Utilities;
 
-use App\Models\Permission;
-use Illuminate\Support\Collection;
-
 trait WithRole
 {
     /**

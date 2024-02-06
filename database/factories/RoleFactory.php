@@ -22,7 +22,6 @@ class RoleFactory extends Factory
     {
         return [
             'name' => fake()->randomElement($this->getRoles()),
-            'guard_name' => fake()->randomElement($this->getGuards()),
         ];
     }
 
@@ -32,13 +31,5 @@ class RoleFactory extends Factory
     private function getRoles(): array
     {
         return ['administrator', 'assistant'];
-    }
-
-    /**
-     * Get guards.
-     */
-    private function getGuards(): array
-    {
-        return ['admin', 'user'];
     }
 }
