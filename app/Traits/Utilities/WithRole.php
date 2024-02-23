@@ -15,18 +15,10 @@ trait WithRole
     }
 
     /**
-     * Get administrator permissions.
+     * Get configured role.
      */
-    public static function administrator(): array
+    public static function getRole(string $role): array
     {
-        return config('role.roles.administrator', []);
-    }
-
-    /**
-     * Get assistant permissions.
-     */
-    public static function assistant(): array
-    {
-        return config('role.roles.assistant', []);
+        return config("role.roles.$role", []);
     }
 }

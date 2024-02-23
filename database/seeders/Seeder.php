@@ -3,14 +3,14 @@
 namespace Database\Seeders;
 
 use App\Traits\Seeders\WithFactory;
-use App\Traits\Seeders\WithModel;
+use App\Traits\Seeders\HasModel;
 use Exception;
 use Illuminate\Database\Seeder as IlluminateSeeder;
 
 class Seeder extends IlluminateSeeder
 {
+    use HasModel;
     use WithFactory;
-    use WithModel;
 
     /**
      * Seed the application's database.

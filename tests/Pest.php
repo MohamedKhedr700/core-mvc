@@ -13,13 +13,18 @@
 
 uses(
     Tests\TestCase::class,
-    App\Traits\Tests\WithOwner::class,
+    App\Traits\Tests\HasOwner::class,
     App\Traits\Tests\WithUri::class,
 )->in('Feature');
 
 uses(
     Tests\Feature\Admin\AdminTest::class,
 )->in('Feature/Admin');
+
+uses(
+    Tests\Feature\AdminUser\AdminUserTest::class,
+)->in('Feature/AdminUser');
+
 
 uses(
     Tests\Feature\User\UserTest::class,

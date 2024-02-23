@@ -4,7 +4,7 @@ namespace App\Traits\Tests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 
-trait WithOwner
+trait HasOwner
 {
     /**
      * Authenticatable owner instance.
