@@ -2,10 +2,7 @@
 
 use App\Enums\Role as RoleEnum;
 use App\Models\Admin;
-use App\Models\Permission;
-use App\Models\Role;
 use App\Models\User;
-use App\Utilities\RoleUtility;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Raid\Core\Model\Models\Model;
@@ -47,53 +44,13 @@ if (! function_exists('admin')) {
     /**
      * Login admin as a test owner.
      */
-    function admin(array $data = []): TestCase
+    function admin(array $data = [], ?string $role = null): TestCase
     {
         $admin = factory(Admin::class, $data);
 
-        $role = role(RoleEnum::MANAGEMENT);
-
-        $admin->assignRole($role);
+        $admin->assignRole($role ?: RoleEnum::MANAGEMENT);
 
         return login($admin, 'admin');
-    }
-}
-
-if (! function_exists('role')) {
-    /**
-     * Login admin as a test owner.
-     */
-    function role(string $role): Role
-    {
-        $configuredRole = RoleUtility::getRole($role);
-
-        $permissions = permission(RoleUtility::getPermissions(
-            $configuredRole['models'],
-            $configuredRole['actions'],
-            $configuredRole['permissions'],
-        ));
-
-        $role = factory(Role::class, ['name' => $role]);
-
-        $role->syncPermissions($permissions);
-
-        return $role;
-    }
-}
-
-if (! function_exists('permission')) {
-    /**
-     * Login admin as a test owner.
-     */
-    function permission(array $permissions = []): array
-    {
-        $createdPermissions = [];
-
-        foreach ($permissions as $permission) {
-            $createdPermissions[] = factory(Permission::class, ['name' => $permission]);
-        }
-
-        return $createdPermissions;
     }
 }
 

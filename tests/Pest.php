@@ -12,33 +12,36 @@
 */
 
 uses(
-    Tests\TestCase::class,
-    App\Traits\Tests\HasOwner::class,
-    App\Traits\Tests\WithUri::class,
-)->in('Feature');
+    \Tests\TestCase::class,
+    \App\Traits\Tests\HasOwner::class,
+    \App\Traits\Tests\WithUri::class,
+)->beforeEach(function () {
+    $this->seed(\Database\Seeders\PermissionSeeder::class);
+    $this->seed(\Database\Seeders\RoleSeeder::class);
+})->in('Feature');
 
 uses(
-    Tests\Feature\Admin\AdminTest::class,
+    \Tests\Feature\Admin\AdminTest::class,
 )->in('Feature/Admin');
 
 uses(
-    Tests\Feature\AdminUser\AdminUserTest::class,
+    \Tests\Feature\AdminUser\AdminUserTest::class,
 )->in('Feature/AdminUser');
 
 uses(
-    Tests\Feature\User\UserTest::class,
+    \Tests\Feature\User\UserTest::class,
 )->in('Feature/User');
 
 uses(
-    Tests\Feature\Product\ProductTest::class,
+    \Tests\Feature\Product\ProductTest::class,
 )->in('Feature/Product');
 
 uses(
-    Tests\Feature\UserProduct\UserProductTest::class,
+    \Tests\Feature\UserProduct\UserProductTest::class,
 )->in('Feature/UserProduct');
 
 uses(
-    Tests\Feature\Wishlist\WishlistTest::class,
+    \Tests\Feature\Wishlist\WishlistTest::class,
 )->in('Feature/Wishlist');
 
 // current tests
