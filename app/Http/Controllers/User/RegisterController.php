@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Actions\User as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User as Requests;
-use App\Http\Transformers\User\UserTransformer;
+use App\Http\Transformers\User\UserTransformer as Transformer;
 use Illuminate\Http\JsonResponse;
 use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 
@@ -34,7 +34,7 @@ class RegisterController extends Controller
         return $this->success([
             'message' => __('registered_successfully'),
             'token' => $channel->stringToken(),
-            'resource' => fractal_data($channel->account(), new UserTransformer),
+            'resource' => fractal_data($channel->account(), new Transformer),
         ]);
     }
 

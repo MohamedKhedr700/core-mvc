@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Actions\User as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User as Requests;
-use App\Http\Transformers\User\UserTransformer;
+use App\Http\Transformers\User\UserTransformer as Transformer;
 use Illuminate\Http\JsonResponse;
 
 class ProfileController extends Controller
@@ -19,7 +19,7 @@ class ProfileController extends Controller
 
         $resource = $action->execute();
 
-        return $this->resource(fractal_data($resource, new UserTransformer));
+        return $this->resource(fractal_data($resource, new Transformer));
     }
 
     /**

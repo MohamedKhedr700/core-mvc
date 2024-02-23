@@ -5,19 +5,24 @@ namespace App\Http\Controllers\Product;
 use App\Actions\Product as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product as Requests;
-use App\Http\Transformers\Product\ProductTransformer;
-use App\Models\Product as ProductModel;
+use App\Http\Transformers\Product\ProductTransformer as Transformer;
+use App\Models\Product as Model;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 
 class CrudController extends Controller
 {
     /**
      * Create a new product.
+     *
+     * @throws AuthorizationException
      */
     public function store(
         Requests\StoreRequest $request,
         Actions\CreateAction $action,
     ): JsonResponse {
+
+        $action->authorize();
 
         $action->execute($request->passed());
 
@@ -26,53 +31,69 @@ class CrudController extends Controller
 
     /**
      * List product resources.
+     *
+     * @throws AuthorizationException
      */
     public function index(
         Requests\ListRequest $request,
         Actions\ListAction $action,
     ): JsonResponse {
 
+        $action->authorize();
+
         $resources = $action->execute($request->passed());
 
-        return $this->resources(fractal_data($resources, new ProductTransformer, ['admin']));
+        return $this->resources(fractal_data($resources, new Transformer, ['admin']));
     }
 
     /**
      * Show a product.
+     *
+     * @throws AuthorizationException
      */
     public function show(
-        ProductModel $product,
+        Model $model,
         Actions\FindAction $action,
     ): JsonResponse {
 
-        $resource = $action->execute($product);
+        $action->authorize();
 
-        return $this->resource(fractal_data($resource, new ProductTransformer));
+        $resource = $action->execute($model);
+
+        return $this->resource(fractal_data($resource, new Transformer));
     }
 
     /**
      * Update a product.
+     *
+     * @throws AuthorizationException
      */
     public function update(
         Requests\UpdateRequest $request,
-        ProductModel $product,
+        Model $model,
         Actions\UpdateAction $action,
     ): JsonResponse {
 
-        $action->execute($product, $request->passed());
+        $action->authorize();
+
+        $action->execute($model, $request->passed());
 
         return $this->message(__('updated_successfully'));
     }
 
     /**
      * Delete a product.
+     *
+     * @throws AuthorizationException
      */
     public function delete(
-        ProductModel $product,
+        Model $model,
         Actions\DeleteAction $action,
     ): JsonResponse {
 
-        $action->execute($product);
+        $action->authorize();
+
+        $action->execute($model);
 
         return $this->message(__('deleted_successfully'));
     }
