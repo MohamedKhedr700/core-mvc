@@ -41,7 +41,12 @@ class CrudController extends Controller
 
         $action->authorize();
 
-        $resources = $action->execute($request->passed());
+        $resources = $action->execute(
+            $request->passed(),
+            ['*'],
+            [],
+            $request->has('perPage'),
+        );
 
         return $this->resources(fractal_data($resources, new Transformer));
     }

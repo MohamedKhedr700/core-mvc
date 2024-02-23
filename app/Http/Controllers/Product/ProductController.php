@@ -19,7 +19,12 @@ class ProductController extends Controller
         Actions\ListAction $action,
     ): JsonResponse {
 
-        $resources = $action->execute($request->passed(), ['id', 'name', 'price', 'image']);
+        $resources = $action->execute(
+            $request->passed(),
+            ['id', 'name', 'price', 'image'],
+            [],
+            $request->has('perPage'),
+        );
 
         return $this->resources(fractal_data($resources, new Transformer, ['user']));
     }

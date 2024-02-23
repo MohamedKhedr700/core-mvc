@@ -15,7 +15,9 @@ abstract class ListAction extends RaidListAction implements ListActionInterface
      */
     public function handle(array $filters = [], array $columns = ['*'], array $relations = [], bool $paginate = false): Collection|LengthAwarePaginator
     {
-        return $paginate ? $this->paginate($filters, $columns, $relations) : $this->all($filters, $columns, $relations);
+        return array_key_exists('perPage', $filters) ?
+            $this->paginate($filters, $columns, $relations) :
+            $this->all($filters, $columns, $relations);
     }
 
     /**
@@ -31,7 +33,7 @@ abstract class ListAction extends RaidListAction implements ListActionInterface
      */
     public function paginate(array $filters = [], array $columns = ['*'], array $relations = []): LengthAwarePaginator
     {
-        return $this->index($filters, $columns, $relations)->paginate();
+        return $this->index($filters, $columns, $relations)->paginate($filters['perPage'], $filters['page'] ?? 0);
     }
 
     /**

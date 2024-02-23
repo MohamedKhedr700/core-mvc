@@ -14,6 +14,9 @@ class ListRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'page' => ['nullable', 'int', 'min:1'],
+            'perPage' => ['nullable', 'int', 'min:1'],
+        ];
     }
 }
