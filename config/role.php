@@ -11,17 +11,35 @@ return [
     */
 
     'roles' => [
-
         'administrator' => [
-            'models' => ['admin', 'user'],
-            'actions' => ['create', 'list', 'find', 'update', 'delete'],
+            'models' => [
+                'admin',
+                'user',
+                'product',
+            ],
+            'actions' => [
+                'create',
+                'list',
+                'find',
+                'update',
+                'delete',
+            ],
             'permissions' => [],
         ],
-
         'assistant' => [
-            'models' => ['user'],
-            'actions' => ['list', 'find'],
-            'permissions' => [],
+            'models' => [
+                'user',
+                'product',
+            ],
+            'actions' => [
+                'list',
+                'find',
+            ],
+            'permissions' => [
+                'create.product',
+                'update.product',
+                'delete.product',
+            ],
         ],
     ],
 

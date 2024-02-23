@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\Admin as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
-use App\Http\Transformers\Admin\AdminTransformer;
+use App\Http\Transformers\Admin\AdminTransformer as Transformer;
 use Illuminate\Http\JsonResponse;
 
 class ProfileController extends Controller
@@ -19,7 +19,7 @@ class ProfileController extends Controller
 
         $resource = $action->execute();
 
-        return $this->resource(fractal_data($resource, new AdminTransformer));
+        return $this->resource(fractal_data($resource, new Transformer));
     }
 
     /**

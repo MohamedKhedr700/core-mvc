@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Enums\Account as AccountEnum;
 use App\Events\Admin\SendForgotPasswordEvent;
-use App\Http\Gates\AdminGate;
+use App\Http\Gates\Admin\AdminGate;
 use App\Models\ModelFilters\AdminFilter;
 use App\Traits\Models\CanForgotPassword;
 use Database\Factories\AdminFactory;

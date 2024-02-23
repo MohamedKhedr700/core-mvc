@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\Admin as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin as Requests;
-use App\Http\Transformers\Admin\AdminTransformer;
+use App\Http\Transformers\Admin\AdminTransformer as Transformer;
 use Illuminate\Http\JsonResponse;
 use Raid\Core\Auth\Authentication\Contracts\AuthChannelInterface;
 
@@ -34,7 +34,7 @@ class RegisterController extends Controller
         return $this->success([
             'message' => __('registered_successfully'),
             'token' => $channel->stringToken(),
-            'resource' => fractal_data($channel->account(), new AdminTransformer),
+            'resource' => fractal_data($channel->account(), new Transformer),
         ]);
     }
 

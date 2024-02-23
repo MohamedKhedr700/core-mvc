@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Gates;
+namespace App\Http\Gates\Admin;
 
 use App\Actions\Admin as Actions;
-use Raid\Core\Auth\Models\Authentication\Contracts\AccountInterface;
+use App\Models\Admin;
 use Raid\Core\Gate\Gates\Contracts\GateInterface;
 use Raid\Core\Gate\Gates\Gate;
 
@@ -23,7 +23,7 @@ class AdminGate extends Gate implements GateInterface
     /**
      * Determine if an account can create an admin resources.
      */
-    public function create(AccountInterface $account)
+    public function create(Admin $account): bool
     {
         return $account->hasPermissionTo(Actions\ListAction::getAction());
     }
@@ -31,7 +31,7 @@ class AdminGate extends Gate implements GateInterface
     /**
      * Determine if an account can list admin resources.
      */
-    public function list(AccountInterface $account)
+    public function list(Admin $account): bool
     {
         return $account->hasPermissionTo(Actions\ListAction::getAction());
     }
@@ -39,7 +39,7 @@ class AdminGate extends Gate implements GateInterface
     /**
      * Determine if an account can find an admin resources.
      */
-    public function find(AccountInterface $account)
+    public function find(Admin $account): bool
     {
         return $account->hasPermissionTo(Actions\FindAction::getAction());
     }
@@ -47,7 +47,7 @@ class AdminGate extends Gate implements GateInterface
     /**
      * Determine if an account can update an admin resources.
      */
-    public function update(AccountInterface $account)
+    public function update(Admin $account): bool
     {
         return $account->hasPermissionTo(Actions\UpdateAction::getAction());
     }
@@ -55,7 +55,7 @@ class AdminGate extends Gate implements GateInterface
     /**
      * Determine if an account can delete an admin resources.
      */
-    public function delete(AccountInterface $account)
+    public function delete(Admin $account): bool
     {
         return $account->hasPermissionTo(Actions\DeleteAction::getAction());
     }
