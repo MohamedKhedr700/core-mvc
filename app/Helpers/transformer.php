@@ -40,10 +40,7 @@ if (! function_exists('fractal_non_paginated')) {
      */
     function fractal_non_paginated(mixed $data, Transformer $transformer, array $includes = []): array
     {
-        return Arr::get(
-            fractal_with($data, $transformer, $includes)->toArray(),
-            'data',
-        );
+        return fractal_with($data, $transformer, $includes)->toArray();
     }
 }
 

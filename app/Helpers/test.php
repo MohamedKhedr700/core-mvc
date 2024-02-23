@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Role as RoleEnum;
 use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -43,9 +44,13 @@ if (! function_exists('admin')) {
     /**
      * Login admin as a test owner.
      */
-    function admin(array $data = []): TestCase
+    function admin(array $data = [], ?string $role = null): TestCase
     {
-        return login(factory(Admin::class, $data), 'admin');
+        $admin = factory(Admin::class, $data);
+
+        $admin->assignRole($role ?: RoleEnum::MANAGEMENT);
+
+        return login($admin, 'admin');
     }
 }
 

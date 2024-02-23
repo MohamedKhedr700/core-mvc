@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Account as AccountEnum;
-use App\Events\User\SendForgotPasswordEvent;
+use App\Events\User\ForgotPasswordEvent;
 use App\Http\Gates\User\UserGate;
 use App\Models\ModelFilters\UserFilter;
 use App\Traits\Models\CanForgotPassword;
@@ -67,7 +67,7 @@ class User extends Account implements AuthenticatableInterface, CanResetPassword
     public static function getEvents(): array
     {
         return [
-            SendForgotPasswordEvent::class,
+            ForgotPasswordEvent::class,
         ];
     }
 

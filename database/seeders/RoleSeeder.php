@@ -21,6 +21,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $this->seedRoles([
+            RoleEnum::NONE,
             RoleEnum::MANAGEMENT,
             RoleEnum::ADMINISTRATOR,
             RoleEnum::ASSISTANT,
@@ -62,6 +63,10 @@ class RoleSeeder extends Seeder
             $configuration['actions'],
             $configuration['permissions'],
         );
+
+        if (empty($permissions)) {
+            return;
+        }
 
         $role->syncPermissions(Permission::findByNames($permissions));
     }

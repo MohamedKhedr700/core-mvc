@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// user product routes
+Route::prefix('v1/user/products')
+    ->middleware(['auth:user'])
+    ->group(function () {
+        Route::get('/', [Product\ProductController::class, 'index']);
+        Route::get('/{id}', [Product\ProductController::class, 'show']);
+    });
+
 // crud routes
 Route::prefix('v1/admin/products')
     ->middleware(['auth:admin'])
@@ -23,12 +31,4 @@ Route::prefix('v1/admin/products')
         Route::get('/{id}', [Product\CrudController::class, 'show']);
         Route::put('/{id}', [Product\CrudController::class, 'update']);
         Route::delete('/{id}', [Product\CrudController::class, 'delete']);
-    });
-
-// user product routes
-Route::prefix('v1/user/products')
-    ->middleware(['auth:user'])
-    ->group(function () {
-        Route::get('/', [Product\ProductController::class, 'index']);
-        Route::get('/{id}', [Product\ProductController::class, 'show']);
     });

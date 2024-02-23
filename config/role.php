@@ -13,6 +13,11 @@ return [
     */
 
     'roles' => [
+        Role::NONE => [
+            'models' => [],
+            'actions' => [],
+            'permissions' => [],
+        ],
         Role::MANAGEMENT => [
             'models' => [
                 'admin',

@@ -2,7 +2,7 @@
 
 namespace App\Traits\Seeders;
 
-trait WithModel
+trait HasModel
 {
     /**
      * Seeder model class.
