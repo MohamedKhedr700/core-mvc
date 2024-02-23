@@ -29,17 +29,17 @@ return [
         'assistant' => [
             'models' => [
                 'user',
-                'product',
+                'product' => [
+                    'create',
+                    'update',
+                    'delete',
+                ],
             ],
             'actions' => [
                 'list',
                 'find',
             ],
-            'permissions' => [
-                'create.product',
-                'update.product',
-                'delete.product',
-            ],
+            'permissions' => [],
         ],
     ],
 

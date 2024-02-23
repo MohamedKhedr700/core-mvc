@@ -26,7 +26,11 @@ class PermissionFactory extends Factory
      */
     private function getModels(): array
     {
-        return ['admin', 'user'];
+        return [
+            'admin',
+            'user',
+            'product',
+        ];
     }
 
     /**
@@ -34,7 +38,13 @@ class PermissionFactory extends Factory
      */
     private function getCrudActions(): array
     {
-        return ['create', 'list', 'find', 'update', 'delete'];
+        return [
+            'create',
+            'list',
+            'find',
+            'update',
+            'delete',
+        ];
     }
 
     /**

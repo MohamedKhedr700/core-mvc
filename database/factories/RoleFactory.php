@@ -25,6 +25,9 @@ class RoleFactory extends Factory
      */
     private function getRoles(): array
     {
-        return ['administrator', 'assistant'];
+        return [
+            'administrator',
+            'assistant',
+        ];
     }
 }

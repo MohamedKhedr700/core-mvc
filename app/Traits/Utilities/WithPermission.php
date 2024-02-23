@@ -9,7 +9,16 @@ trait WithPermission
      */
     public static function getPermissions(array $models, array $actions, array $permissions = []): array
     {
-        foreach ($models as $model) {
+        foreach ($models as $key => $value) {
+
+            $valueIsArray = is_array($value);
+
+            $model = $valueIsArray ? $key : $value;
+
+            if ($valueIsArray) {
+                array_push($actions, ...$value);
+            }
+
             array_push($permissions, ...static::getModelPermissions($model, $actions));
         }
 
