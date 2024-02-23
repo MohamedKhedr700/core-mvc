@@ -189,4 +189,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'per_page' => 10,
+
 ];

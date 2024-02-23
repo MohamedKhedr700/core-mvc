@@ -2,6 +2,7 @@
 
 namespace App\Actions\Core;
 
+use App\Utilities\PaginateUtility;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Raid\Core\Action\Actions\Contracts\Crud\ListActionInterface;
@@ -15,7 +16,7 @@ abstract class ListAction extends RaidListAction implements ListActionInterface
      */
     public function handle(array $filters = [], array $columns = ['*'], array $relations = []): Collection|LengthAwarePaginator
     {
-        return array_key_exists('perPage', $filters) ?
+        return array_key_exists('page', $filters) ?
             $this->paginate($filters, $columns, $relations) :
             $this->all($filters, $columns, $relations);
     }
@@ -33,7 +34,10 @@ abstract class ListAction extends RaidListAction implements ListActionInterface
      */
     public function paginate(array $filters = [], array $columns = ['*'], array $relations = []): LengthAwarePaginator
     {
-        return $this->index($filters, $columns, $relations)->paginate($filters['perPage'], $filters['page'] ?? 0);
+        return $this->index($filters, $columns, $relations)->paginate(
+            $filters['perPage'] ?? PaginateUtility::getPerPage(),
+            $filters['page'],
+        );
     }
 
     /**
