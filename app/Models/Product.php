@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Events\Product\CreatedEvent;
 use App\Http\Gates\Product\ProductGate;
 use App\Models\ModelFilters\ProductFilter;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Raid\Core\Event\Traits\Event\Eventable;
 use Raid\Core\Gate\Traits\Gate\Gateable;
 use Raid\Core\Model\Models\Model;
 
 class Product extends Model
 {
+    use Eventable;
     use Gateable;
 
     /**
@@ -32,6 +35,16 @@ class Product extends Model
         'description',
         'image',
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getEvents(): array
+    {
+        return [
+            CreatedEvent::class,
+        ];
+    }
 
     /**
      * {@inheritdoc}
