@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Account as AccountEnum;
-use App\Events\Admin\SendForgotPasswordEvent;
+use App\Events\Admin\ForgotPasswordEvent;
 use App\Http\Gates\Admin\AdminGate;
 use App\Models\ModelFilters\AdminFilter;
 use App\Traits\Models\CanForgotPassword;
@@ -61,7 +61,7 @@ class Admin extends Account implements AuthenticatableInterface, CanResetPasswor
     public static function getEvents(): array
     {
         return [
-            SendForgotPasswordEvent::class,
+            ForgotPasswordEvent::class,
         ];
     }
 

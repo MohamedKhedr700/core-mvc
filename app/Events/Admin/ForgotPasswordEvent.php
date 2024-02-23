@@ -7,7 +7,7 @@ use App\Listeners\Admin\SendForgotPasswordListener;
 use Raid\Core\Event\Events\Contracts\EventInterface;
 use Raid\Core\Event\Events\Event;
 
-class SendForgotPasswordEvent extends Event implements EventInterface
+class ForgotPasswordEvent extends Event implements EventInterface
 {
     /**
      * {@inheritdoc}
