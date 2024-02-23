@@ -20,7 +20,7 @@ Route::prefix('v1/admin/roles')
     ->group(function () {
         Route::post('/', [Role\CrudController::class, 'store']);
         Route::get('/', [Role\CrudController::class, 'index']);
-        Route::get('/{role}', [Role\CrudController::class, 'show']);
-        Route::put('/{role}', [Role\CrudController::class, 'update']);
-        Route::delete('/{role}', [Role\CrudController::class, 'delete']);
+        Route::get('/{id}', [Role\CrudController::class, 'show']);
+        Route::put('/{id}', [Role\CrudController::class, 'update']);
+        Route::delete('/{id}', [Role\CrudController::class, 'delete']);
     });

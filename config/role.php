@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Role;
+
 return [
 
     /*
@@ -11,7 +13,24 @@ return [
     */
 
     'roles' => [
-        'administrator' => [
+        Role::MANAGEMENT => [
+            'models' => [
+                'admin',
+                'permission',
+                'product',
+                'role',
+                'user',
+            ],
+            'actions' => [
+                'create',
+                'list',
+                'find',
+                'update',
+                'delete',
+            ],
+            'permissions' => [],
+        ],
+        Role::ADMINISTRATOR => [
             'models' => [
                 'admin',
                 'user',
@@ -26,7 +45,7 @@ return [
             ],
             'permissions' => [],
         ],
-        'assistant' => [
+        Role::ASSISTANT => [
             'models' => [
                 'user',
                 'product' => [

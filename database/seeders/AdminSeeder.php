@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\Role;
 use App\Models\Admin;
 use Exception;
 
@@ -18,8 +19,23 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->seedManagement();
         $this->seedAdministrator();
         $this->seedAssistant();
+    }
+
+    /**
+     * Seed management.
+     */
+    private function seedManagement(): void
+    {
+        $admin = $this->factory()->create([
+            'name' => 'management',
+            'email' => 'management@raid.net',
+            'password' => 'password',
+        ]);
+
+        $admin->assignRole(Role::MANAGEMENT);
     }
 
     /**
@@ -35,7 +51,7 @@ class AdminSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        $admin->assignRole('administrator');
+        $admin->assignRole(Role::ADMINISTRATOR);
     }
 
     /**
@@ -51,6 +67,6 @@ class AdminSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        $admin->assignRole('assistant');
+        $admin->assignRole(Role::ASSISTANT);
     }
 }

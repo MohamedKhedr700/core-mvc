@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Role;
 use App\Actions\Role as Actions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Role as Requests;
+use App\Http\Transformers\Role\RoleTransformer as Transformer;
 use App\Models\Role as Model;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,7 @@ class CrudController extends Controller
 
         $resources = $action->execute($request->passed());
 
-        return $this->resources(fractal_data($resources, new RoleTransformer));
+        return $this->resources(fractal_data($resources, new Transformer));
     }
 
     /**
@@ -51,15 +52,15 @@ class CrudController extends Controller
      * @throws AuthorizationException
      */
     public function show(
-        Model $model,
+        Model $id,
         Actions\FindAction $action,
     ): JsonResponse {
 
         $action->authorize();
 
-        $resource = $action->execute($model);
+        $resource = $action->execute($id);
 
-        return $this->resource(fractal_data($resource, new RoleTransformer));
+        return $this->resource(fractal_data($resource, new Transformer));
     }
 
     /**
@@ -69,13 +70,13 @@ class CrudController extends Controller
      */
     public function update(
         Requests\UpdateRequest $request,
-        Model $model,
+        Model $id,
         Actions\UpdateAction $action,
     ): JsonResponse {
 
         $action->authorize();
 
-        $action->execute($model, $request->passed());
+        $action->execute($id, $request->passed());
 
         return $this->message(__('updated_successfully'));
     }
@@ -86,13 +87,13 @@ class CrudController extends Controller
      * @throws AuthorizationException
      */
     public function delete(
-        Model $model,
+        Model $id,
         Actions\DeleteAction $action,
     ): JsonResponse {
 
         $action->authorize();
 
-        $action->execute($model);
+        $action->execute($id);
 
         return $this->message(__('deleted_successfully'));
     }

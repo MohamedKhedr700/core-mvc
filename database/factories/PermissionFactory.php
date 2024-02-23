@@ -28,8 +28,10 @@ class PermissionFactory extends Factory
     {
         return [
             'admin',
-            'user',
+            'permission',
             'product',
+            'role',
+            'user',
         ];
     }
 

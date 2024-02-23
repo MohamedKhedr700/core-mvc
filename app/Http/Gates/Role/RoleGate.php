@@ -2,7 +2,7 @@
 
 namespace App\Http\Gates\Role;
 
-use App\Actions\User as Actions;
+use App\Actions\Role as Actions;
 use App\Models\Admin;
 use Raid\Core\Gate\Gates\Contracts\GateInterface;
 use Raid\Core\Gate\Gates\Gate;
@@ -25,7 +25,7 @@ class RoleGate extends Gate implements GateInterface
      */
     public function create(Admin $account): bool
     {
-        return $account->hasPermissionTo(Actions\ListAction::getAction());
+        return $account->hasPermissionTo(Actions\CreateAction::getAction());
     }
 
     /**

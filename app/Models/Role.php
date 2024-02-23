@@ -2,17 +2,22 @@
 
 namespace App\Models;
 
+use App\Http\Gates\Role\RoleGate;
 use App\Models\ModelFilters\RoleFilter;
 use Database\Factories\RoleFactory;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Collection;
+use Raid\Core\Gate\Traits\Gate\Gateable;
+use Raid\Core\Model\Traits\Model\Attributable;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 class Role extends SpatieRole
 {
+    use Attributable;
     use Filterable;
+    use Gateable;
     use HasFactory;
     use HasUuids;
 
@@ -22,6 +27,16 @@ class Role extends SpatieRole
     public static function factory(): RoleFactory
     {
         return RoleFactory::new();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getGates(): array
+    {
+        return [
+            RoleGate::class,
+        ];
     }
 
     /**

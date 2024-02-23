@@ -20,9 +20,9 @@ Route::prefix('v1/admin/admins')
     ->group(function () {
         Route::post('/', [Admin\CrudController::class, 'store']);
         Route::get('/', [Admin\CrudController::class, 'index']);
-        Route::get('{admin}', [Admin\CrudController::class, 'show']);
-        Route::put('{admin}', [Admin\CrudController::class, 'update']);
-        Route::delete('{admin}', [Admin\CrudController::class, 'delete']);
+        Route::get('/{id}', [Admin\CrudController::class, 'show']);
+        Route::put('/{id}', [Admin\CrudController::class, 'update']);
+        Route::delete('/{id}', [Admin\CrudController::class, 'delete']);
     });
 
 // auth routes

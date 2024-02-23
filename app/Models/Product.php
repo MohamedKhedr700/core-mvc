@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use App\Http\Gates\Product\ProductGate;
 use App\Models\ModelFilters\ProductFilter;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Raid\Core\Gate\Traits\Gate\Gateable;
 use Raid\Core\Model\Models\Model;
 
 class Product extends Model
 {
+    use Gateable;
+
     /**
      * {@inheritdoc}
      */
@@ -28,6 +32,16 @@ class Product extends Model
         'description',
         'image',
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getGates(): array
+    {
+        return [
+            ProductGate::class,
+        ];
+    }
 
     /**
      * Get the users that belong to a product.

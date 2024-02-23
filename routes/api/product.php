@@ -20,9 +20,9 @@ Route::prefix('v1/admin/products')
     ->group(function () {
         Route::post('/', [Product\CrudController::class, 'store']);
         Route::get('/', [Product\CrudController::class, 'index']);
-        Route::get('{product}', [Product\CrudController::class, 'show']);
-        Route::put('{product}', [Product\CrudController::class, 'update']);
-        Route::delete('{product}', [Product\CrudController::class, 'delete']);
+        Route::get('/{id}', [Product\CrudController::class, 'show']);
+        Route::put('/{id}', [Product\CrudController::class, 'update']);
+        Route::delete('/{id}', [Product\CrudController::class, 'delete']);
     });
 
 // user product routes
@@ -30,5 +30,5 @@ Route::prefix('v1/user/products')
     ->middleware(['auth:user'])
     ->group(function () {
         Route::get('/', [Product\ProductController::class, 'index']);
-        Route::get('{product}', [Product\ProductController::class, 'show']);
+        Route::get('/{id}', [Product\ProductController::class, 'show']);
     });

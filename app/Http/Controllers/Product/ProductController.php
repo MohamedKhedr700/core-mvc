@@ -28,11 +28,11 @@ class ProductController extends Controller
      * Show a product.
      */
     public function show(
-        Model $model,
+        Model $id,
         Actions\FindAction $action,
     ): JsonResponse {
 
-        $resource = $action->execute($model);
+        $resource = $action->execute($id);
 
         return $this->resource(fractal_data($resource, new Transformer));
     }

@@ -35,6 +35,10 @@ return [
 
     'gateables' => [
         \App\Models\Admin::class,
+        \App\Models\Permission::class,
+        \App\Models\Product::class,
+        \App\Models\Role::class,
+        \App\Models\User::class,
     ],
 
     /*

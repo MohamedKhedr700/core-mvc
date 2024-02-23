@@ -14,8 +14,7 @@ class PermissionTransformer extends Transformer
     {
         return [
             'id' => $permission->attribute('id'),
-            'createdAt' => $permission->getAttribute('created_at')->toIsoString(),
-            'updatedAt' => $permission->getAttribute('updated_at')->toIsoString(),
+            'name' => $permission->attribute('name'),
         ];
     }
 }

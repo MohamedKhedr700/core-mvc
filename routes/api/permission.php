@@ -20,7 +20,7 @@ Route::prefix('v1/admin/permissions')
     ->group(function () {
         Route::post('/', [Permission\CrudController::class, 'store']);
         Route::get('/', [Permission\CrudController::class, 'index']);
-        Route::get('/{permission}', [Permission\CrudController::class, 'show']);
-        Route::put('/{permission}', [Permission\CrudController::class, 'update']);
-        Route::delete('/{permission}', [Permission\CrudController::class, 'delete']);
+        Route::get('/{id}', [Permission\CrudController::class, 'show']);
+        Route::put('/{id}', [Permission\CrudController::class, 'update']);
+        Route::delete('/{id}', [Permission\CrudController::class, 'delete']);
     });

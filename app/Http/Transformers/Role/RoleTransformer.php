@@ -14,8 +14,7 @@ class RoleTransformer extends Transformer
     {
         return [
             'id' => $role->attribute('id'),
-            'createdAt' => $role->getAttribute('created_at')->toIsoString(),
-            'updatedAt' => $role->getAttribute('updated_at')->toIsoString(),
+            'name' => $role->attribute('name'),
         ];
     }
 }

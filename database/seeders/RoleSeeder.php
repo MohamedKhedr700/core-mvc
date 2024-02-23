@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Role as RoleEnum;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Utilities\RoleUtility;
@@ -19,43 +20,47 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->seedAdministrator();
-        $this->seedAssistant();
+        $this->seedRoles([
+            RoleEnum::MANAGEMENT,
+            RoleEnum::ADMINISTRATOR,
+            RoleEnum::ASSISTANT,
+        ]);
     }
 
     /**
-     * Seed administrator.
+     * Seed roles.
      *
      * @throws Exception
      */
-    private function seedAdministrator(): void
+    private function seedRoles(array $roles = []): void
     {
-        $role = $this->factory()->create(['name' => 'administrator']);
-
-        $this->sync($role, RoleUtility::administrator());
+        foreach (RoleUtility::getRoles($roles) as $role => $configuration) {
+            $this->seedRole($role, $configuration);
+        }
     }
 
     /**
-     * Seed assistant.
+     * Seed role.
      *
      * @throws Exception
      */
-    private function seedAssistant(): void
+    private function seedRole(string $role, array $configuration): void
     {
-        $role = $this->factory()->create(['name' => 'assistant']);
-
-        $this->sync($role, RoleUtility::assistant());
+        $this->sync(
+            $this->factory()->create(['name' => $role]),
+            $configuration,
+        );
     }
 
     /**
      * Sync role permissions.
      */
-    private function sync(Role $role, array $data): void
+    private function sync(Role $role, array $configuration): void
     {
         $permissions = RoleUtility::getPermissions(
-            $data['models'],
-            $data['actions'],
-            $data['permissions'],
+            $configuration['models'],
+            $configuration['actions'],
+            $configuration['permissions'],
         );
 
         $role->syncPermissions(Permission::findByNames($permissions));

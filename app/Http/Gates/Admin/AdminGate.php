@@ -25,7 +25,7 @@ class AdminGate extends Gate implements GateInterface
      */
     public function create(Admin $account): bool
     {
-        return $account->hasPermissionTo(Actions\ListAction::getAction());
+        return $account->hasPermissionTo(Actions\CreateAction::getAction());
     }
 
     /**

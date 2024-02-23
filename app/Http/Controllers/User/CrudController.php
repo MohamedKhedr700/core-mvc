@@ -53,13 +53,13 @@ class CrudController extends Controller
      * @throws AuthorizationException
      */
     public function show(
-        Model $model,
+        Model $id,
         Actions\FindAction $action,
     ): JsonResponse {
 
         $action->authorize();
 
-        $resource = $action->execute($model);
+        $resource = $action->execute($id);
 
         return $this->resource(fractal_data($resource, new Transformer));
     }
@@ -71,13 +71,13 @@ class CrudController extends Controller
      */
     public function update(
         Requests\UpdateRequest $request,
-        Model $model,
+        Model $id,
         Actions\UpdateAction $action,
     ): JsonResponse {
 
         $action->authorize();
 
-        $action->execute($model, $request->passed());
+        $action->execute($id, $request->passed());
 
         return $this->message(__('updated_successfully'));
     }
@@ -88,13 +88,13 @@ class CrudController extends Controller
      * @throws AuthorizationException
      */
     public function delete(
-        Model $model,
+        Model $id,
         Actions\DeleteAction $action,
     ): JsonResponse {
 
         $action->authorize();
 
-        $action->execute($model);
+        $action->execute($id);
 
         return $this->message(__('deleted_successfully'));
     }
