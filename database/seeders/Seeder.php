@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Traits\Seeders\WithFactory;
 use App\Traits\Seeders\HasModel;
+use App\Traits\Seeders\WithFactory;
 use Exception;
 use Illuminate\Database\Seeder as IlluminateSeeder;
 

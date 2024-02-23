@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Role as RoleEnum;
 use App\Models\Admin;
 use App\Models\Permission;
 use App\Models\Role;
@@ -9,7 +10,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Raid\Core\Model\Models\Model;
 use Tests\TestCase;
-use App\Enums\Role as RoleEnum;
 
 if (! function_exists('factory')) {
     /**

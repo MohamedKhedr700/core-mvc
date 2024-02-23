@@ -25,7 +25,6 @@ uses(
     Tests\Feature\AdminUser\AdminUserTest::class,
 )->in('Feature/AdminUser');
 
-
 uses(
     Tests\Feature\User\UserTest::class,
 )->in('Feature/User');
