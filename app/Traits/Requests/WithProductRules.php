@@ -24,6 +24,9 @@ trait WithProductRules
     {
         return [
             'name' => __('name'),
+            'price' => __('price'),
+            'description' => __('description'),
+            'image' => __('image'),
         ];
     }
 }

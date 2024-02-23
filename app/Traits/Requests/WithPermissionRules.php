@@ -9,7 +9,9 @@ trait WithPermissionRules
      */
     public function commonRules(): array
     {
-        return [];
+        return [
+            'name' => ['required', 'string', 'unique:permissions,name'],
+        ];
     }
 
     /**
@@ -17,6 +19,8 @@ trait WithPermissionRules
      */
     public function attributes(): array
     {
-        return [];
+        return [
+            'name' => __('name'),
+        ];
     }
 }

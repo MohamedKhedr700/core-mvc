@@ -9,7 +9,9 @@ trait WithRoleRules
      */
     public function commonRules(): array
     {
-        return [];
+        return [
+            'name' => ['required', 'string', 'unique:roles,name'],
+        ];
     }
 
     /**
@@ -17,6 +19,8 @@ trait WithRoleRules
      */
     public function attributes(): array
     {
-        return [];
+        return [
+            'name' => __('name'),
+        ];
     }
 }
