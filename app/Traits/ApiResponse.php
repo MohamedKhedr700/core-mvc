@@ -59,10 +59,21 @@ trait ApiResponse
      */
     public function resources(mixed $data, string $message = ''): JsonResponse
     {
-        return $this->success([
-            'message' => $message,
-            'resources' => $data,
-        ]);
+        $response['message'] = $message;
+
+        if (array_key_exists('data', $data)) {
+            $response['resources'] = $data['data'];
+        }
+
+        if (array_key_exists('additionalData', $data)) {
+            $response['additionalData'] = $data['additionalData'];
+        }
+
+        if (array_key_exists('meta', $data)) {
+            $response['meta'] = $data['meta'];
+        }
+
+        return $this->success($response);
     }
 
     /**
