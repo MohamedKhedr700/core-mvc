@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\User;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -11,8 +14,16 @@
 |
 */
 
-use App\Http\Controllers\User;
-use Illuminate\Support\Facades\Route;
+// crud routes
+Route::prefix('v1/admin/users')
+    ->middleware(['auth:admin'])
+    ->group(function () {
+        Route::post('/', [User\CrudController::class, 'store']);
+        Route::get('/', [User\CrudController::class, 'index']);
+        Route::get('/{user}', [User\CrudController::class, 'show']);
+        Route::put('/{user}', [User\CrudController::class, 'update']);
+        Route::delete('/{user}', [User\CrudController::class, 'delete']);
+    });
 
 // auth routes
 Route::prefix('v1/user/users')
@@ -36,15 +47,4 @@ Route::prefix('v1/user/users/forgot-password')
         Route::post('/send', [User\ForgotPasswordController::class, 'send']);
         Route::post('/reset', [User\ForgotPasswordController::class, 'reset'])
             ->name('user.reset.forgot.password');
-    });
-
-// crud routes
-Route::prefix('v1/user/users')
-    ->middleware(['auth:admin'])
-    ->group(function () {
-        Route::post('/', [User\CrudController::class, 'store']);
-        Route::get('/', [User\CrudController::class, 'index']);
-        Route::get('/{user}', [User\CrudController::class, 'show']);
-        Route::put('/{user}', [User\CrudController::class, 'update']);
-        Route::delete('/{user}', [User\CrudController::class, 'delete']);
     });
