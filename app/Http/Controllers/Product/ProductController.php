@@ -23,7 +23,6 @@ class ProductController extends Controller
             $request->passed(),
             ['id', 'name', 'price', 'image'],
             [],
-            $request->has('perPage'),
         );
 
         return $this->resources(fractal_data($resources, new Transformer, ['user']));

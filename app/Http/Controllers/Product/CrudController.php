@@ -45,7 +45,6 @@ class CrudController extends Controller
             $request->passed(),
             ['*'],
             [],
-            $request->has('perPage'),
         );
 
         return $this->resources(fractal_data($resources, new Transformer, ['admin']));

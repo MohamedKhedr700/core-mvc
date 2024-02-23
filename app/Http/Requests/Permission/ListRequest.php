@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests\Permission;
 
+use App\Traits\Requests\WithPaginationRules;
 use App\Traits\Requests\WithPermissionRules;
 use Raid\Core\Request\Requests\FormRequest;
 
 class ListRequest extends FormRequest
 {
+    use WithPaginationRules;
     use WithPermissionRules;
 
     /**
@@ -14,9 +16,6 @@ class ListRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'page' => ['nullable', 'int', 'min:1'],
-            'perPage' => ['nullable', 'int', 'min:1'],
-        ];
+        return $this->withPaginationRules();
     }
 }

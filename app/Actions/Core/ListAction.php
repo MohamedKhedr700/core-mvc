@@ -13,7 +13,7 @@ abstract class ListAction extends RaidListAction implements ListActionInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(array $filters = [], array $columns = ['*'], array $relations = [], bool $paginate = false): Collection|LengthAwarePaginator
+    public function handle(array $filters = [], array $columns = ['*'], array $relations = []): Collection|LengthAwarePaginator
     {
         return array_key_exists('perPage', $filters) ?
             $this->paginate($filters, $columns, $relations) :

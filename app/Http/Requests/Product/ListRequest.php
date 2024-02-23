@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests\Product;
 
+use App\Traits\Requests\WithPaginationRules;
 use App\Traits\Requests\WithProductRules;
 use Raid\Core\Request\Requests\FormRequest;
 
 class ListRequest extends FormRequest
 {
+    use WithPaginationRules;
     use WithProductRules;
 
     /**
@@ -14,6 +16,6 @@ class ListRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return $this->withPaginationRules();
     }
 }
