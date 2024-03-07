@@ -49,7 +49,7 @@ class HomeBroadcast implements ShouldBroadcastNow
     {
         return fractal_data(
             $this->product,
-            new ProductTransformer(),
+            new ProductTransformer,
         );
     }
 }
