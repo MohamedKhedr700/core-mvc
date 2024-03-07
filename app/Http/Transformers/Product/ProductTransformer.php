@@ -56,7 +56,7 @@ class ProductTransformer extends Transformer
      */
     protected function extendTotalFavourites(Product $product): int
     {
-        return $product->users()->count();
+        return $product->users->count();
     }
 
     /**

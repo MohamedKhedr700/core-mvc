@@ -11,6 +11,6 @@ class ProductFilter extends ModelFilter
      */
     protected function name(string $name): self
     {
-        return $this->where('name', $name);
+        return $this->whereLike('name', $name);
     }
 }

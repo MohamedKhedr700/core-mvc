@@ -16,6 +16,8 @@ class ListRequest extends FormRequest
      */
     public function rules(): array
     {
-        return $this->withPaginationRules();
+        return $this->withPaginationRules([
+            'name' => ['nullable', 'string'],
+        ]);
     }
 }
